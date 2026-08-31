@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="/qt/qml/Astra/Stowaway/">
+    <file alias="../assets/fonts/GoogleSansFlex.ttf">/home/dim/Projects/AstraSuite/Stowaway/plugin/../assets/fonts/GoogleSansFlex.ttf</file>
+    <file alias="../assets/fonts/MaterialSymbolsRounded.ttf">/home/dim/Projects/AstraSuite/Stowaway/plugin/../assets/fonts/MaterialSymbolsRounded.ttf</file>
+    <file alias="../assets/material_icons.txt">/home/dim/Projects/AstraSuite/Stowaway/plugin/../assets/material_icons.txt</file>
+    <file alias="../assets/stowaway.svg">/home/dim/Projects/AstraSuite/Stowaway/plugin/../assets/stowaway.svg</file>
+    <file alias="../assets/data/emojis.json">/home/dim/Projects/AstraSuite/Stowaway/plugin/../assets/data/emojis.json</file>
+    <file alias="../assets/data/kaomoji.json">/home/dim/Projects/AstraSuite/Stowaway/plugin/../assets/data/kaomoji.json</file>
+    <file alias="../assets/data/symbols.json">/home/dim/Projects/AstraSuite/Stowaway/plugin/../assets/data/symbols.json</file>
+  </qresource>
+</RCC>
+

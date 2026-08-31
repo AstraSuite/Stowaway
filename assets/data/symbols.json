@@ -1,0 +1,572 @@
+[
+  {
+    "c": "→",
+    "name": "Right Arrow",
+    "cat": "Arrows",
+    "keys": "right arrow direction next"
+  },
+  {
+    "c": "←",
+    "name": "Left Arrow",
+    "cat": "Arrows",
+    "keys": "left arrow direction back"
+  },
+  {
+    "c": "↑",
+    "name": "Up Arrow",
+    "cat": "Arrows",
+    "keys": "up arrow top ascend"
+  },
+  {
+    "c": "↓",
+    "name": "Down Arrow",
+    "cat": "Arrows",
+    "keys": "down arrow bottom descend"
+  },
+  {
+    "c": "↔",
+    "name": "Left Right Arrow",
+    "cat": "Arrows",
+    "keys": "horizontal both swap"
+  },
+  {
+    "c": "↕",
+    "name": "Up Down Arrow",
+    "cat": "Arrows",
+    "keys": "vertical both scroll"
+  },
+  {
+    "c": "⇒",
+    "name": "Double Right Arrow",
+    "cat": "Arrows",
+    "keys": "implies right fast then"
+  },
+  {
+    "c": "⇐",
+    "name": "Double Left Arrow",
+    "cat": "Arrows",
+    "keys": "implied left logic"
+  },
+  {
+    "c": "⇔",
+    "name": "Double Both Arrow",
+    "cat": "Arrows",
+    "keys": "iff equivalent equivalence logic"
+  },
+  {
+    "c": "➔",
+    "name": "Heavy Right Arrow",
+    "cat": "Arrows",
+    "keys": "pointer bold right arrow"
+  },
+  {
+    "c": "➜",
+    "name": "Thick Right Arrow",
+    "cat": "Arrows",
+    "keys": "prompt shell terminal arrow right"
+  },
+  {
+    "c": "➤",
+    "name": "Right Arrowhead",
+    "cat": "Arrows",
+    "keys": "pointer bullet triangle right"
+  },
+  {
+    "c": "↺",
+    "name": "Counter-Clockwise Arrow",
+    "cat": "Arrows",
+    "keys": "undo rotate left reset"
+  },
+  {
+    "c": "↻",
+    "name": "Clockwise Arrow",
+    "cat": "Arrows",
+    "keys": "redo reload refresh rotate right"
+  },
+  {
+    "c": "⇄",
+    "name": "Right Left Over",
+    "cat": "Arrows",
+    "keys": "exchange swap transfer"
+  },
+  {
+    "c": "⇅",
+    "name": "Up Down Paired",
+    "cat": "Arrows",
+    "keys": "vertical exchange order sort"
+  },
+  {
+    "c": "↹",
+    "name": "Tab Arrow",
+    "cat": "Arrows",
+    "keys": "tab key cycle backtab"
+  },
+  {
+    "c": "↳",
+    "name": "Down Right Arrow",
+    "cat": "Arrows",
+    "keys": "return tree child branch"
+  },
+  {
+    "c": "↵",
+    "name": "Enter Arrow",
+    "cat": "Arrows",
+    "keys": "enter return carriage newline"
+  },
+  {
+    "c": "±",
+    "name": "Plus-Minus",
+    "cat": "Math",
+    "keys": "plus minus tolerance deviation math"
+  },
+  {
+    "c": "×",
+    "name": "Multiplication Sign",
+    "cat": "Math",
+    "keys": "times multiply math product"
+  },
+  {
+    "c": "÷",
+    "name": "Division Sign",
+    "cat": "Math",
+    "keys": "divide division math fraction"
+  },
+  {
+    "c": "≠",
+    "name": "Not Equal",
+    "cat": "Math",
+    "keys": "different unequal not eq != !=="
+  },
+  {
+    "c": "≈",
+    "name": "Almost Equal",
+    "cat": "Math",
+    "keys": "approx approximately similar estimation"
+  },
+  {
+    "c": "≡",
+    "name": "Identical To",
+    "cat": "Math",
+    "keys": "identity congruent equivalent"
+  },
+  {
+    "c": "≤",
+    "name": "Less-Than or Equal",
+    "cat": "Math",
+    "keys": "less <= math comparison"
+  },
+  {
+    "c": "≥",
+    "name": "Greater-Than or Equal",
+    "cat": "Math",
+    "keys": "greater >= math comparison"
+  },
+  {
+    "c": "√",
+    "name": "Square Root",
+    "cat": "Math",
+    "keys": "sqrt root radical math"
+  },
+  {
+    "c": "∛",
+    "name": "Cube Root",
+    "cat": "Math",
+    "keys": "cube 3rd root radical"
+  },
+  {
+    "c": "∞",
+    "name": "Infinity",
+    "cat": "Math",
+    "keys": "infinite loop endless boundless"
+  },
+  {
+    "c": "∫",
+    "name": "Integral",
+    "cat": "Math",
+    "keys": "calculus sum integration integral"
+  },
+  {
+    "c": "∬",
+    "name": "Double Integral",
+    "cat": "Math",
+    "keys": "surface area volume calculus"
+  },
+  {
+    "c": "∑",
+    "name": "Summation / Sigma",
+    "cat": "Math",
+    "keys": "sum total series sigma math"
+  },
+  {
+    "c": "∏",
+    "name": "N-Ary Product",
+    "cat": "Math",
+    "keys": "product multiplication pi series"
+  },
+  {
+    "c": "∂",
+    "name": "Partial Differential",
+    "cat": "Math",
+    "keys": "derivative del calculus grad"
+  },
+  {
+    "c": "∇",
+    "name": "Nabla / Del",
+    "cat": "Math",
+    "keys": "gradient divergence curl vector"
+  },
+  {
+    "c": "∆",
+    "name": "Delta Increment",
+    "cat": "Math",
+    "keys": "change delta difference triangle"
+  },
+  {
+    "c": "∈",
+    "name": "Element Of",
+    "cat": "Math",
+    "keys": "in set member belongs"
+  },
+  {
+    "c": "∉",
+    "name": "Not An Element Of",
+    "cat": "Math",
+    "keys": "not in set exclusion"
+  },
+  {
+    "c": "⊂",
+    "name": "Subset Of",
+    "cat": "Math",
+    "keys": "strict subset set theory"
+  },
+  {
+    "c": "⊆",
+    "name": "Subset or Equal",
+    "cat": "Math",
+    "keys": "subset set theory"
+  },
+  {
+    "c": "∪",
+    "name": "Union",
+    "cat": "Math",
+    "keys": "set union or combine"
+  },
+  {
+    "c": "∩",
+    "name": "Intersection",
+    "cat": "Math",
+    "keys": "set intersection and common"
+  },
+  {
+    "c": "∀",
+    "name": "For All",
+    "cat": "Math",
+    "keys": "universal quantifier logic every"
+  },
+  {
+    "c": "∃",
+    "name": "There Exists",
+    "cat": "Math",
+    "keys": "existential quantifier logic some"
+  },
+  {
+    "c": "∄",
+    "name": "There Does Not Exist",
+    "cat": "Math",
+    "keys": "none nothing empty logic"
+  },
+  {
+    "c": "¬",
+    "name": "Not Sign",
+    "cat": "Math",
+    "keys": "negation logical not inversion"
+  },
+  {
+    "c": "∧",
+    "name": "Logical AND",
+    "cat": "Math",
+    "keys": "conjunction and bool"
+  },
+  {
+    "c": "∨",
+    "name": "Logical OR",
+    "cat": "Math",
+    "keys": "disjunction or bool"
+  },
+  {
+    "c": "°",
+    "name": "Degree Sign",
+    "cat": "Math",
+    "keys": "degrees temperature angle celsius fahrenheit"
+  },
+  {
+    "c": "α",
+    "name": "Alpha",
+    "cat": "Greek",
+    "keys": "alpha lowercase greek physics math"
+  },
+  {
+    "c": "β",
+    "name": "Beta",
+    "cat": "Greek",
+    "keys": "beta lowercase greek software angle"
+  },
+  {
+    "c": "γ",
+    "name": "Gamma",
+    "cat": "Greek",
+    "keys": "gamma lowercase photon radiation"
+  },
+  {
+    "c": "δ",
+    "name": "Delta",
+    "cat": "Greek",
+    "keys": "delta lowercase math physics difference"
+  },
+  {
+    "c": "ε",
+    "name": "Epsilon",
+    "cat": "Greek",
+    "keys": "epsilon error precision tolerance"
+  },
+  {
+    "c": "θ",
+    "name": "Theta",
+    "cat": "Greek",
+    "keys": "theta angle rotation trigonometry"
+  },
+  {
+    "c": "λ",
+    "name": "Lambda",
+    "cat": "Greek",
+    "keys": "lambda functional wavelength hl2 half life"
+  },
+  {
+    "c": "μ",
+    "name": "Mu / Micro",
+    "cat": "Greek",
+    "keys": "mu micro metric friction 10^-6"
+  },
+  {
+    "c": "π",
+    "name": "Pi",
+    "cat": "Greek",
+    "keys": "pi circle 3.14159 ratio constant"
+  },
+  {
+    "c": "σ",
+    "name": "Sigma",
+    "cat": "Greek",
+    "keys": "sigma deviation standard variance"
+  },
+  {
+    "c": "τ",
+    "name": "Tau",
+    "cat": "Greek",
+    "keys": "tau 2pi torque time constant"
+  },
+  {
+    "c": "φ",
+    "name": "Phi",
+    "cat": "Greek",
+    "keys": "phi golden ratio angle flux"
+  },
+  {
+    "c": "ψ",
+    "name": "Psi",
+    "cat": "Greek",
+    "keys": "psi wave function quantum mind"
+  },
+  {
+    "c": "ω",
+    "name": "Omega",
+    "cat": "Greek",
+    "keys": "omega angular velocity end lowercase"
+  },
+  {
+    "c": "Δ",
+    "name": "Capital Delta",
+    "cat": "Greek",
+    "keys": "delta triangle change difference"
+  },
+  {
+    "c": "Ω",
+    "name": "Capital Omega",
+    "cat": "Greek",
+    "keys": "ohm resistance omega final"
+  },
+  {
+    "c": "$",
+    "name": "Dollar Sign",
+    "cat": "Currency",
+    "keys": "usd dollar money cash bucks"
+  },
+  {
+    "c": "€",
+    "name": "Euro Sign",
+    "cat": "Currency",
+    "keys": "eur euro europe currency money"
+  },
+  {
+    "c": "£",
+    "name": "Pound Sign",
+    "cat": "Currency",
+    "keys": "gbp pound sterling uk money"
+  },
+  {
+    "c": "¥",
+    "name": "Yen / Yuan Sign",
+    "cat": "Currency",
+    "keys": "jpy cny yen yuan japan china money"
+  },
+  {
+    "c": "₩",
+    "name": "Won Sign",
+    "cat": "Currency",
+    "keys": "krw won korea money cash"
+  },
+  {
+    "c": "₹",
+    "name": "Rupee Sign",
+    "cat": "Currency",
+    "keys": "inr rupee india money payment"
+  },
+  {
+    "c": "₽",
+    "name": "Ruble Sign",
+    "cat": "Currency",
+    "keys": "rub ruble russia currency"
+  },
+  {
+    "c": "₿",
+    "name": "Bitcoin Sign",
+    "cat": "Currency",
+    "keys": "btc bitcoin crypto satoshi blockchain"
+  },
+  {
+    "c": "¢",
+    "name": "Cent Sign",
+    "cat": "Currency",
+    "keys": "cents change pennies currency fractional"
+  },
+  {
+    "c": "—",
+    "name": "Em Dash",
+    "cat": "Typography",
+    "keys": "em dash long pause break punctuation"
+  },
+  {
+    "c": "–",
+    "name": "En Dash",
+    "cat": "Typography",
+    "keys": "en dash range duration punctuation"
+  },
+  {
+    "c": "…",
+    "name": "Horizontal Ellipsis",
+    "cat": "Typography",
+    "keys": "dots ellipsis pause continuation etc"
+  },
+  {
+    "c": "•",
+    "name": "Bullet Point",
+    "cat": "Typography",
+    "keys": "bullet list point item marker"
+  },
+  {
+    "c": "·",
+    "name": "Middle Dot",
+    "cat": "Typography",
+    "keys": "interpunct dot separator math dot"
+  },
+  {
+    "c": "“",
+    "name": "Left Double Quote",
+    "cat": "Typography",
+    "keys": "open quote speech quotation"
+  },
+  {
+    "c": "”",
+    "name": "Right Double Quote",
+    "cat": "Typography",
+    "keys": "close quote speech quotation"
+  },
+  {
+    "c": "‘",
+    "name": "Left Single Quote",
+    "cat": "Typography",
+    "keys": "open single quote apostrophe"
+  },
+  {
+    "c": "’",
+    "name": "Right Single Quote",
+    "cat": "Typography",
+    "keys": "close single quote apostrophe"
+  },
+  {
+    "c": "«",
+    "name": "Left Guillemet",
+    "cat": "Typography",
+    "keys": "french quote double angle left"
+  },
+  {
+    "c": "»",
+    "name": "Right Guillemet",
+    "cat": "Typography",
+    "keys": "french quote double angle right"
+  },
+  {
+    "c": "§",
+    "name": "Section Sign",
+    "cat": "Typography",
+    "keys": "section law legal clause paragraph"
+  },
+  {
+    "c": "¶",
+    "name": "Pilcrow / Paragraph",
+    "cat": "Typography",
+    "keys": "paragraph pilcrow typography break"
+  },
+  {
+    "c": "©",
+    "name": "Copyright Sign",
+    "cat": "Typography",
+    "keys": "copyright legal reserved intellectual property"
+  },
+  {
+    "c": "®",
+    "name": "Registered Trademark",
+    "cat": "Typography",
+    "keys": "registered brand trademark legal"
+  },
+  {
+    "c": "™",
+    "name": "Trademark Sign",
+    "cat": "Typography",
+    "keys": "trade mark brand service mark legal"
+  },
+  {
+    "c": "✓",
+    "name": "Checkmark",
+    "cat": "Typography",
+    "keys": "check tick mark correct done ok pass"
+  },
+  {
+    "c": "✗",
+    "name": "Ballot Cross",
+    "cat": "Typography",
+    "keys": "cross x mark wrong cancel fail error"
+  },
+  {
+    "c": "★",
+    "name": "Black Star",
+    "cat": "Typography",
+    "keys": "star solid rating favorite"
+  },
+  {
+    "c": "☆",
+    "name": "White Star",
+    "cat": "Typography",
+    "keys": "star outline rating empty bookmark"
+  }
+]

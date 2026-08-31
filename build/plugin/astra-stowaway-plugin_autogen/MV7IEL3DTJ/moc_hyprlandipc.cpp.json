@@ -1,0 +1,18 @@
+{
+    "classes": [
+        {
+            "className": "HyprlandIPC",
+            "lineNumber": 28,
+            "object": true,
+            "qualifiedClassName": "stowaway::core::HyprlandIPC",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "hyprlandipc.hpp",
+    "outputRevision": 69
+}

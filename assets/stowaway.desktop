@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Stowaway
+GenericName=Clipboard & Emoji Picker
+Comment=Modern Wayland clipboard manager and emoji picker overlay
+Exec=stowaway --toggle
+Icon=stowaway
+Terminal=false
+Type=Application
+Categories=Utility;Core;
+Keywords=clipboard;paste;history;emoji;emoticon;kaomoji;symbol;picker;wayland;
+StartupNotify=false

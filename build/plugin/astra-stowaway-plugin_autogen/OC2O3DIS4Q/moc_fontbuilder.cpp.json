@@ -1,0 +1,227 @@
+{
+    "classes": [
+        {
+            "classInfos": [
+                {
+                    "name": "QML.Element",
+                    "value": "anonymous"
+                }
+            ],
+            "className": "FontBuilder",
+            "gadget": true,
+            "lineNumber": 9,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "family",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 0,
+                    "lineNumber": 17,
+                    "name": "family",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "pointSize",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 1,
+                    "lineNumber": 18,
+                    "name": "size",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "weight",
+                            "type": "QFont::Weight"
+                        }
+                    ],
+                    "index": 2,
+                    "lineNumber": 19,
+                    "name": "weight",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "on",
+                            "type": "bool"
+                        }
+                    ],
+                    "index": 3,
+                    "lineNumber": 20,
+                    "name": "italic",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "index": 4,
+                    "isCloned": true,
+                    "lineNumber": 20,
+                    "name": "italic",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "stretch",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 5,
+                    "lineNumber": 21,
+                    "name": "stretch",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "spacing",
+                            "type": "qreal"
+                        },
+                        {
+                            "name": "absolute",
+                            "type": "bool"
+                        }
+                    ],
+                    "index": 6,
+                    "lineNumber": 22,
+                    "name": "letterSpacing",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "spacing",
+                            "type": "qreal"
+                        }
+                    ],
+                    "index": 7,
+                    "isCloned": true,
+                    "lineNumber": 22,
+                    "name": "letterSpacing",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "cap",
+                            "type": "QFont::Capitalization"
+                        }
+                    ],
+                    "index": 8,
+                    "lineNumber": 23,
+                    "name": "capitalisation",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "tag",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "value",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 9,
+                    "lineNumber": 24,
+                    "name": "vaxis",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "axes",
+                            "type": "QVariantMap"
+                        }
+                    ],
+                    "index": 10,
+                    "lineNumber": 25,
+                    "name": "vaxes",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "index": 11,
+                    "isConst": true,
+                    "lineNumber": 26,
+                    "name": "build",
+                    "returnType": "QFont"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "value",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 12,
+                    "lineNumber": 29,
+                    "name": "fill",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "value",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 13,
+                    "lineNumber": 30,
+                    "name": "grade",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "value",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 14,
+                    "lineNumber": 31,
+                    "name": "width",
+                    "returnType": "FontBuilder"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "factor",
+                            "type": "qreal"
+                        }
+                    ],
+                    "index": 15,
+                    "lineNumber": 34,
+                    "name": "scale",
+                    "returnType": "FontBuilder"
+                }
+            ],
+            "qualifiedClassName": "stowaway::config::FontBuilder"
+        }
+    ],
+    "inputFile": "fontbuilder.hpp",
+    "outputRevision": 69
+}

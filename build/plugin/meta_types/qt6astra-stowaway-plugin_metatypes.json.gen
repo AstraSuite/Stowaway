@@ -1,0 +1,4303 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    },
+                    {
+                        "name": "QML.Singleton",
+                        "value": "true"
+                    }
+                ],
+                "className": "AppController",
+                "lineNumber": 14,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "tab",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 8,
+                        "lineNumber": 47,
+                        "name": "showOverlay",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 9,
+                        "isCloned": true,
+                        "lineNumber": 47,
+                        "name": "showOverlay",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 10,
+                        "lineNumber": 48,
+                        "name": "hideOverlay",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "tab",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 11,
+                        "lineNumber": 49,
+                        "name": "toggleOverlay",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 12,
+                        "isCloned": true,
+                        "lineNumber": 49,
+                        "name": "toggleOverlay",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "message",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 13,
+                        "lineNumber": 50,
+                        "name": "showToast",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 14,
+                        "lineNumber": 51,
+                        "name": "quit",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "text",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "targetAddress",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 15,
+                        "lineNumber": 55,
+                        "name": "dismissAndPasteText",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "text",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 16,
+                        "isCloned": true,
+                        "lineNumber": 55,
+                        "name": "dismissAndPasteText",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "targetAddress",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 17,
+                        "lineNumber": 56,
+                        "name": "dismissAndPasteImage",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 18,
+                        "isCloned": true,
+                        "lineNumber": 56,
+                        "name": "dismissAndPasteImage",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 19,
+                        "name": "visible",
+                        "notify": "visibilityChanged",
+                        "override": false,
+                        "read": "isVisible",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setVisible"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 20,
+                        "name": "activeTab",
+                        "notify": "activeTabChanged",
+                        "override": false,
+                        "read": "activeTab",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setActiveTab"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 21,
+                        "name": "targetWindowAddress",
+                        "notify": "targetWindowAddressChanged",
+                        "override": false,
+                        "read": "targetWindowAddress",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 22,
+                        "name": "toastMessage",
+                        "notify": "toastMessageChanged",
+                        "override": false,
+                        "read": "toastMessage",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 23,
+                        "name": "toastVisible",
+                        "notify": "toastVisibleChanged",
+                        "override": false,
+                        "read": "toastVisible",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::core::AppController",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 65,
+                        "name": "visibilityChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 66,
+                        "name": "activeTabChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 67,
+                        "name": "targetWindowAddressChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 68,
+                        "name": "toastMessageChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 69,
+                        "name": "toastVisibleChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "lineNumber": 70,
+                        "name": "requestDismiss",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "index": 6,
+                        "lineNumber": 73,
+                        "name": "handleNewConnection",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 7,
+                        "lineNumber": 74,
+                        "name": "handleHyprlandEvent",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "appcontroller.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "ClipboardItem",
+                "lineNumber": 20,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 24,
+                        "name": "id",
+                        "override": false,
+                        "read": "id",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 25,
+                        "name": "type",
+                        "notify": "typeChanged",
+                        "override": false,
+                        "read": "typeInt",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 26,
+                        "name": "typeName",
+                        "notify": "typeChanged",
+                        "override": false,
+                        "read": "typeName",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 27,
+                        "name": "content",
+                        "notify": "contentChanged",
+                        "override": false,
+                        "read": "content",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setContent"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 28,
+                        "name": "previewText",
+                        "notify": "previewTextChanged",
+                        "override": false,
+                        "read": "previewText",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 29,
+                        "name": "previewLine1",
+                        "notify": "previewTextChanged",
+                        "override": false,
+                        "read": "previewLine1",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 30,
+                        "name": "previewLine2",
+                        "notify": "previewTextChanged",
+                        "override": false,
+                        "read": "previewLine2",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 31,
+                        "name": "imagePath",
+                        "notify": "imagePathChanged",
+                        "override": false,
+                        "read": "imagePath",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 32,
+                        "name": "imageWidth",
+                        "notify": "imagePathChanged",
+                        "override": false,
+                        "read": "imageWidth",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "lineNumber": 33,
+                        "name": "imageHeight",
+                        "notify": "imagePathChanged",
+                        "override": false,
+                        "read": "imageHeight",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 10,
+                        "lineNumber": 34,
+                        "name": "byteSize",
+                        "notify": "byteSizeChanged",
+                        "override": false,
+                        "read": "byteSize",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "qint64",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 11,
+                        "lineNumber": 35,
+                        "name": "lineCount",
+                        "notify": "contentChanged",
+                        "override": false,
+                        "read": "lineCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 12,
+                        "lineNumber": 36,
+                        "name": "charCount",
+                        "notify": "contentChanged",
+                        "override": false,
+                        "read": "charCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 13,
+                        "lineNumber": 37,
+                        "name": "timestamp",
+                        "notify": "timestampChanged",
+                        "override": false,
+                        "read": "timestamp",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QDateTime",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 14,
+                        "lineNumber": 38,
+                        "name": "timeAgo",
+                        "notify": "timestampChanged",
+                        "override": false,
+                        "read": "timeAgo",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 15,
+                        "lineNumber": 39,
+                        "name": "pinned",
+                        "notify": "pinnedChanged",
+                        "override": false,
+                        "read": "pinned",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setPinned"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 16,
+                        "lineNumber": 40,
+                        "name": "colorHex",
+                        "notify": "colorHexChanged",
+                        "override": false,
+                        "read": "colorHex",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::core::ClipboardItem",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 101,
+                        "name": "typeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 102,
+                        "name": "contentChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 103,
+                        "name": "previewTextChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 104,
+                        "name": "imagePathChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 105,
+                        "name": "byteSizeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "lineNumber": 106,
+                        "name": "timestampChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 6,
+                        "lineNumber": 107,
+                        "name": "pinnedChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 7,
+                        "lineNumber": 108,
+                        "name": "colorHexChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "clipboarditem.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    },
+                    {
+                        "name": "QML.Singleton",
+                        "value": "true"
+                    }
+                ],
+                "className": "ClipboardManager",
+                "lineNumber": 14,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "targetWindowAddress",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 10,
+                        "lineNumber": 59,
+                        "name": "selectItem",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 11,
+                        "isCloned": true,
+                        "lineNumber": 59,
+                        "name": "selectItem",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 12,
+                        "lineNumber": 60,
+                        "name": "copyItem",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 13,
+                        "lineNumber": 61,
+                        "name": "togglePin",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 14,
+                        "lineNumber": 62,
+                        "name": "deleteItem",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 15,
+                        "lineNumber": 63,
+                        "name": "clearHistory",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 16,
+                        "lineNumber": 64,
+                        "name": "checkClipboard",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 19,
+                        "name": "items",
+                        "notify": "itemsChanged",
+                        "override": false,
+                        "read": "items",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QList<stowaway::core::ClipboardItem*>",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 20,
+                        "name": "filteredItems",
+                        "notify": "filteredItemsChanged",
+                        "override": false,
+                        "read": "filteredItems",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QList<stowaway::core::ClipboardItem*>",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 21,
+                        "name": "filterQuery",
+                        "notify": "filterQueryChanged",
+                        "override": false,
+                        "read": "filterQuery",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setFilterQuery"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 22,
+                        "name": "onlyPinned",
+                        "notify": "onlyPinnedChanged",
+                        "override": false,
+                        "read": "onlyPinned",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setOnlyPinned"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 23,
+                        "name": "filterType",
+                        "notify": "filterTypeChanged",
+                        "override": false,
+                        "read": "filterType",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setFilterType"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 24,
+                        "name": "filterPinnedOnly",
+                        "notify": "filterPinnedOnlyChanged",
+                        "override": false,
+                        "read": "filterPinnedOnly",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setFilterPinnedOnly"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 25,
+                        "name": "itemCount",
+                        "notify": "itemsChanged",
+                        "override": false,
+                        "read": "itemCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 26,
+                        "name": "pinnedCount",
+                        "notify": "itemsChanged",
+                        "override": false,
+                        "read": "pinnedCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 27,
+                        "name": "imageCount",
+                        "notify": "itemsChanged",
+                        "override": false,
+                        "read": "imageCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::core::ClipboardManager",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 67,
+                        "name": "itemsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 68,
+                        "name": "filteredItemsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 69,
+                        "name": "filterQueryChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 70,
+                        "name": "onlyPinnedChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 71,
+                        "name": "filterTypeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "lineNumber": 72,
+                        "name": "filterPinnedOnlyChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "content",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 6,
+                        "lineNumber": 73,
+                        "name": "itemSelected",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "index": 7,
+                        "lineNumber": 76,
+                        "name": "onTextWatcherReady",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 8,
+                        "lineNumber": 77,
+                        "name": "onImageWatcherReady",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 9,
+                        "lineNumber": 78,
+                        "name": "saveHistory",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "clipboardmanager.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    },
+                    {
+                        "name": "QML.Singleton",
+                        "value": "true"
+                    }
+                ],
+                "className": "EmojiService",
+                "lineNumber": 23,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "query",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "category",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 50,
+                        "name": "searchEmojis",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "query",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 4,
+                        "isCloned": true,
+                        "lineNumber": 50,
+                        "name": "searchEmojis",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "isCloned": true,
+                        "lineNumber": 50,
+                        "name": "searchEmojis",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "query",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "category",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 6,
+                        "lineNumber": 51,
+                        "name": "searchKaomoji",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "query",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 7,
+                        "isCloned": true,
+                        "lineNumber": 51,
+                        "name": "searchKaomoji",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "index": 8,
+                        "isCloned": true,
+                        "lineNumber": 51,
+                        "name": "searchKaomoji",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "query",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "category",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 9,
+                        "lineNumber": 52,
+                        "name": "searchSymbols",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "query",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 10,
+                        "isCloned": true,
+                        "lineNumber": 52,
+                        "name": "searchSymbols",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "index": 11,
+                        "isCloned": true,
+                        "lineNumber": 52,
+                        "name": "searchSymbols",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "character",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 12,
+                        "isConst": true,
+                        "lineNumber": 53,
+                        "name": "isFavorite",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "character",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "type",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 13,
+                        "lineNumber": 54,
+                        "name": "toggleFavorite",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "character",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 14,
+                        "isCloned": true,
+                        "lineNumber": 54,
+                        "name": "toggleFavorite",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "character",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 15,
+                        "isCloned": true,
+                        "lineNumber": 54,
+                        "name": "toggleFavorite",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "character",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "type",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 16,
+                        "lineNumber": 55,
+                        "name": "recordUsage",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "character",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 17,
+                        "isCloned": true,
+                        "lineNumber": 55,
+                        "name": "recordUsage",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "character",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 18,
+                        "isCloned": true,
+                        "lineNumber": 55,
+                        "name": "recordUsage",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 19,
+                        "lineNumber": 56,
+                        "name": "loadDatasets",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 28,
+                        "name": "emojiCategories",
+                        "notify": "datasetsLoaded",
+                        "override": false,
+                        "read": "emojiCategories",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 29,
+                        "name": "kaomojiCategories",
+                        "notify": "datasetsLoaded",
+                        "override": false,
+                        "read": "kaomojiCategories",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 30,
+                        "name": "symbolCategories",
+                        "notify": "datasetsLoaded",
+                        "override": false,
+                        "read": "symbolCategories",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 31,
+                        "name": "recentList",
+                        "notify": "recentChanged",
+                        "override": false,
+                        "read": "recentList",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantList",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 32,
+                        "name": "favoritesList",
+                        "notify": "favoritesChanged",
+                        "override": false,
+                        "read": "favoritesList",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::core::EmojiService",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 59,
+                        "name": "datasetsLoaded",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 60,
+                        "name": "recentChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 61,
+                        "name": "favoritesChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "emojiservice.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "HyprlandIPC",
+                "lineNumber": 28,
+                "object": true,
+                "qualifiedClassName": "stowaway::core::HyprlandIPC",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "hyprlandipc.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    },
+                    {
+                        "name": "QML.Singleton",
+                        "value": "true"
+                    }
+                ],
+                "className": "PasteManager",
+                "lineNumber": 11,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "text",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "targetWindowAddress",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 26,
+                        "name": "pasteText",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "text",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 3,
+                        "isCloned": true,
+                        "lineNumber": 26,
+                        "name": "pasteText",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "text",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 4,
+                        "lineNumber": 27,
+                        "name": "copyText",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "targetWindowAddress",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 28,
+                        "name": "pasteImage",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 6,
+                        "isCloned": true,
+                        "lineNumber": 28,
+                        "name": "pasteImage",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 7,
+                        "lineNumber": 29,
+                        "name": "copyImage",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "qualifiedClassName": "stowaway::core::PasteManager",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "message",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 33,
+                        "name": "contentCopied",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 34,
+                        "name": "pasteCompleted",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "pastemanager.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    },
+                    {
+                        "name": "QML.Singleton",
+                        "value": "true"
+                    }
+                ],
+                "className": "PositionController",
+                "lineNumber": 12,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "overlayWidth",
+                                "type": "int"
+                            },
+                            {
+                                "name": "overlayHeight",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 43,
+                        "name": "calculatePosition",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "overlayWidth",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 2,
+                        "isCloned": true,
+                        "lineNumber": 43,
+                        "name": "calculatePosition",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "isCloned": true,
+                        "lineNumber": 43,
+                        "name": "calculatePosition",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 17,
+                        "name": "targetX",
+                        "notify": "positionChanged",
+                        "override": false,
+                        "read": "targetX",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 18,
+                        "name": "targetY",
+                        "notify": "positionChanged",
+                        "override": false,
+                        "read": "targetY",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 19,
+                        "name": "monitorX",
+                        "notify": "positionChanged",
+                        "override": false,
+                        "read": "monitorX",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 20,
+                        "name": "monitorY",
+                        "notify": "positionChanged",
+                        "override": false,
+                        "read": "monitorY",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 21,
+                        "name": "monitorWidth",
+                        "notify": "positionChanged",
+                        "override": false,
+                        "read": "monitorWidth",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 22,
+                        "name": "monitorHeight",
+                        "notify": "positionChanged",
+                        "override": false,
+                        "read": "monitorHeight",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 23,
+                        "name": "monitorName",
+                        "notify": "positionChanged",
+                        "override": false,
+                        "read": "monitorName",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::core::PositionController",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 46,
+                        "name": "positionChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "positioncontroller.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "M3Palette",
+                "lineNumber": 12,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 24,
+                        "name": "m3background",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3background",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3background"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 25,
+                        "name": "m3onBackground",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onBackground",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onBackground"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 26,
+                        "name": "m3surface",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3surface",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3surface"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 27,
+                        "name": "m3surfaceDim",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3surfaceDim",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3surfaceDim"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 28,
+                        "name": "m3surfaceBright",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3surfaceBright",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3surfaceBright"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 29,
+                        "name": "m3surfaceContainerLowest",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3surfaceContainerLowest",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3surfaceContainerLowest"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 30,
+                        "name": "m3surfaceContainerLow",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3surfaceContainerLow",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3surfaceContainerLow"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 31,
+                        "name": "m3surfaceContainer",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3surfaceContainer",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3surfaceContainer"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 32,
+                        "name": "m3surfaceContainerHigh",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3surfaceContainerHigh",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3surfaceContainerHigh"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "lineNumber": 33,
+                        "name": "m3surfaceContainerHighest",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3surfaceContainerHighest",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3surfaceContainerHighest"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 10,
+                        "lineNumber": 34,
+                        "name": "m3onSurface",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onSurface",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onSurface"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 11,
+                        "lineNumber": 35,
+                        "name": "m3surfaceVariant",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3surfaceVariant",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3surfaceVariant"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 12,
+                        "lineNumber": 36,
+                        "name": "m3onSurfaceVariant",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onSurfaceVariant",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onSurfaceVariant"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 13,
+                        "lineNumber": 37,
+                        "name": "m3inverseSurface",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3inverseSurface",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3inverseSurface"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 14,
+                        "lineNumber": 38,
+                        "name": "m3inverseOnSurface",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3inverseOnSurface",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3inverseOnSurface"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 15,
+                        "lineNumber": 39,
+                        "name": "m3outline",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3outline",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3outline"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 16,
+                        "lineNumber": 40,
+                        "name": "m3outlineVariant",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3outlineVariant",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3outlineVariant"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 17,
+                        "lineNumber": 41,
+                        "name": "m3shadow",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3shadow",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3shadow"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 18,
+                        "lineNumber": 42,
+                        "name": "m3scrim",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3scrim",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3scrim"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 19,
+                        "lineNumber": 43,
+                        "name": "m3surfaceTint",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3surfaceTint",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3surfaceTint"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 20,
+                        "lineNumber": 44,
+                        "name": "m3primary",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3primary",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3primary"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 21,
+                        "lineNumber": 45,
+                        "name": "m3onPrimary",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onPrimary",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onPrimary"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 22,
+                        "lineNumber": 46,
+                        "name": "m3primaryContainer",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3primaryContainer",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3primaryContainer"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 23,
+                        "lineNumber": 47,
+                        "name": "m3onPrimaryContainer",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onPrimaryContainer",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onPrimaryContainer"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 24,
+                        "lineNumber": 48,
+                        "name": "m3secondary",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3secondary",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3secondary"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 25,
+                        "lineNumber": 49,
+                        "name": "m3onSecondary",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onSecondary",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onSecondary"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 26,
+                        "lineNumber": 50,
+                        "name": "m3secondaryContainer",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3secondaryContainer",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3secondaryContainer"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 27,
+                        "lineNumber": 51,
+                        "name": "m3onSecondaryContainer",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onSecondaryContainer",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onSecondaryContainer"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 28,
+                        "lineNumber": 52,
+                        "name": "m3tertiary",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3tertiary",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3tertiary"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 29,
+                        "lineNumber": 53,
+                        "name": "m3onTertiary",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onTertiary",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onTertiary"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 30,
+                        "lineNumber": 54,
+                        "name": "m3tertiaryContainer",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3tertiaryContainer",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3tertiaryContainer"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 31,
+                        "lineNumber": 55,
+                        "name": "m3onTertiaryContainer",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onTertiaryContainer",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onTertiaryContainer"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 32,
+                        "lineNumber": 56,
+                        "name": "m3error",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3error",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3error"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 33,
+                        "lineNumber": 57,
+                        "name": "m3onError",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onError",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onError"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 34,
+                        "lineNumber": 58,
+                        "name": "m3errorContainer",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3errorContainer",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3errorContainer"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 35,
+                        "lineNumber": 59,
+                        "name": "m3onErrorContainer",
+                        "notify": "paletteChanged",
+                        "override": false,
+                        "read": "m3onErrorContainer",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "virtual": false,
+                        "write": "set_m3onErrorContainer"
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::M3Palette",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 68,
+                        "name": "paletteChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "Colours"
+                    },
+                    {
+                        "name": "QML.Singleton",
+                        "value": "true"
+                    }
+                ],
+                "className": "ColoursSingleton",
+                "lineNumber": 71,
+                "methods": [
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 89,
+                        "name": "reload",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 76,
+                        "name": "light",
+                        "notify": "lightChanged",
+                        "override": false,
+                        "read": "light",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setLight"
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 77,
+                        "name": "palette",
+                        "override": false,
+                        "read": "palette",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::M3Palette*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 78,
+                        "name": "tPalette",
+                        "override": false,
+                        "read": "tPalette",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::M3Palette*",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::ColoursSingleton",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 100,
+                        "name": "lightChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "colours.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "FontBuilders",
+                "lineNumber": 13,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 0,
+                        "lineNumber": 17,
+                        "name": "extraLarge",
+                        "notify": "buildersChanged",
+                        "override": false,
+                        "read": "extraLarge",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontBuilder",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 1,
+                        "lineNumber": 18,
+                        "name": "large",
+                        "notify": "buildersChanged",
+                        "override": false,
+                        "read": "large",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontBuilder",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 2,
+                        "lineNumber": 19,
+                        "name": "medium",
+                        "notify": "buildersChanged",
+                        "override": false,
+                        "read": "medium",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontBuilder",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 3,
+                        "lineNumber": 20,
+                        "name": "small",
+                        "notify": "buildersChanged",
+                        "override": false,
+                        "read": "small",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontBuilder",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::FontBuilders",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 31,
+                        "name": "buildersChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "className": "FontStyleBase",
+                "lineNumber": 37,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 0,
+                        "lineNumber": 40,
+                        "name": "extraLarge",
+                        "notify": "fontsChanged",
+                        "override": false,
+                        "read": "extraLarge",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QFont",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 1,
+                        "lineNumber": 41,
+                        "name": "large",
+                        "notify": "fontsChanged",
+                        "override": false,
+                        "read": "large",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QFont",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 2,
+                        "lineNumber": 42,
+                        "name": "medium",
+                        "notify": "fontsChanged",
+                        "override": false,
+                        "read": "medium",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QFont",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 3,
+                        "lineNumber": 43,
+                        "name": "small",
+                        "notify": "fontsChanged",
+                        "override": false,
+                        "read": "small",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QFont",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": true,
+                        "index": 4,
+                        "lineNumber": 44,
+                        "name": "builders",
+                        "override": false,
+                        "read": "builders",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontBuilders*",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::FontStyleBase",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 65,
+                        "name": "fontsChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "FontStyle",
+                "lineNumber": 86,
+                "object": true,
+                "qualifiedClassName": "stowaway::config::FontStyle",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "fullyQualifiedName": "stowaway::config::FontStyleBase",
+                        "name": "FontStyleBase"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "IconFontStyle",
+                "lineNumber": 96,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "pointSize",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 103,
+                        "name": "size",
+                        "returnType": "stowaway::config::FontBuilder"
+                    }
+                ],
+                "object": true,
+                "qualifiedClassName": "stowaway::config::IconFontStyle",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "fullyQualifiedName": "stowaway::config::FontStyleBase",
+                        "name": "FontStyleBase"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "FontTokens",
+                "lineNumber": 106,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": true,
+                        "index": 0,
+                        "lineNumber": 110,
+                        "name": "headline",
+                        "override": false,
+                        "read": "headline",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontStyle*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": true,
+                        "index": 1,
+                        "lineNumber": 111,
+                        "name": "title",
+                        "override": false,
+                        "read": "title",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontStyle*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": true,
+                        "index": 2,
+                        "lineNumber": 112,
+                        "name": "body",
+                        "override": false,
+                        "read": "body",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontStyle*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": true,
+                        "index": 3,
+                        "lineNumber": 113,
+                        "name": "label",
+                        "override": false,
+                        "read": "label",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontStyle*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": true,
+                        "index": 4,
+                        "lineNumber": 114,
+                        "name": "mono",
+                        "override": false,
+                        "read": "mono",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontStyle*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": true,
+                        "index": 5,
+                        "lineNumber": 115,
+                        "name": "icon",
+                        "override": false,
+                        "read": "icon",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::IconFontStyle*",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::FontTokens",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "font.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "FontBuilder",
+                "gadget": true,
+                "lineNumber": 9,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "family",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 17,
+                        "name": "family",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "pointSize",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 18,
+                        "name": "size",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "weight",
+                                "type": "QFont::Weight"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 19,
+                        "name": "weight",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "on",
+                                "type": "bool"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 20,
+                        "name": "italic",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "isCloned": true,
+                        "lineNumber": 20,
+                        "name": "italic",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "stretch",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 21,
+                        "name": "stretch",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "spacing",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "absolute",
+                                "type": "bool"
+                            }
+                        ],
+                        "index": 6,
+                        "lineNumber": 22,
+                        "name": "letterSpacing",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "spacing",
+                                "type": "qreal"
+                            }
+                        ],
+                        "index": 7,
+                        "isCloned": true,
+                        "lineNumber": 22,
+                        "name": "letterSpacing",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "cap",
+                                "type": "QFont::Capitalization"
+                            }
+                        ],
+                        "index": 8,
+                        "lineNumber": 23,
+                        "name": "capitalisation",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "tag",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "value",
+                                "type": "float"
+                            }
+                        ],
+                        "index": 9,
+                        "lineNumber": 24,
+                        "name": "vaxis",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "axes",
+                                "type": "QVariantMap"
+                            }
+                        ],
+                        "index": 10,
+                        "lineNumber": 25,
+                        "name": "vaxes",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "index": 11,
+                        "isConst": true,
+                        "lineNumber": 26,
+                        "name": "build",
+                        "returnType": "QFont"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "value",
+                                "type": "float"
+                            }
+                        ],
+                        "index": 12,
+                        "lineNumber": 29,
+                        "name": "fill",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "value",
+                                "type": "float"
+                            }
+                        ],
+                        "index": 13,
+                        "lineNumber": 30,
+                        "name": "grade",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "value",
+                                "type": "float"
+                            }
+                        ],
+                        "index": 14,
+                        "lineNumber": 31,
+                        "name": "width",
+                        "returnType": "FontBuilder"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "factor",
+                                "type": "qreal"
+                            }
+                        ],
+                        "index": 15,
+                        "lineNumber": 34,
+                        "name": "scale",
+                        "returnType": "FontBuilder"
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::FontBuilder"
+            }
+        ],
+        "inputFile": "fontbuilder.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "RoundingTokens",
+                "lineNumber": 14,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 18,
+                        "name": "scale",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "scale",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "qreal",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setScale"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 28,
+                        "name": "extraSmall",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraSmall",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 29,
+                        "name": "small",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "small",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 30,
+                        "name": "medium",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "medium",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 31,
+                        "name": "large",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "large",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 32,
+                        "name": "largeIncreased",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "largeIncreased",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 33,
+                        "name": "extraLarge",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraLarge",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 34,
+                        "name": "extraLargeIncreased",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraLargeIncreased",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 35,
+                        "name": "extraExtraLarge",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraExtraLarge",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "lineNumber": 36,
+                        "name": "full",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "full",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::RoundingTokens",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 52,
+                        "name": "valuesChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "SpacingTokens",
+                "lineNumber": 58,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 62,
+                        "name": "scale",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "scale",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "qreal",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setScale"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 72,
+                        "name": "extraSmall",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraSmall",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 73,
+                        "name": "small",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "small",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 74,
+                        "name": "medium",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "medium",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 75,
+                        "name": "large",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "large",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 76,
+                        "name": "largeIncreased",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "largeIncreased",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 77,
+                        "name": "extraLarge",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraLarge",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 78,
+                        "name": "extraLargeIncreased",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraLargeIncreased",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 79,
+                        "name": "extraExtraLarge",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraExtraLarge",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::SpacingTokens",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 95,
+                        "name": "valuesChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "PaddingTokens",
+                "lineNumber": 101,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 105,
+                        "name": "scale",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "scale",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "qreal",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setScale"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 115,
+                        "name": "extraSmall",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraSmall",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 116,
+                        "name": "small",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "small",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 117,
+                        "name": "medium",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "medium",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 118,
+                        "name": "large",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "large",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 119,
+                        "name": "largeIncreased",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "largeIncreased",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 120,
+                        "name": "extraLarge",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraLarge",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 121,
+                        "name": "extraLargeIncreased",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraLargeIncreased",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 122,
+                        "name": "extraExtraLarge",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraExtraLarge",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::PaddingTokens",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 138,
+                        "name": "valuesChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "AnimDurationTokens",
+                "lineNumber": 144,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 148,
+                        "name": "scale",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "scale",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "qreal",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setScale"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 158,
+                        "name": "small",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "small",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 159,
+                        "name": "normal",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "normal",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 160,
+                        "name": "large",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "large",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 161,
+                        "name": "extraLarge",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "extraLarge",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 162,
+                        "name": "expressiveFastSpatial",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "expressiveFastSpatial",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 163,
+                        "name": "expressiveDefaultSpatial",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "expressiveDefaultSpatial",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 164,
+                        "name": "expressiveSlowSpatial",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "expressiveSlowSpatial",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 165,
+                        "name": "expressiveFastEffects",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "expressiveFastEffects",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "lineNumber": 166,
+                        "name": "expressiveDefaultEffects",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "expressiveDefaultEffects",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 10,
+                        "lineNumber": 167,
+                        "name": "expressiveSlowEffects",
+                        "notify": "valuesChanged",
+                        "override": false,
+                        "read": "expressiveSlowEffects",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::AnimDurationTokens",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 183,
+                        "name": "valuesChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    }
+                ],
+                "className": "AnimCurves",
+                "lineNumber": 189,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 193,
+                        "name": "emphasized",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "emphasized",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 194,
+                        "name": "emphasizedAccel",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "emphasizedAccel",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 195,
+                        "name": "emphasizedDecel",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "emphasizedDecel",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 196,
+                        "name": "standard",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "standard",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 197,
+                        "name": "standardAccel",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "standardAccel",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 198,
+                        "name": "standardDecel",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "standardDecel",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 199,
+                        "name": "expressiveFastSpatial",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "expressiveFastSpatial",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 200,
+                        "name": "expressiveDefaultSpatial",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "expressiveDefaultSpatial",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 201,
+                        "name": "expressiveSlowSpatial",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "expressiveSlowSpatial",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "lineNumber": 202,
+                        "name": "expressiveFastEffects",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "expressiveFastEffects",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 10,
+                        "lineNumber": 203,
+                        "name": "expressiveDefaultEffects",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "expressiveDefaultEffects",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 11,
+                        "lineNumber": 204,
+                        "name": "expressiveSlowEffects",
+                        "notify": "curvesChanged",
+                        "override": false,
+                        "read": "expressiveSlowEffects",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QEasingCurve",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 12,
+                        "lineNumber": 205,
+                        "name": "durations",
+                        "override": false,
+                        "read": "durations",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::AnimDurationTokens*",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::AnimCurves",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 227,
+                        "name": "curvesChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "Tokens"
+                    },
+                    {
+                        "name": "QML.Singleton",
+                        "value": "true"
+                    }
+                ],
+                "className": "TokensSingleton",
+                "lineNumber": 247,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 252,
+                        "name": "rounding",
+                        "override": false,
+                        "read": "rounding",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::RoundingTokens*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 253,
+                        "name": "spacing",
+                        "override": false,
+                        "read": "spacing",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::SpacingTokens*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 254,
+                        "name": "padding",
+                        "override": false,
+                        "read": "padding",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::PaddingTokens*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 255,
+                        "name": "anim",
+                        "override": false,
+                        "read": "anim",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::AnimCurves*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 256,
+                        "name": "font",
+                        "override": false,
+                        "read": "font",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "stowaway::config::FontTokens*",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "stowaway::config::TokensSingleton",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "tokens.hpp",
+        "outputRevision": 69
+    }
+]

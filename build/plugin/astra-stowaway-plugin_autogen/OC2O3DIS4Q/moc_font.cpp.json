@@ -1,0 +1,379 @@
+{
+    "classes": [
+        {
+            "classInfos": [
+                {
+                    "name": "QML.Element",
+                    "value": "anonymous"
+                }
+            ],
+            "className": "FontBuilders",
+            "lineNumber": 13,
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 0,
+                    "lineNumber": 17,
+                    "name": "extraLarge",
+                    "notify": "buildersChanged",
+                    "override": false,
+                    "read": "extraLarge",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::FontBuilder",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 1,
+                    "lineNumber": 18,
+                    "name": "large",
+                    "notify": "buildersChanged",
+                    "override": false,
+                    "read": "large",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::FontBuilder",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 2,
+                    "lineNumber": 19,
+                    "name": "medium",
+                    "notify": "buildersChanged",
+                    "override": false,
+                    "read": "medium",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::FontBuilder",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 3,
+                    "lineNumber": 20,
+                    "name": "small",
+                    "notify": "buildersChanged",
+                    "override": false,
+                    "read": "small",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::FontBuilder",
+                    "user": false,
+                    "virtual": false
+                }
+            ],
+            "qualifiedClassName": "stowaway::config::FontBuilders",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "lineNumber": 31,
+                    "name": "buildersChanged",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        },
+        {
+            "className": "FontStyleBase",
+            "lineNumber": 37,
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 0,
+                    "lineNumber": 40,
+                    "name": "extraLarge",
+                    "notify": "fontsChanged",
+                    "override": false,
+                    "read": "extraLarge",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QFont",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 1,
+                    "lineNumber": 41,
+                    "name": "large",
+                    "notify": "fontsChanged",
+                    "override": false,
+                    "read": "large",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QFont",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 2,
+                    "lineNumber": 42,
+                    "name": "medium",
+                    "notify": "fontsChanged",
+                    "override": false,
+                    "read": "medium",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QFont",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 3,
+                    "lineNumber": 43,
+                    "name": "small",
+                    "notify": "fontsChanged",
+                    "override": false,
+                    "read": "small",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QFont",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": true,
+                    "index": 4,
+                    "lineNumber": 44,
+                    "name": "builders",
+                    "override": false,
+                    "read": "builders",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::FontBuilders*",
+                    "user": false,
+                    "virtual": false
+                }
+            ],
+            "qualifiedClassName": "stowaway::config::FontStyleBase",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "lineNumber": 65,
+                    "name": "fontsChanged",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        },
+        {
+            "classInfos": [
+                {
+                    "name": "QML.Element",
+                    "value": "anonymous"
+                }
+            ],
+            "className": "FontStyle",
+            "lineNumber": 86,
+            "object": true,
+            "qualifiedClassName": "stowaway::config::FontStyle",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "fullyQualifiedName": "stowaway::config::FontStyleBase",
+                    "name": "FontStyleBase"
+                }
+            ]
+        },
+        {
+            "classInfos": [
+                {
+                    "name": "QML.Element",
+                    "value": "anonymous"
+                }
+            ],
+            "className": "IconFontStyle",
+            "lineNumber": 96,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "pointSize",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 0,
+                    "lineNumber": 103,
+                    "name": "size",
+                    "returnType": "stowaway::config::FontBuilder"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "stowaway::config::IconFontStyle",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "fullyQualifiedName": "stowaway::config::FontStyleBase",
+                    "name": "FontStyleBase"
+                }
+            ]
+        },
+        {
+            "classInfos": [
+                {
+                    "name": "QML.Element",
+                    "value": "anonymous"
+                }
+            ],
+            "className": "FontTokens",
+            "lineNumber": 106,
+            "object": true,
+            "properties": [
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": true,
+                    "index": 0,
+                    "lineNumber": 110,
+                    "name": "headline",
+                    "override": false,
+                    "read": "headline",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::FontStyle*",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": true,
+                    "index": 1,
+                    "lineNumber": 111,
+                    "name": "title",
+                    "override": false,
+                    "read": "title",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::FontStyle*",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": true,
+                    "index": 2,
+                    "lineNumber": 112,
+                    "name": "body",
+                    "override": false,
+                    "read": "body",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::FontStyle*",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": true,
+                    "index": 3,
+                    "lineNumber": 113,
+                    "name": "label",
+                    "override": false,
+                    "read": "label",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::FontStyle*",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": true,
+                    "index": 4,
+                    "lineNumber": 114,
+                    "name": "mono",
+                    "override": false,
+                    "read": "mono",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::FontStyle*",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": true,
+                    "index": 5,
+                    "lineNumber": 115,
+                    "name": "icon",
+                    "override": false,
+                    "read": "icon",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "stowaway::config::IconFontStyle*",
+                    "user": false,
+                    "virtual": false
+                }
+            ],
+            "qualifiedClassName": "stowaway::config::FontTokens",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "font.hpp",
+    "outputRevision": 69
+}

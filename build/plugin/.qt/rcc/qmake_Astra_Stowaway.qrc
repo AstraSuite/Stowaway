@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/Astra/Stowaway">
+    <file alias="qmldir">/home/dim/Projects/AstraSuite/Stowaway/build/qml/Astra/Stowaway/qmldir</file>
+  </qresource>
+</RCC>
+
