@@ -13,6 +13,8 @@
 #include <QProcess>
 #include <QRegularExpression>
 #include <QDebug>
+#include <QJsonDocument>
+#include <QJsonArray>
 
 namespace stowaway::core {
 
@@ -84,6 +86,47 @@ void ClipboardManager::onTextWatcherReady() {
 }
 
 void ClipboardManager::onImageWatcherReady() {
+}
+
+static QString pinnedIdsFilePath() {
+    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
+        + QStringLiteral("/caelestia/stowaway/pinned.json");
+}
+
+void ClipboardManager::loadPinnedIds() {
+    QFile file(pinnedIdsFilePath());
+    if (!file.open(QIODevice::ReadOnly)) return;
+
+    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+    if (!doc.isArray()) return;
+
+    QJsonArray arr = doc.array();
+    QSet<QString> ids;
+    for (const auto& val : arr) {
+        ids.insert(val.toString());
+    }
+
+    for (auto* item : m_items) {
+        item->setPinned(ids.contains(item->id()));
+    }
+}
+
+void ClipboardManager::savePinnedIds() {
+    QJsonArray arr;
+    for (auto* item : m_items) {
+        if (item->pinned()) {
+            arr.append(item->id());
+        }
+    }
+
+    QString dirPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
+        + QStringLiteral("/caelestia/stowaway");
+    QDir().mkpath(dirPath);
+
+    QFile file(pinnedIdsFilePath());
+    if (file.open(QIODevice::WriteOnly)) {
+        file.write(QJsonDocument(arr).toJson(QJsonDocument::Compact));
+    }
 }
 
 void ClipboardManager::checkClipboard() {
@@ -180,12 +223,16 @@ void ClipboardManager::parseCliphistOutput(const QByteArray& output) {
         if (m_items.size() >= 100) break;
     }
 
+    loadPinnedIds();
+
     emit itemsChanged();
     updateFilteredItems();
 }
 
 void ClipboardManager::updateFilteredItems() {
     m_filteredItems.clear();
+    QList<ClipboardItem*> pinned;
+    QList<ClipboardItem*> unpinned;
     QString query = m_filterQuery.trimmed().toLower();
 
     for (auto* item : m_items) {
@@ -195,8 +242,13 @@ void ClipboardManager::updateFilteredItems() {
                 continue;
             }
         }
-        m_filteredItems.append(item);
+        if (item->pinned())
+            pinned.append(item);
+        else
+            unpinned.append(item);
     }
+
+    m_filteredItems = pinned + unpinned;
 
     emit filteredItemsChanged();
 }
@@ -249,6 +301,7 @@ void ClipboardManager::togglePin(const QString& id) {
     for (auto* item : m_items) {
         if (item->id() == id) {
             item->setPinned(!item->pinned());
+            savePinnedIds();
             emit itemsChanged();
             updateFilteredItems();
             break;

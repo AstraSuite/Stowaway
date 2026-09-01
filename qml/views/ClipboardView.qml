@@ -139,7 +139,7 @@ Item {
                 width: listView.width
                 height: modelData.type === 4 ? 76 : 60
                 radius: Tokens.rounding.large
-                color: index === root.currentIndex ? Colours.palette.m3secondaryContainer : Colours.palette.m3surfaceContainerLow
+                color: index === root.currentIndex ? Colours.palette.m3secondaryContainer : (modelData.pinned ? Colours.palette.m3surfaceContainer : Colours.palette.m3surfaceContainerLow)
 
                 Behavior on color {
                     CAnim {}
@@ -201,9 +201,9 @@ Item {
                         }
                     }
 
-                    // Middle Content Info (takes all remaining width, leaving 36px for delete)
+                    // Middle Content Info (takes all remaining width, leaving room for pin + delete)
                     Item {
-                        width: parent.width - (modelData.type === 4 ? 70 : 48) - 46
+                        width: parent.width - (modelData.type === 4 ? 70 : 48) - 76
                         height: parent.height
 
                         Column {
@@ -235,13 +235,50 @@ Item {
                     }
                 }
 
-                // Card Click: Select & Paste (below delete button in z-order)
+                // Card Click: Select & Paste (below buttons in z-order)
                 StateLayer {
                     radius: Tokens.rounding.large
                     color: Colours.palette.m3onSurface
                     onClicked: {
-                        if (!deleteMouse.containsMouse)
+                        if (!deleteMouse.containsMouse && !pinMouse.containsMouse)
                             ClipboardManager.selectItem(modelData.id, AppController.targetWindowAddress);
+                    }
+                }
+
+                // Pin button
+                Item {
+                    id: pinArea
+                    anchors.right: deleteArea.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.rightMargin: 4
+                    width: 30
+                    height: 30
+
+                    StyledRect {
+                        anchors.fill: parent
+                        radius: Tokens.rounding.full
+                        color: pinMouse.containsMouse ? Colours.palette.m3surfaceContainerHighest : "transparent"
+
+                        Behavior on color { CAnim {} }
+
+                        MaterialIcon {
+                            text: modelData.pinned ? "push_pin" : "push_pin"
+                            pointSize: 18
+                            color: modelData.pinned ? Colours.palette.m3primary : (pinMouse.containsMouse ? Colours.palette.m3onSurface : Colours.palette.m3onSurfaceVariant)
+                            anchors.centerIn: parent
+                            rotation: modelData.pinned ? 45 : 0
+
+                            Behavior on color { CAnim {} }
+                            Behavior on rotation { Anim { type: Anim.DefaultSpatial; duration: 200 } }
+                        }
+                    }
+
+                    MouseArea {
+                        id: pinMouse
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: ClipboardManager.togglePin(modelData.id)
                     }
                 }
 

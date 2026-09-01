@@ -90,6 +90,8 @@ private:
     void loadHistory();
     void loadHistoryAsync();
     void parseCliphistOutput(const QByteArray& output);
+    void loadPinnedIds();
+    void savePinnedIds();
     void updateFilteredItems();
     void addItem(ClipboardItem* item);
     void startWaylandWatchers();
