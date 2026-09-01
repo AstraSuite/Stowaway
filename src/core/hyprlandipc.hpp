@@ -18,10 +18,20 @@ struct HyprlandMonitor {
     double scale = 1.0;
     int transform = 0;
     bool focused = false;
-    QRect reservedMargins; // left, top, right, bottom
+    QRect reservedMargins;
+
+    int effectiveWidth() const {
+        double s = (scale > 0.0) ? scale : 1.0;
+        return (transform % 2 == 1) ? static_cast<int>(height / s) : static_cast<int>(width / s);
+    }
+
+    int effectiveHeight() const {
+        double s = (scale > 0.0) ? scale : 1.0;
+        return (transform % 2 == 1) ? static_cast<int>(width / s) : static_cast<int>(height / s);
+    }
 
     QRect bounds() const {
-        return QRect(x, y, width, height);
+        return QRect(x, y, effectiveWidth(), effectiveHeight());
     }
 };
 

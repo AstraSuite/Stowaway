@@ -22,7 +22,7 @@ void PositionController::calculatePosition(int popupWidth, int popupHeight) {
     bool found = false;
 
     for (const auto& mon : monitors) {
-        QRect r(mon.x, mon.y, mon.width, mon.height);
+        QRect r(mon.x, mon.y, mon.effectiveWidth(), mon.effectiveHeight());
         if (r.contains(cursor)) {
             activeMon = mon;
             found = true;
@@ -45,8 +45,8 @@ void PositionController::calculatePosition(int popupWidth, int popupHeight) {
 
     m_monitorX = activeMon.x;
     m_monitorY = activeMon.y;
-    m_monitorWidth = activeMon.width;
-    m_monitorHeight = activeMon.height;
+    m_monitorWidth = activeMon.effectiveWidth();
+    m_monitorHeight = activeMon.effectiveHeight();
     m_monitorName = activeMon.name;
 
     const int margin = 16;
@@ -56,23 +56,23 @@ void PositionController::calculatePosition(int popupWidth, int popupHeight) {
     int y = cursor.y() + cursorOffset;
 
     // Check right screen collision -> flip to left of cursor
-    if (x + popupWidth > activeMon.x + activeMon.width - margin) {
+    if (x + popupWidth > activeMon.x + activeMon.effectiveWidth() - margin) {
         x = cursor.x() - popupWidth - cursorOffset;
     }
 
     // Clamp horizontal bounds within monitor
     int minX = activeMon.x + margin;
-    int maxX = std::max(minX, activeMon.x + activeMon.width - popupWidth - margin);
+    int maxX = std::max(minX, activeMon.x + activeMon.effectiveWidth() - popupWidth - margin);
     x = std::clamp(x, minX, maxX);
 
     // Check bottom screen collision -> flip to above cursor
-    if (y + popupHeight > activeMon.y + activeMon.height - margin) {
+    if (y + popupHeight > activeMon.y + activeMon.effectiveHeight() - margin) {
         y = cursor.y() - popupHeight - cursorOffset;
     }
 
     // Clamp vertical bounds within monitor
     int minY = activeMon.y + margin;
-    int maxY = std::max(minY, activeMon.y + activeMon.height - popupHeight - margin);
+    int maxY = std::max(minY, activeMon.y + activeMon.effectiveHeight() - popupHeight - margin);
     y = std::clamp(y, minY, maxY);
 
     m_targetX = x;
