@@ -1,8 +1,0 @@
-module Astra.Stowaway
-linktarget astra-stowaway-pluginplugin
-optional plugin astra-stowaway-pluginplugin
-classname Astra_StowawayPlugin
-typeinfo astra-stowaway-plugin.qmltypes
-prefer :/qt/qml/Astra/Stowaway/
-depends QtQuick
-

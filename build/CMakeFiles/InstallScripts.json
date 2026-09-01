@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/dim/Projects/AstraSuite/Stowaway/build/cmake_install.cmake",
-		"/home/dim/Projects/AstraSuite/Stowaway/build/plugin/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

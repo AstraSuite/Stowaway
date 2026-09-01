@@ -1,1 +1,0 @@
-Astra.Stowaway(astra-stowaway-plugin)

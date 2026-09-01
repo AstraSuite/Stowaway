@@ -1,6 +1,0 @@
-set(__QT_DEPLOY_TARGET_astra-stowaway-plugin_FILE /home/dim/Projects/AstraSuite/Stowaway/build/plugin/libastra-stowaway-plugin.so)
-set(__QT_DEPLOY_TARGET_astra-stowaway-plugin_TYPE SHARED_LIBRARY)
-set(__QT_DEPLOY_TARGET_astra-stowaway-pluginplugin_FILE /home/dim/Projects/AstraSuite/Stowaway/build/qml/Astra/Stowaway/libastra-stowaway-pluginplugin.so)
-set(__QT_DEPLOY_TARGET_astra-stowaway-pluginplugin_TYPE MODULE_LIBRARY)
-set(__QT_DEPLOY_TARGET_stowaway-launcher_FILE /home/dim/Projects/AstraSuite/Stowaway/build/bin/stowaway)
-set(__QT_DEPLOY_TARGET_stowaway-launcher_TYPE EXECUTABLE)

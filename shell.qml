@@ -33,7 +33,7 @@ ShellRoot {
             screen: modelData
 
             WlrLayershell.layer: WlrLayer.Overlay
-            WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+            WlrLayershell.keyboardFocus: overlayActive ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
             WlrLayershell.namespace: "stowaway"
 
             anchors.top: true
@@ -52,6 +52,7 @@ ShellRoot {
                     PositionController.calculatePosition(390, 500);
                 }
                 overlayActive = true;
+                focusSearch.restart();
             }
 
             function dismissWithAnimation() {
@@ -112,10 +113,10 @@ ShellRoot {
 
             Timer {
                 id: focusSearch
-                interval: 30
+                interval: 150
                 onTriggered: {
                     if (overlayActive)
-                        popupCard.searchBar.forceActiveFocus();
+                        searchBar.forceActiveFocus();
                 }
             }
 

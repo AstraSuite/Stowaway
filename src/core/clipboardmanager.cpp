@@ -203,23 +203,16 @@ void ClipboardManager::selectItem(const QString& id, const QString& targetWindow
         return;
     }
 
-    // Text/Code/Url/Color: decode the full content ASYNCHRONOUSLY (never block the GUI
-    // thread). A blocking waitForFinished here stalls the compositor/focus event
-    // handling, so by the time the overlay unmaps and the target is refocused the
-    // Exclusive keyboard focus release is missed and the paste keystroke lands in the
-    // overlay. Routing through dismissAndPasteText keeps the same non-blocking
-    // sequencing as the working emoji path.
-    auto* decodeProc = new QProcess(this);
-    decodeProc->start(QStringLiteral("cliphist"), { QStringLiteral("decode"), id });
-    connect(decodeProc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this,
-            [this, ac, targetWindowAddress, decodeProc](int, QProcess::ExitStatus) {
-                QByteArray raw = decodeProc->readAllStandardOutput();
-                // Strip a single trailing newline so pasting doesn't trigger Enter.
-                while (raw.endsWith('\n'))
-                    raw.chop(1);
-                ac->dismissAndPasteText(QString::fromUtf8(raw), targetWindowAddress);
-                decodeProc->deleteLater();
-            });
+    // Text/Code/Url/Color: start the dismiss animation immediately so the close
+    // animation plays right away, then restore the clipboard item via the canonical
+    // "cliphist decode | wl-copy" pipeline. startDetached is critical: wl-copy must
+    // stay alive after QCoreApplication::quit() (480ms) to serve the Wayland clipboard
+    // read that the simulatePaste() Ctrl+V keystroke (360ms) triggers in the target
+    // window. A child process would be killed at quit() before that read completes.
+    ac->beginPasteDismiss(targetWindowAddress);
+    QProcess::startDetached(QStringLiteral("sh"),
+        { QStringLiteral("-c"),
+          QStringLiteral("cliphist decode %1 | wl-copy").arg(id) });
 }
 
 void ClipboardManager::copyItem(const QString& id) {
