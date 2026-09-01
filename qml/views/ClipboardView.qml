@@ -166,7 +166,8 @@ Item {
                                 anchors.fill: parent
                                 fillMode: Image.PreserveAspectCrop
                                 source: modelData.type === 4 && modelData.imagePath !== "" ? ("file://" + modelData.imagePath) : ""
-                                asynchronous: true
+                                sourceSize.width: 120
+                                sourceSize.height: 120
                             }
                         }
 
