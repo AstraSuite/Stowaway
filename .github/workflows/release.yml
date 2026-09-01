@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Publish source release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mark git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Stage release artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          version="${tag#v}"
+
+          git archive --format=tar.gz --prefix="astra-stowaway-${version}/" -o "astra-stowaway-${version}.tar.gz" "${tag}"
+
+          echo "ARTIFACTS<<EOF" >> "$GITHUB_ENV"
+          echo "astra-stowaway-${version}.tar.gz" >> "$GITHUB_ENV"
+          echo "EOF" >> "$GITHUB_ENV"
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Stowaway ${{ github.ref_name }}
+          files: ${{ env.ARTIFACTS }}
+          generate_release_notes: true
