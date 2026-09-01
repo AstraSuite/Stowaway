@@ -23,10 +23,12 @@ Item {
         if (grid.count === 0) return;
         var cols = columnCount();
         var idx = currentIndex < 0 ? 0 : currentIndex;
-        if (key === Qt.Key_Up) idx -= cols;
-        else if (key === Qt.Key_Down) idx += cols;
-        else if (key === Qt.Key_Left) idx -= 1;
-        else if (key === Qt.Key_Right) idx += 1;
+        if (currentIndex >= 0) {
+            if (key === Qt.Key_Up) idx -= cols;
+            else if (key === Qt.Key_Down) idx += cols;
+            else if (key === Qt.Key_Left) idx -= 1;
+            else if (key === Qt.Key_Right) idx += 1;
+        }
         if (idx < 0) idx = 0;
         if (idx >= grid.count) idx = grid.count - 1;
         currentIndex = idx;

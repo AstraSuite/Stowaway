@@ -19,10 +19,12 @@ Item {
     function moveSelection(key) {
         if (kaomojiRepeater.count === 0) return;
         var idx = currentIndex < 0 ? 0 : currentIndex;
-        if (key === Qt.Key_Up) idx -= 1;
-        else if (key === Qt.Key_Down) idx += 1;
-        else if (key === Qt.Key_Left) idx -= 1;
-        else if (key === Qt.Key_Right) idx += 1;
+        if (currentIndex >= 0) {
+            if (key === Qt.Key_Up) idx -= 1;
+            else if (key === Qt.Key_Down) idx += 1;
+            else if (key === Qt.Key_Left) idx -= 1;
+            else if (key === Qt.Key_Right) idx += 1;
+        }
         if (idx < 0) idx = 0;
         if (idx >= kaomojiRepeater.count) idx = kaomojiRepeater.count - 1;
         currentIndex = idx;

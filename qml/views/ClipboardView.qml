@@ -16,8 +16,10 @@ Item {
     function moveSelection(key) {
         if (listView.count === 0) return;
         var idx = currentIndex < 0 ? 0 : currentIndex;
-        if (key === Qt.Key_Up) idx -= 1;
-        else if (key === Qt.Key_Down) idx += 1;
+        if (currentIndex >= 0) {
+            if (key === Qt.Key_Up) idx -= 1;
+            else if (key === Qt.Key_Down) idx += 1;
+        }
         if (idx < 0) idx = 0;
         if (idx >= listView.count) idx = listView.count - 1;
         currentIndex = idx;
