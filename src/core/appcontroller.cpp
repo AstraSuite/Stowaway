@@ -31,7 +31,6 @@ AppController::AppController(QObject* parent)
         m_activeTab = tab;
     }
 
-    m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
     startServer();
     initHyprlandEventSocket();
 }
@@ -47,10 +46,17 @@ void AppController::setVisible(bool v) {
         if (!m_visible) {
             hideOverlay();
         } else {
-            m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
-            emit targetWindowAddressChanged();
-            PositionController::instance()->calculatePosition(390, 500);
-            ClipboardManager::instance()->checkClipboard();
+            // Emit visibility immediately so the open animation starts without delay.
+            // Blocking IPC (positioning, clipboard load) is deferred to the next
+            // event-loop iteration so the first frame renders instantly.
+            emit visibilityChanged();
+            QTimer::singleShot(0, this, [this]() {
+                m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
+                emit targetWindowAddressChanged();
+                PositionController::instance()->calculatePosition(390, 500);
+                ClipboardManager::instance()->checkClipboard();
+            });
+            return;
         }
         emit visibilityChanged();
     }
@@ -183,19 +189,14 @@ void AppController::handleNewConnection() {
             if (cmd.startsWith(QStringLiteral("tab:"))) {
                 int tabIdx = cmd.mid(4).toInt();
                 setActiveTab(tabIdx);
-                PositionController::instance()->calculatePosition(390, 500);
             } else if (cmd == QStringLiteral("emoji")) {
                 setActiveTab(1);
-                PositionController::instance()->calculatePosition(390, 500);
             } else if (cmd == QStringLiteral("kaomoji")) {
                 setActiveTab(2);
-                PositionController::instance()->calculatePosition(390, 500);
             } else if (cmd == QStringLiteral("symbols")) {
                 setActiveTab(3);
-                PositionController::instance()->calculatePosition(390, 500);
             } else if (cmd == QStringLiteral("toggle") || cmd == QStringLiteral("clips")) {
                 setActiveTab(0);
-                PositionController::instance()->calculatePosition(390, 500);
             } else if (cmd == QStringLiteral("hide")) {
                 hideOverlay();
             }

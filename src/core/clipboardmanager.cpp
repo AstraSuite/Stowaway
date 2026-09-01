@@ -18,7 +18,7 @@ namespace stowaway::core {
 
 ClipboardManager::ClipboardManager(QObject* parent)
     : QObject(parent) {
-    loadHistory();
+    QTimer::singleShot(0, this, [this]() { loadHistory(); });
 }
 
 ClipboardManager::~ClipboardManager() {
@@ -87,19 +87,39 @@ void ClipboardManager::onImageWatcherReady() {
 }
 
 void ClipboardManager::checkClipboard() {
-    loadHistory();
+    loadHistoryAsync();
+}
+
+void ClipboardManager::loadHistoryAsync() {
+    if (m_cliphistProc && m_cliphistProc->state() != QProcess::NotRunning) return;
+
+    if (!m_cliphistProc) {
+        m_cliphistProc = new QProcess(this);
+        connect(m_cliphistProc, &QProcess::finished, this, [this](int exitCode, QProcess::ExitStatus) {
+            if (exitCode == 0) {
+                parseCliphistOutput(m_cliphistProc->readAllStandardOutput());
+            }
+            m_cliphistProc->deleteLater();
+            m_cliphistProc = nullptr;
+        });
+    }
+
+    m_cliphistProc->start(QStringLiteral("cliphist"), {QStringLiteral("list")});
 }
 
 void ClipboardManager::loadHistory() {
-    // Read from cliphist (shared with Caelestia / Hyprland ecosystem)
     QProcess proc;
     proc.start(QStringLiteral("cliphist"), {QStringLiteral("list")});
     if (!proc.waitForFinished(600)) {
         return;
     }
 
-    QString output = QString::fromUtf8(proc.readAllStandardOutput());
-    QStringList lines = output.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
+    parseCliphistOutput(proc.readAllStandardOutput());
+}
+
+void ClipboardManager::parseCliphistOutput(const QByteArray& output) {
+    QString text = QString::fromUtf8(output);
+    QStringList lines = text.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
 
     qDeleteAll(m_items);
     m_items.clear();
@@ -118,10 +138,8 @@ void ClipboardManager::loadHistory() {
 
         auto match = imgRegex.match(preview);
         if (match.hasMatch() || preview.startsWith(QStringLiteral("[[ binary data"))) {
-            // Image entry
             QString imgPath = cacheDir + QStringLiteral("/") + idStr + QStringLiteral(".png");
             if (!QFile::exists(imgPath)) {
-                // Decode image from cliphist
                 QProcess decodeProc;
                 decodeProc.setStandardOutputFile(imgPath);
                 decodeProc.start(QStringLiteral("cliphist"), {QStringLiteral("decode"), idStr});
@@ -140,7 +158,6 @@ void ClipboardManager::loadHistory() {
             item->setPreviewText(w > 0 ? QStringLiteral("%1 × %2 Image").arg(w).arg(h) : QStringLiteral("Image"));
             m_items.append(item);
         } else {
-            // Text entry (classify Code, URL, Color, Text)
             ClipboardType type = ClipboardType::Text;
             QString trimmed = preview.trimmed();
 

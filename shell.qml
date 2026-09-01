@@ -48,9 +48,6 @@ ShellRoot {
             property bool overlayActive: false
 
             Component.onCompleted: {
-                if (isCurrentMonitor) {
-                    PositionController.calculatePosition(390, 500);
-                }
                 overlayActive = true;
                 focusSearchBar();
             }
@@ -109,9 +106,6 @@ ShellRoot {
 
             onVisibleChanged: {
                 if (visible) {
-                    if (isCurrentMonitor) {
-                        PositionController.calculatePosition(390, 500);
-                    }
                     overlayActive = true;
                     focusSearchBar();
                 }

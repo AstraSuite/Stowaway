@@ -85,8 +85,11 @@ private:
     bool m_onlyPinned = false;
     int m_filterType = -1;
     bool m_filterPinnedOnly = false;
+    QProcess* m_cliphistProc = nullptr;
 
     void loadHistory();
+    void loadHistoryAsync();
+    void parseCliphistOutput(const QByteArray& output);
     void updateFilteredItems();
     void addItem(ClipboardItem* item);
     void startWaylandWatchers();
