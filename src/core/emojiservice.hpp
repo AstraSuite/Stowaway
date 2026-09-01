@@ -32,8 +32,6 @@ class EmojiService : public QObject {
     Q_PROPERTY(QStringList favoritesList READ favoritesList NOTIFY favoritesChanged)
 
 public:
-    explicit EmojiService(QObject* parent = nullptr);
-
     static EmojiService* instance();
     static EmojiService* create(QQmlEngine* = nullptr, QJSEngine* = nullptr) {
         auto* inst = instance();
@@ -61,6 +59,8 @@ signals:
     void favoritesChanged();
 
 private:
+    explicit EmojiService(QObject* parent = nullptr);
+
     QList<CharacterItem> m_emojis;
     QList<CharacterItem> m_kaomoji;
     QList<CharacterItem> m_symbols;

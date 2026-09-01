@@ -81,6 +81,7 @@ void AppController::showOverlay(int tab) {
 void AppController::hideOverlay() {
     if (!m_visible) return;
     m_visible = false;
+    emit visibilityChanged();
     emit requestDismiss();
 
     if (m_server) {
@@ -111,6 +112,7 @@ void AppController::beginPasteDismiss(const QString& targetAddress) {
 
     // Keep focus on the overlay so its exit animation renders fully
     m_visible = false;
+    emit visibilityChanged();
     emit requestDismiss();
 
     if (m_server) {

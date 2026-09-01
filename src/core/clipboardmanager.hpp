@@ -27,7 +27,6 @@ class ClipboardManager : public QObject {
     Q_PROPERTY(int imageCount READ imageCount NOTIFY itemsChanged)
 
 public:
-    explicit ClipboardManager(QObject* parent = nullptr);
     ~ClipboardManager() override;
 
     static ClipboardManager* instance();
@@ -78,6 +77,8 @@ private slots:
     void saveHistory();
 
 private:
+    explicit ClipboardManager(QObject* parent = nullptr);
+
     QList<ClipboardItem*> m_items;
     QList<ClipboardItem*> m_filteredItems;
     QString m_filterQuery;

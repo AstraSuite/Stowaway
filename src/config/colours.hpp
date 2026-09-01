@@ -78,8 +78,6 @@ class ColoursSingleton : public QObject {
     Q_PROPERTY(stowaway::config::M3Palette* tPalette READ tPalette CONSTANT)
 
 public:
-    explicit ColoursSingleton(QObject* parent = nullptr);
-
     bool light() const { return m_light; }
     void setLight(bool light);
 
@@ -100,6 +98,8 @@ signals:
     void lightChanged();
 
 private:
+    explicit ColoursSingleton(QObject* parent = nullptr);
+
     bool m_light = false;
     M3Palette* m_palette = nullptr;
     M3Palette* m_tPalette = nullptr;

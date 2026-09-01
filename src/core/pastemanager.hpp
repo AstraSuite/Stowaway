@@ -14,8 +14,6 @@ class PasteManager : public QObject {
     QML_SINGLETON
 
 public:
-    explicit PasteManager(QObject* parent = nullptr);
-
     static PasteManager* instance();
     static PasteManager* create(QQmlEngine* = nullptr, QJSEngine* = nullptr) {
         auto* inst = instance();
@@ -32,6 +30,9 @@ public:
 signals:
     void contentCopied(const QString& message);
     void pasteCompleted();
+
+private:
+    explicit PasteManager(QObject* parent = nullptr);
 };
 
 } // namespace stowaway::core

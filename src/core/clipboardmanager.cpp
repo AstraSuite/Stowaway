@@ -203,16 +203,19 @@ void ClipboardManager::selectItem(const QString& id, const QString& targetWindow
         return;
     }
 
-    // Text/Code/Url/Color: start the dismiss animation immediately so the close
-    // animation plays right away, then restore the clipboard item via the canonical
-    // "cliphist decode | wl-copy" pipeline. startDetached is critical: wl-copy must
-    // stay alive after QCoreApplication::quit() (480ms) to serve the Wayland clipboard
-    // read that the simulatePaste() Ctrl+V keystroke (360ms) triggers in the target
-    // window. A child process would be killed at quit() before that read completes.
-    ac->beginPasteDismiss(targetWindowAddress);
-    QProcess::startDetached(QStringLiteral("sh"),
-        { QStringLiteral("-c"),
-          QStringLiteral("cliphist decode %1 | wl-copy").arg(id) });
+    QProcess decodeProc;
+    decodeProc.start(QStringLiteral("cliphist"), { QStringLiteral("decode"), id });
+    if (!decodeProc.waitForFinished(500)) {
+        decodeProc.kill();
+        decodeProc.waitForFinished(100);
+        return;
+    }
+
+    QByteArray raw = decodeProc.readAllStandardOutput();
+    while (raw.endsWith('\n'))
+        raw.chop(1);
+
+    ac->dismissAndPasteText(QString::fromUtf8(raw), targetWindowAddress);
 }
 
 void ClipboardManager::copyItem(const QString& id) {

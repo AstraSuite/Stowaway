@@ -23,8 +23,6 @@ class PositionController : public QObject {
     Q_PROPERTY(QString monitorName READ monitorName NOTIFY positionChanged)
 
 public:
-    explicit PositionController(QObject* parent = nullptr);
-
     static PositionController* instance();
     static PositionController* create(QQmlEngine* = nullptr, QJSEngine* = nullptr) {
         auto* inst = instance();
@@ -46,6 +44,8 @@ signals:
     void positionChanged();
 
 private:
+    explicit PositionController(QObject* parent = nullptr);
+
     int m_targetX = 100;
     int m_targetY = 100;
     int m_monitorX = 0;

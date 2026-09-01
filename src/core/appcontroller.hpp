@@ -23,8 +23,6 @@ class AppController : public QObject {
     Q_PROPERTY(bool toastVisible READ toastVisible NOTIFY toastVisibleChanged)
 
 public:
-    explicit AppController(QObject* parent = nullptr);
-
     static AppController* instance();
     static AppController* create(QQmlEngine* = nullptr, QJSEngine* = nullptr) {
         auto* inst = instance();
@@ -74,6 +72,8 @@ private slots:
     void handleHyprlandEvent();
 
 private:
+    explicit AppController(QObject* parent = nullptr);
+
     bool m_visible = false;
     int m_activeTab = 0;
     QString m_targetWindowAddress;
