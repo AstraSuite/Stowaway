@@ -33,7 +33,7 @@ ShellRoot {
             screen: modelData
 
             WlrLayershell.layer: WlrLayer.Overlay
-            WlrLayershell.keyboardFocus: overlayActive ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
+            WlrLayershell.keyboardFocus: isCurrentMonitor && overlayActive ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
             WlrLayershell.namespace: "stowaway"
 
             anchors.top: true
@@ -52,6 +52,12 @@ ShellRoot {
                     PositionController.calculatePosition(390, 500);
                 }
                 overlayActive = true;
+                focusSearchBar();
+            }
+
+            function focusSearchBar() {
+                if (!isCurrentMonitor) return;
+                focusSearch.attempts = 0;
                 focusSearch.restart();
             }
 
@@ -107,16 +113,24 @@ ShellRoot {
                         PositionController.calculatePosition(390, 500);
                     }
                     overlayActive = true;
-                    focusSearch.restart();
+                    focusSearchBar();
                 }
             }
 
             Timer {
                 id: focusSearch
-                interval: 150
+                interval: 30
+                repeat: true
+
+                property int attempts: 0
+
                 onTriggered: {
-                    if (overlayActive)
-                        searchBar.forceActiveFocus();
+                    if (!layerWindow.overlayActive || searchBar.activeFocus || attempts >= 40) {
+                        stop();
+                        return;
+                    }
+                    attempts++;
+                    searchBar.forceActiveFocus();
                 }
             }
 
