@@ -6,6 +6,10 @@
 #include <QTimer>
 #include <QFile>
 #include <QImage>
+#include <linux/uinput.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <cstring>
 
 namespace stowaway::core {
 
@@ -77,51 +81,103 @@ void PasteManager::pasteImage(const QString& imagePath, const QString& targetWin
     });
 }
 
-void PasteManager::simulatePaste(bool isTerminal) {
-    if (isTerminal) {
-        // Terminals require Ctrl+Shift+V
-        QProcess wtypeProc;
-        wtypeProc.start(QStringLiteral("wtype"), {
-            QStringLiteral("-M"), QStringLiteral("ctrl"),
-            QStringLiteral("-M"), QStringLiteral("shift"),
-            QStringLiteral("-k"), QStringLiteral("v"),
-            QStringLiteral("-m"), QStringLiteral("shift"),
-            QStringLiteral("-m"), QStringLiteral("ctrl")
-        });
-        if (wtypeProc.waitForFinished(300) && wtypeProc.exitCode() == 0) {
-            return;
-        }
+static bool simulatePasteUinput(bool isTerminal) {
+    int fd = ::open("/dev/uinput", O_WRONLY | O_NONBLOCK);
+    if (fd < 0) return false;
 
-        // Fallback: ydotool with LeftCtrl (29), LeftShift (42), V (47)
-        QProcess ydoProc;
+    if (::ioctl(fd, UI_SET_EVBIT, EV_KEY) < 0 ||
+        ::ioctl(fd, UI_SET_EVBIT, EV_SYN) < 0 ||
+        ::ioctl(fd, UI_SET_KEYBIT, KEY_LEFTCTRL) < 0 ||
+        ::ioctl(fd, UI_SET_KEYBIT, KEY_LEFTSHIFT) < 0 ||
+        ::ioctl(fd, UI_SET_KEYBIT, KEY_V) < 0) {
+        ::close(fd);
+        return false;
+    }
+
+    struct uinput_setup usetup;
+    std::memset(&usetup, 0, sizeof(usetup));
+    usetup.id.bustype = BUS_USB;
+    usetup.id.vendor = 0x1234;
+    usetup.id.product = 0x5678;
+    std::strncpy(usetup.name, "stowaway-paste", sizeof(usetup.name) - 1);
+
+    if (::ioctl(fd, UI_DEV_SETUP, &usetup) < 0 ||
+        ::ioctl(fd, UI_DEV_CREATE) < 0) {
+        ::close(fd);
+        return false;
+    }
+
+    // Small delay so compositor and target window register the virtual keyboard
+    ::usleep(40000);
+
+    auto emit_ev = [fd](int type, int code, int val) {
+        struct input_event ie;
+        std::memset(&ie, 0, sizeof(ie));
+        ie.type = type;
+        ie.code = code;
+        ie.value = val;
+        (void)::write(fd, &ie, sizeof(ie));
+    };
+
+    emit_ev(EV_KEY, KEY_LEFTCTRL, 1);
+    if (isTerminal) {
+        emit_ev(EV_KEY, KEY_LEFTSHIFT, 1);
+    }
+    emit_ev(EV_KEY, KEY_V, 1);
+    emit_ev(EV_SYN, SYN_REPORT, 0);
+
+    ::usleep(25000);
+
+    emit_ev(EV_KEY, KEY_V, 0);
+    if (isTerminal) {
+        emit_ev(EV_KEY, KEY_LEFTSHIFT, 0);
+    }
+    emit_ev(EV_KEY, KEY_LEFTCTRL, 0);
+    emit_ev(EV_SYN, SYN_REPORT, 0);
+
+    ::usleep(20000);
+
+    ::ioctl(fd, UI_DEV_DESTROY);
+    ::close(fd);
+    return true;
+}
+
+void PasteManager::simulatePaste(bool isTerminal) {
+    // 1. Try direct uinput first (guarantees real evdev keycodes: KEY_LEFTCTRL 29, KEY_LEFTSHIFT 42, KEY_V 47)
+    // This avoids wtype's synthetic keymap which maps keycode 1 (KEY_ESC), causing Hyprland to trigger Ctrl+Shift+Escape.
+    if (simulatePasteUinput(isTerminal)) {
+        return;
+    }
+
+    // 2. Fallback: ydotool with real evdev keycodes
+    QProcess ydoProc;
+    if (isTerminal) {
         ydoProc.start(QStringLiteral("ydotool"), {
             QStringLiteral("key"),
             QStringLiteral("29:1"), QStringLiteral("42:1"), QStringLiteral("47:1"),
             QStringLiteral("47:0"), QStringLiteral("42:0"), QStringLiteral("29:0")
         });
-        ydoProc.waitForFinished(300);
+    } else {
+        ydoProc.start(QStringLiteral("ydotool"), {
+            QStringLiteral("key"),
+            QStringLiteral("29:1"), QStringLiteral("47:1"),
+            QStringLiteral("47:0"), QStringLiteral("29:0")
+        });
+    }
+    if (ydoProc.waitForFinished(300) && ydoProc.exitCode() == 0) {
         return;
     }
 
-    // Try wtype first for standard GUI apps: Ctrl+V
-    QProcess wtypeProc;
-    wtypeProc.start(QStringLiteral("wtype"), {
-        QStringLiteral("-M"), QStringLiteral("ctrl"),
-        QStringLiteral("-k"), QStringLiteral("v"),
-        QStringLiteral("-m"), QStringLiteral("ctrl")
-    });
-    if (wtypeProc.waitForFinished(300) && wtypeProc.exitCode() == 0) {
-        return;
+    // 3. Fallback: wtype for standard GUI applications (Ctrl+V)
+    if (!isTerminal) {
+        QProcess wtypeProc;
+        wtypeProc.start(QStringLiteral("wtype"), {
+            QStringLiteral("-M"), QStringLiteral("ctrl"),
+            QStringLiteral("-k"), QStringLiteral("v"),
+            QStringLiteral("-m"), QStringLiteral("ctrl")
+        });
+        wtypeProc.waitForFinished(300);
     }
-
-    // Fallback: ydotool if wtype is not found
-    QProcess ydoProc;
-    ydoProc.start(QStringLiteral("ydotool"), {
-        QStringLiteral("key"),
-        QStringLiteral("29:1"), QStringLiteral("47:1"),
-        QStringLiteral("47:0"), QStringLiteral("29:0")
-    });
-    ydoProc.waitForFinished(300);
 }
 
 } // namespace stowaway::core
