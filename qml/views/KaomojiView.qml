@@ -13,17 +13,28 @@ Item {
 
     property int favVersion: 0
 
-    property int currentIndex: -1
-    readonly property var currentData: currentIndex >= 0 && currentIndex < kaomojiRepeater.model.length ? kaomojiRepeater.model[currentIndex] : null
+    property int currentIndex: (kaomojiRepeater.model && kaomojiRepeater.model.length > 0) ? 0 : -1
+    readonly property var currentData: currentIndex >= 0 && kaomojiRepeater.model && currentIndex < kaomojiRepeater.model.length ? kaomojiRepeater.model[currentIndex] : null
+
+    function resetSelection() {
+        var count = (kaomojiRepeater.model && kaomojiRepeater.model.length) ? kaomojiRepeater.model.length : 0;
+        currentIndex = count > 0 ? 0 : -1;
+        flickable.contentY = 0;
+    }
+
+    onSearchQueryChanged: resetSelection()
+    onSelectedCategoryChanged: resetSelection()
+
+    Component.onCompleted: resetSelection()
 
     function moveSelection(key) {
         if (kaomojiRepeater.count === 0) return;
-        var idx = currentIndex < 0 ? 0 : currentIndex;
-        if (currentIndex >= 0) {
-            if (key === Qt.Key_Up) idx -= 1;
-            else if (key === Qt.Key_Down) idx += 1;
-            else if (key === Qt.Key_Left) idx -= 1;
-            else if (key === Qt.Key_Right) idx += 1;
+        var idx = currentIndex;
+        if (idx < 0) {
+            idx = 0;
+        } else {
+            if (key === Qt.Key_Up || key === Qt.Key_Left) idx -= 1;
+            else if (key === Qt.Key_Down || key === Qt.Key_Right) idx += 1;
         }
         if (idx < 0) idx = 0;
         if (idx >= kaomojiRepeater.count) idx = kaomojiRepeater.count - 1;
@@ -47,6 +58,19 @@ Item {
         target: EmojiService
         function onFavoritesChanged() {
             root.favVersion++;
+            var count = (kaomojiRepeater.model && kaomojiRepeater.model.length) ? kaomojiRepeater.model.length : 0;
+            if (root.currentIndex >= count) {
+                root.currentIndex = Math.max(0, count - 1);
+            }
+        }
+    }
+
+    Connections {
+        target: AppController
+        function onActiveTabChanged() {
+            if (AppController.activeTab === 2 && root.currentIndex < 0 && kaomojiRepeater.model && kaomojiRepeater.model.length > 0) {
+                root.currentIndex = 0;
+            }
         }
     }
 
@@ -156,6 +180,7 @@ Item {
                         var dummy = root.favVersion;
                         return EmojiService.searchKaomoji(root.searchQuery, root.selectedCategory);
                     }
+                    onModelChanged: root.resetSelection()
 
                     StyledRect {
                         id: kaoCard

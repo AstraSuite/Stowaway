@@ -31,8 +31,17 @@ AppController::AppController(QObject* parent)
         m_activeTab = tab;
     }
 
+    m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
+
     startServer();
     initHyprlandEventSocket();
+
+    QTimer::singleShot(0, this, [this]() {
+        if (m_targetWindowAddress.isEmpty()) {
+            m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
+        }
+        emit targetWindowAddressChanged();
+    });
 }
 
 AppController* AppController::instance() {
@@ -135,8 +144,9 @@ void AppController::beginPasteDismiss(const QString& targetAddress) {
 
     // The QML layer is fully unmapped by then (~260ms); keyboard focus has returned to the
     // target, so the paste keystroke lands in the target rather than in the overlay.
-    QTimer::singleShot(360, this, []() {
-        PasteManager::instance()->simulatePaste();
+    QTimer::singleShot(360, this, [targetAddress]() {
+        bool isTerm = HyprlandIPC::isTargetTerminal(targetAddress);
+        PasteManager::instance()->simulatePaste(isTerm);
     });
 
     // Quit after the paste has been dispatched

@@ -13,17 +13,33 @@ Item {
 
     property int favVersion: 0
 
-    property int currentIndex: -1
+    property int currentIndex: (grid.model && grid.model.length > 0) ? 0 : -1
 
     function columnCount() {
         return Math.max(1, Math.floor(grid.width / grid.cellWidth));
     }
 
+    function resetSelection() {
+        var count = (grid.model && grid.model.length) ? grid.model.length : 0;
+        currentIndex = count > 0 ? 0 : -1;
+        grid.currentIndex = currentIndex;
+        if (currentIndex === 0) {
+            grid.positionViewAtIndex(0, GridView.Beginning);
+        }
+    }
+
+    onSearchQueryChanged: resetSelection()
+    onSelectedCategoryChanged: resetSelection()
+
+    Component.onCompleted: resetSelection()
+
     function moveSelection(key) {
         if (grid.count === 0) return;
         var cols = columnCount();
-        var idx = currentIndex < 0 ? 0 : currentIndex;
-        if (currentIndex >= 0) {
+        var idx = currentIndex;
+        if (idx < 0) {
+            idx = 0;
+        } else {
             if (key === Qt.Key_Up) idx -= cols;
             else if (key === Qt.Key_Down) idx += cols;
             else if (key === Qt.Key_Left) idx -= 1;
@@ -42,7 +58,7 @@ Item {
     }
 
     function activateSelection() {
-        if (currentIndex < 0 || currentIndex >= grid.model.length) return;
+        if (currentIndex < 0 || !grid.model || currentIndex >= grid.model.length) return;
         var data = grid.model[currentIndex];
         activateItem(data.character, data.name);
     }
@@ -51,6 +67,19 @@ Item {
         target: EmojiService
         function onFavoritesChanged() {
             root.favVersion++;
+            var count = (grid.model && grid.model.length) ? grid.model.length : 0;
+            if (root.currentIndex >= count) {
+                root.currentIndex = Math.max(0, count - 1);
+            }
+        }
+    }
+
+    Connections {
+        target: AppController
+        function onActiveTabChanged() {
+            if (AppController.activeTab === 3 && root.currentIndex < 0 && grid.model && grid.model.length > 0) {
+                root.currentIndex = 0;
+            }
         }
     }
 
@@ -123,6 +152,7 @@ Item {
                 var dummy = root.favVersion;
                 return EmojiService.searchSymbols(root.searchQuery, root.selectedCategory);
             }
+            onModelChanged: root.resetSelection()
 
 
 

@@ -56,8 +56,9 @@ void PasteManager::pasteText(const QString& text, const QString& targetWindowAdd
     }
 
     // Delay slightly to let the compositor refocus the target client
-    QTimer::singleShot(80, this, [this]() {
-        simulatePaste();
+    QTimer::singleShot(80, this, [this, targetWindowAddress]() {
+        bool isTerm = HyprlandIPC::isTargetTerminal(targetWindowAddress);
+        simulatePaste(isTerm);
         emit pasteCompleted();
     });
 }
@@ -69,23 +70,57 @@ void PasteManager::pasteImage(const QString& imagePath, const QString& targetWin
         HyprlandIPC::focusWindow(targetWindowAddress);
     }
 
-    QTimer::singleShot(80, this, [this]() {
-        simulatePaste();
+    QTimer::singleShot(80, this, [this, targetWindowAddress]() {
+        bool isTerm = HyprlandIPC::isTargetTerminal(targetWindowAddress);
+        simulatePaste(isTerm);
         emit pasteCompleted();
     });
 }
 
-void PasteManager::simulatePaste() {
-    // Try wtype first (as requested: wtype -M ctrl -k v -m ctrl)
+void PasteManager::simulatePaste(bool isTerminal) {
+    if (isTerminal) {
+        // Terminals require Ctrl+Shift+V
+        QProcess wtypeProc;
+        wtypeProc.start(QStringLiteral("wtype"), {
+            QStringLiteral("-M"), QStringLiteral("ctrl"),
+            QStringLiteral("-M"), QStringLiteral("shift"),
+            QStringLiteral("-k"), QStringLiteral("v"),
+            QStringLiteral("-m"), QStringLiteral("shift"),
+            QStringLiteral("-m"), QStringLiteral("ctrl")
+        });
+        if (wtypeProc.waitForFinished(300) && wtypeProc.exitCode() == 0) {
+            return;
+        }
+
+        // Fallback: ydotool with LeftCtrl (29), LeftShift (42), V (47)
+        QProcess ydoProc;
+        ydoProc.start(QStringLiteral("ydotool"), {
+            QStringLiteral("key"),
+            QStringLiteral("29:1"), QStringLiteral("42:1"), QStringLiteral("47:1"),
+            QStringLiteral("47:0"), QStringLiteral("42:0"), QStringLiteral("29:0")
+        });
+        ydoProc.waitForFinished(300);
+        return;
+    }
+
+    // Try wtype first for standard GUI apps: Ctrl+V
     QProcess wtypeProc;
-    wtypeProc.start(QStringLiteral("wtype"), { QStringLiteral("-M"), QStringLiteral("ctrl"), QStringLiteral("-k"), QStringLiteral("v"), QStringLiteral("-m"), QStringLiteral("ctrl") });
+    wtypeProc.start(QStringLiteral("wtype"), {
+        QStringLiteral("-M"), QStringLiteral("ctrl"),
+        QStringLiteral("-k"), QStringLiteral("v"),
+        QStringLiteral("-m"), QStringLiteral("ctrl")
+    });
     if (wtypeProc.waitForFinished(300) && wtypeProc.exitCode() == 0) {
         return;
     }
 
     // Fallback: ydotool if wtype is not found
     QProcess ydoProc;
-    ydoProc.start(QStringLiteral("ydotool"), { QStringLiteral("key"), QStringLiteral("29:1"), QStringLiteral("47:1"), QStringLiteral("47:0"), QStringLiteral("29:0") });
+    ydoProc.start(QStringLiteral("ydotool"), {
+        QStringLiteral("key"),
+        QStringLiteral("29:1"), QStringLiteral("47:1"),
+        QStringLiteral("47:0"), QStringLiteral("29:0")
+    });
     ydoProc.waitForFinished(300);
 }
 

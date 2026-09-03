@@ -8,6 +8,7 @@
 #include <QCursor>
 #include <QGuiApplication>
 #include <QScreen>
+#include <QSet>
 
 namespace stowaway::core {
 
@@ -154,6 +155,112 @@ void HyprlandIPC::positionWindow(int x, int y, int w, int h) {
 void HyprlandIPC::focusSelf() {
     if (!isHyprlandRunning()) return;
     requestSocket(QStringLiteral("/dispatch focuswindow class:^(stowaway|stowaway_app)$"));
+}
+
+bool HyprlandIPC::isTerminalClass(const QString& windowClass) {
+    if (windowClass.isEmpty()) return false;
+    const QString cls = windowClass.toLower();
+
+    static const QSet<QString> knownTerminals = {
+        QStringLiteral("kitty"),
+        QStringLiteral("alacritty"),
+        QStringLiteral("foot"),
+        QStringLiteral("footclient"),
+        QStringLiteral("ghostty"),
+        QStringLiteral("wezterm"),
+        QStringLiteral("wezterm-gui"),
+        QStringLiteral("org.wezfurlong.wezterm"),
+        QStringLiteral("gnome-terminal"),
+        QStringLiteral("gnome-terminal-server"),
+        QStringLiteral("konsole"),
+        QStringLiteral("org.kde.konsole"),
+        QStringLiteral("xfce4-terminal"),
+        QStringLiteral("tilix"),
+        QStringLiteral("com.gexperts.tilix"),
+        QStringLiteral("terminator"),
+        QStringLiteral("xterm"),
+        QStringLiteral("uxterm"),
+        QStringLiteral("urxvt"),
+        QStringLiteral("rxvt"),
+        QStringLiteral("st"),
+        QStringLiteral("st-256color"),
+        QStringLiteral("contour"),
+        QStringLiteral("rio"),
+        QStringLiteral("warp"),
+        QStringLiteral("dev.warp.warp"),
+        QStringLiteral("hyper"),
+        QStringLiteral("blackbox"),
+        QStringLiteral("com.raggesilver.blackbox"),
+        QStringLiteral("ptyxis"),
+        QStringLiteral("org.gnome.ptyxis"),
+        QStringLiteral("kgx"),
+        QStringLiteral("org.gnome.console"),
+        QStringLiteral("terminal"),
+        QStringLiteral("sakura"),
+        QStringLiteral("lxterminal"),
+        QStringLiteral("tilda"),
+        QStringLiteral("guake"),
+        QStringLiteral("yakuake"),
+        QStringLiteral("tabby"),
+        QStringLiteral("cool-retro-term")
+    };
+
+    if (knownTerminals.contains(cls)) {
+        return true;
+    }
+
+    if (cls.endsWith(QStringLiteral("term")) ||
+        cls.endsWith(QStringLiteral("terminal")) ||
+        cls.contains(QStringLiteral("terminal")) ||
+        cls.endsWith(QStringLiteral("console")) ||
+        cls.endsWith(QStringLiteral("tty")) ||
+        cls.contains(QStringLiteral("ptyxis")) ||
+        cls.contains(QStringLiteral("blackbox"))) {
+        return true;
+    }
+
+    return false;
+}
+
+bool HyprlandIPC::isTargetTerminal(const QString& address) {
+    if (!isHyprlandRunning()) return false;
+
+    // 1. If address is provided, try looking it up in j/clients
+    if (!address.isEmpty()) {
+        QByteArray data = requestSocket(QStringLiteral("j/clients"));
+        if (!data.isEmpty()) {
+            QJsonDocument doc = QJsonDocument::fromJson(data);
+            if (doc.isArray()) {
+                for (const auto& val : doc.array()) {
+                    if (!val.isObject()) continue;
+                    QJsonObject obj = val.toObject();
+                    if (obj.value(QStringLiteral("address")).toString().compare(address, Qt::CaseInsensitive) == 0) {
+                        QString cls = obj.value(QStringLiteral("class")).toString();
+                        QString initCls = obj.value(QStringLiteral("initialClass")).toString();
+                        if (isTerminalClass(cls) || isTerminalClass(initCls)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 2. Check the currently active window in Hyprland
+    QByteArray activeData = requestSocket(QStringLiteral("j/activewindow"));
+    if (!activeData.isEmpty()) {
+        QJsonDocument doc = QJsonDocument::fromJson(activeData);
+        if (doc.isObject()) {
+            QJsonObject obj = doc.object();
+            QString cls = obj.value(QStringLiteral("class")).toString();
+            QString initCls = obj.value(QStringLiteral("initialClass")).toString();
+            if (isTerminalClass(cls) || isTerminalClass(initCls)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 } // namespace stowaway::core

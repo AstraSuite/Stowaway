@@ -10,13 +10,16 @@ Item {
 
     signal previewRequested(string imagePath, string textContent, string title)
 
-    property int currentIndex: -1
+    property int currentIndex: ClipboardManager.filteredItems.length > 0 ? 0 : -1
     property var currentItem: currentIndex >= 0 && currentIndex < ClipboardManager.filteredItems.length ? ClipboardManager.filteredItems[currentIndex] : null
+    property string lastQuery: ""
 
     function moveSelection(key) {
         if (listView.count === 0) return;
-        var idx = currentIndex < 0 ? 0 : currentIndex;
-        if (currentIndex >= 0) {
+        var idx = currentIndex;
+        if (idx < 0) {
+            idx = 0;
+        } else {
             if (key === Qt.Key_Up) idx -= 1;
             else if (key === Qt.Key_Down) idx += 1;
         }
@@ -30,6 +33,32 @@ Item {
     function activateSelection() {
         if (currentItem)
             ClipboardManager.selectItem(currentItem.id, AppController.targetWindowAddress);
+    }
+
+    Connections {
+        target: ClipboardManager
+        function onFilteredItemsChanged() {
+            if (ClipboardManager.filteredItems.length === 0) {
+                root.currentIndex = -1;
+            } else if (ClipboardManager.filterQuery !== root.lastQuery) {
+                root.lastQuery = ClipboardManager.filterQuery;
+                root.currentIndex = 0;
+                listView.positionViewAtIndex(0, ListView.Beginning);
+            } else if (root.currentIndex < 0) {
+                root.currentIndex = 0;
+            } else if (root.currentIndex >= ClipboardManager.filteredItems.length) {
+                root.currentIndex = Math.max(0, ClipboardManager.filteredItems.length - 1);
+            }
+        }
+    }
+
+    Connections {
+        target: AppController
+        function onActiveTabChanged() {
+            if (AppController.activeTab === 0 && root.currentIndex < 0 && ClipboardManager.filteredItems.length > 0) {
+                root.currentIndex = 0;
+            }
+        }
     }
 
     Column {

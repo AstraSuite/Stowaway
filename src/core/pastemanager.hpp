@@ -25,7 +25,7 @@ public:
     Q_INVOKABLE void copyText(const QString& text);
     Q_INVOKABLE void pasteImage(const QString& filePath, const QString& targetWindowAddress = QString());
     Q_INVOKABLE void copyImage(const QString& filePath);
-    void simulatePaste();
+    void simulatePaste(bool isTerminal = false);
 
 signals:
     void contentCopied(const QString& message);

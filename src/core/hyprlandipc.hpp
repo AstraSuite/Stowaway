@@ -51,6 +51,8 @@ public:
     static void setupWindowRules();
     static void positionWindow(int x, int y, int w, int h);
     static void focusSelf();
+    static bool isTerminalClass(const QString& windowClass);
+    static bool isTargetTerminal(const QString& address = QString());
 };
 
 } // namespace stowaway::core

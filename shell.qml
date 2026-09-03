@@ -145,6 +145,13 @@ ShellRoot {
                         } else {
                             layerWindow.dismissWithAnimation();
                         }
+                    } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
+                        event.accepted = true;
+                        searchBar.searchSubmitted();
+                    } else if (event.key === Qt.Key_Up || event.key === Qt.Key_Down ||
+                               event.key === Qt.Key_Left || event.key === Qt.Key_Right) {
+                        event.accepted = true;
+                        searchBar.navigationKeyPressed(event.key);
                     } else if (event.modifiers & Qt.ControlModifier) {
                         if (event.key === Qt.Key_1) { AppController.activeTab = 0; event.accepted = true; }
                         else if (event.key === Qt.Key_2) { AppController.activeTab = 1; event.accepted = true; }
