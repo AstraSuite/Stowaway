@@ -1,0 +1,49 @@
+name: Update Datasets
+
+on:
+  schedule:
+    - cron: "0 3 * * 0" # Runs every Sunday at 03:00 UTC
+  workflow_dispatch: # Allows manual triggering from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update-datasets:
+    name: Fetch and update datasets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mark git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch and update emojis, symbols, and kaomoji
+        run: python3 scripts/update_datasets.py
+
+      - name: Check for dataset changes
+        id: git_status
+        run: |
+          if [ -n "$(git status --porcelain assets/data/)" ]; then
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push changes
+        if: steps.git_status.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/
+          git commit -m "chore(data): update emojis, kaomoji, and nerd font symbols [skip ci]"
+          git push
