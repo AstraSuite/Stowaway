@@ -26,7 +26,6 @@ AppController::AppController(QObject* parent)
     loadConfiguration();
     setUiScale(m_uiScale);
 
-    m_visible = true;
     m_toastTimer.setSingleShot(true);
     m_toastTimer.setInterval(2000);
     connect(&m_toastTimer, &QTimer::timeout, this, [this]() {
@@ -39,26 +38,52 @@ AppController::AppController(QObject* parent)
 
     bool ok = false;
     int tab = qEnvironmentVariableIntValue("STOWAWAY_INITIAL_TAB", &ok);
-    if (ok && tab >= 0 && tab <= 3) {
-        m_activeTab = tab;
+    if (ok && tab == -1) {
+        m_visible = false;
+    } else {
+        m_visible = true;
+        if (ok && tab >= 0 && tab <= 3) {
+            m_activeTab = tab;
+        }
     }
-
-    m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
 
     startServer();
     initHyprlandEventSocket();
 
-    QTimer::singleShot(0, this, [this]() {
-        if (m_targetWindowAddress.isEmpty()) {
-            m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
-        }
-        emit targetWindowAddressChanged();
-    });
+    if (m_visible) {
+        m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
+        QTimer::singleShot(0, this, [this]() {
+            if (m_targetWindowAddress.isEmpty()) {
+                m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
+            }
+            emit targetWindowAddressChanged();
+        });
+    }
 }
 
 AppController* AppController::instance() {
     static AppController inst;
     return &inst;
+}
+
+void AppController::setIsDaemon(bool daemon) {
+    if (m_isDaemon != daemon) {
+        m_isDaemon = daemon;
+        emit isDaemonChanged();
+    }
+}
+
+void AppController::quitDaemon() {
+    m_isDaemon = false;
+    if (m_saveConfigTimer.isActive()) {
+        m_saveConfigTimer.stop();
+        writeConfigurationToDisk();
+    }
+    if (m_server) {
+        m_server->close();
+        QLocalServer::removeServer(socketServerName());
+    }
+    QCoreApplication::quit();
 }
 
 void AppController::setVisible(bool v) {
@@ -101,6 +126,13 @@ void AppController::showOverlay(int tab) {
     if (tab >= 0) {
         setActiveTab(tab);
     }
+    if (m_hyprEventSocket && m_hyprEventSocket->isOpen()) {
+        m_hyprEventSocket->readAll();
+    }
+    m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
+    emit targetWindowAddressChanged();
+    PositionController::instance()->calculatePosition(m_popupWidth, m_popupHeight);
+    ClipboardManager::instance()->checkClipboard();
     m_visible = true;
     emit visibilityChanged();
 }
@@ -115,15 +147,17 @@ void AppController::hideOverlay() {
     emit visibilityChanged();
     emit requestDismiss();
 
-    if (m_server) {
-        m_server->close();
-        QLocalServer::removeServer(socketServerName());
-    }
+    if (!m_isDaemon) {
+        if (m_server) {
+            m_server->close();
+            QLocalServer::removeServer(socketServerName());
+        }
 
-    // Allow QML spring exit animation (~250ms) to play fully before quitting
-    QTimer::singleShot(320, []() {
-        QCoreApplication::quit();
-    });
+        // Allow QML spring exit animation (~250ms) to play fully before quitting
+        QTimer::singleShot(320, []() {
+            QCoreApplication::quit();
+        });
+    }
 }
 
 void AppController::dismissAndPasteText(const QString& text, const QString& targetAddress) {
@@ -150,9 +184,11 @@ void AppController::beginPasteDismiss(const QString& targetAddress) {
     emit visibilityChanged();
     emit requestDismiss();
 
-    if (m_server) {
-        m_server->close();
-        QLocalServer::removeServer(socketServerName());
+    if (!m_isDaemon) {
+        if (m_server) {
+            m_server->close();
+            QLocalServer::removeServer(socketServerName());
+        }
     }
 
     // Refocus the target only AFTER the exit animation has played (~250ms)
@@ -169,16 +205,20 @@ void AppController::beginPasteDismiss(const QString& targetAddress) {
         PasteManager::instance()->simulatePaste(isTerm);
     });
 
-    // Quit after the paste has been dispatched
-    QTimer::singleShot(480, this, []() {
-        QCoreApplication::quit();
-    });
+    if (!m_isDaemon) {
+        // Quit after the paste has been dispatched
+        QTimer::singleShot(480, this, []() {
+            QCoreApplication::quit();
+        });
+    }
 }
 
 void AppController::toggleOverlay(int tab) {
-    if (tab >= 0 && tab != m_activeTab) {
+    if (!m_visible) {
+        showOverlay(tab >= 0 ? tab : 0);
+    } else if (tab >= 0 && tab != m_activeTab) {
         setActiveTab(tab);
-        PositionController::instance()->calculatePosition(390, 500);
+        PositionController::instance()->calculatePosition(m_popupWidth, m_popupHeight);
     } else {
         hideOverlay();
     }
@@ -216,25 +256,40 @@ void AppController::handleNewConnection() {
             QByteArray data = socket->readAll().trimmed();
             QString cmd = QString::fromUtf8(data);
 
-            if (cmd.startsWith(QStringLiteral("tab:"))) {
+            if (cmd == QStringLiteral("quit") || cmd == QStringLiteral("kill")) {
+                socket->write("OK\n");
+                socket->flush();
+                socket->disconnectFromServer();
+                quitDaemon();
+                return;
+            } else if (cmd == QStringLiteral("status") || cmd == QStringLiteral("ping")) {
+                socket->write("RUNNING\n");
+                socket->flush();
+                socket->disconnectFromServer();
+                return;
+            } else if (cmd.startsWith(QStringLiteral("tab:"))) {
                 QStringList parts = cmd.split(':');
                 int tabIdx = parts.value(1).toInt();
-                setActiveTab(tabIdx);
-                if (parts.size() >= 4) {
-                    int w = parts.value(2).toInt();
-                    int h = parts.value(3).toInt();
-                    if (w > 0 && h > 0) {
-                        savePopupSize(w, h);
+                if (m_visible && tabIdx == m_activeTab && parts.size() <= 2) {
+                    hideOverlay();
+                } else {
+                    setActiveTab(tabIdx);
+                    if (parts.size() >= 4) {
+                        int w = parts.value(2).toInt();
+                        int h = parts.value(3).toInt();
+                        if (w > 0 && h > 0) {
+                            savePopupSize(w, h);
+                        }
                     }
-                }
-                if (parts.size() >= 5) {
-                    bool ok = false;
-                    double s = parts.value(4).toDouble(&ok);
-                    if (ok && s > 0.1) {
-                        saveUiScale(s);
+                    if (parts.size() >= 5) {
+                        bool ok = false;
+                        double s = parts.value(4).toDouble(&ok);
+                        if (ok && s > 0.1) {
+                            saveUiScale(s);
+                        }
                     }
+                    showOverlay(tabIdx);
                 }
-                showOverlay(tabIdx);
             } else if (cmd.startsWith(QStringLiteral("size:"))) {
                 QStringList parts = cmd.split(':');
                 if (parts.size() >= 3) {
@@ -259,17 +314,35 @@ void AppController::handleNewConnection() {
                 resetPopupSize();
                 showOverlay();
             } else if (cmd == QStringLiteral("emoji")) {
-                setActiveTab(1);
-                showOverlay(1);
+                if (m_visible && m_activeTab == 1) {
+                    hideOverlay();
+                } else {
+                    setActiveTab(1);
+                    showOverlay(1);
+                }
             } else if (cmd == QStringLiteral("kaomoji")) {
-                setActiveTab(2);
-                showOverlay(2);
+                if (m_visible && m_activeTab == 2) {
+                    hideOverlay();
+                } else {
+                    setActiveTab(2);
+                    showOverlay(2);
+                }
             } else if (cmd == QStringLiteral("symbols")) {
-                setActiveTab(3);
-                showOverlay(3);
-            } else if (cmd == QStringLiteral("toggle") || cmd == QStringLiteral("clips")) {
-                setActiveTab(0);
-                showOverlay(0);
+                if (m_visible && m_activeTab == 3) {
+                    hideOverlay();
+                } else {
+                    setActiveTab(3);
+                    showOverlay(3);
+                }
+            } else if (cmd == QStringLiteral("toggle")) {
+                toggleOverlay(0);
+            } else if (cmd == QStringLiteral("clips")) {
+                if (m_visible && m_activeTab == 0) {
+                    hideOverlay();
+                } else {
+                    setActiveTab(0);
+                    showOverlay(0);
+                }
             } else if (cmd == QStringLiteral("hide")) {
                 hideOverlay();
             }
@@ -308,6 +381,9 @@ void AppController::loadConfiguration() {
         auto obj = doc.object();
 
         if (path.endsWith(QLatin1String("stowaway.json")) || path.endsWith(QLatin1String("config.json"))) {
+            if (obj.contains("daemon")) {
+                m_isDaemon = obj.value("daemon").toBool(m_isDaemon);
+            }
             if (obj.contains("scale")) {
                 m_uiScale = obj.value("scale").toDouble(m_uiScale);
             }
@@ -370,6 +446,18 @@ void AppController::loadConfiguration() {
     bool okS = false;
     double envS = qEnvironmentVariable("STOWAWAY_SCALE").toDouble(&okS);
     if (okS && envS > 0.1) m_uiScale = envS;
+
+    if (qEnvironmentVariableIsSet("STOWAWAY_DAEMON")) {
+        QString dEnv = qEnvironmentVariable("STOWAWAY_DAEMON").trimmed();
+        if (dEnv == QStringLiteral("0") || dEnv.compare(QStringLiteral("false"), Qt::CaseInsensitive) == 0) {
+            m_isDaemon = false;
+        } else if (dEnv == QStringLiteral("1") || dEnv.compare(QStringLiteral("true"), Qt::CaseInsensitive) == 0) {
+            m_isDaemon = true;
+        }
+    }
+    if (qEnvironmentVariableIsSet("STOWAWAY_NO_DAEMON")) {
+        m_isDaemon = false;
+    }
 
     // Clamp within bounds
     m_popupWidth = std::clamp(m_popupWidth, MinWidth, MaxWidth);
@@ -490,8 +578,9 @@ void AppController::initHyprlandEventSocket() {
 }
 
 void AppController::handleHyprlandEvent() {
-    if (!m_hyprEventSocket || !m_visible) return;
+    if (!m_hyprEventSocket) return;
     QByteArray data = m_hyprEventSocket->readAll();
+    if (!m_visible) return;
     const QString text = QString::fromUtf8(data);
     const QStringList lines = text.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
 

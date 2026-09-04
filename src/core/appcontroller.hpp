@@ -24,6 +24,7 @@ class AppController : public QObject {
     Q_PROPERTY(QString targetWindowAddress READ targetWindowAddress NOTIFY targetWindowAddressChanged)
     Q_PROPERTY(QString toastMessage READ toastMessage NOTIFY toastMessageChanged)
     Q_PROPERTY(bool toastVisible READ toastVisible NOTIFY toastVisibleChanged)
+    Q_PROPERTY(bool isDaemon READ isDaemon WRITE setIsDaemon NOTIFY isDaemonChanged)
 
 public:
     static constexpr int DefaultWidth = 390;
@@ -66,11 +67,15 @@ public:
     QString toastMessage() const { return m_toastMessage; }
     bool toastVisible() const { return m_toastVisible; }
 
+    bool isDaemon() const { return m_isDaemon; }
+    void setIsDaemon(bool daemon);
+
     Q_INVOKABLE void showOverlay(int tab = -1);
     Q_INVOKABLE void hideOverlay();
     Q_INVOKABLE void toggleOverlay(int tab = -1);
     Q_INVOKABLE void showToast(const QString& message);
     Q_INVOKABLE void quit();
+    Q_INVOKABLE void quitDaemon();
 
     // Copy content to the clipboard, then animate the overlay out and only send the
     // paste keystroke AFTER the overlay has fully closed (releasing keyboard focus).
@@ -91,6 +96,7 @@ signals:
     void targetWindowAddressChanged();
     void toastMessageChanged();
     void toastVisibleChanged();
+    void isDaemonChanged();
     void requestDismiss();
 
 private slots:
@@ -101,6 +107,7 @@ private:
     explicit AppController(QObject* parent = nullptr);
 
     bool m_visible = false;
+    bool m_isDaemon = false;
     int m_activeTab = 0;
     int m_popupWidth = DefaultWidth;
     int m_popupHeight = DefaultHeight;

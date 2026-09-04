@@ -1,0 +1,13 @@
+[Unit]
+Description=Stowaway - Astra Clipboard & Quick Picker Daemon
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=stowaway --daemon --foreground
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+WantedBy=graphical-session.target

@@ -51,3 +51,7 @@ install(FILES assets/stowaway.svg
     DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps"
     RENAME stowaway.svg
 )
+
+install(FILES assets/stowaway.service
+    DESTINATION "${CMAKE_INSTALL_DATADIR}/systemd/user"
+)

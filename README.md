@@ -61,18 +61,58 @@ This installs the `stowaway` binary to `/usr/bin/stowaway`.
 ## Usage
 
 ```bash
+# Overlay triggers
 stowaway --toggle           # Toggle clipboard overlay anchored beside cursor
 stowaway --emoji            # Open the emoji picker
 stowaway --kaomoji          # Open the kaomoji picker
 stowaway --symbols          # Open the symbols picker
+stowaway --hide             # Hide open clipboard overlay
+stowaway --clear            # Clear unpinned clipboard history
+
+# Daemon management (Instant Open <10ms)
+stowaway --daemon           # Start background daemon
+stowaway --status           # Check if daemon is running
+stowaway --quit             # Terminate running daemon
+stowaway --disable-daemon   # Disable daemon mode in config and stop daemon
+stowaway --enable-daemon    # Enable daemon mode in config
+stowaway --no-daemon        # Run standalone one-shot overlay without daemon
+
+# Appearance and sizing
 stowaway --width 480        # Set popup width in pixels
 stowaway --height 620       # Set popup height in pixels
 stowaway --size 480x620     # Set popup dimensions (WxH)
 stowaway --scale 1.25       # Set UI scaling factor (scales text, icons, cards)
 stowaway --reset-size       # Reset popup dimensions and scale to default (390x500, 1.0x)
-stowaway --clear            # Clear unpinned clipboard history
-stowaway --hide             # Hide open clipboard overlay
 ```
+
+### Daemon Mode (Instant Opening)
+
+Stowaway features a background daemon mode that keeps the QML engine, plugins, and custom fonts resident in RAM with the Wayland layer surface unmapped (consuming 0 GPU/CPU resources when hidden). When invoked via a hotkey, the overlay opens **instantaneously (< 10ms)** instead of cold-booting Quickshell.
+
+#### Starting and Managing the Daemon
+```bash
+stowaway --daemon           # Start background daemon (starts hidden, stays resident)
+stowaway --status           # Check daemon status
+stowaway --quit             # Terminate background daemon
+```
+
+#### Running as a systemd User Service
+Stowaway provides a systemd user unit for automatic background launch with your desktop session:
+```bash
+systemctl --user enable --now stowaway
+```
+
+#### Disabling Daemon Mode
+If you prefer Stowaway to run as a one-shot process that exits completely when closed:
+- **CLI**: Run `stowaway --disable-daemon` to disable daemon mode in your configuration and stop any active daemon.
+- **Config**: Set `"daemon": false` in `~/.config/caelestia/stowaway.json` or `~/.config/stowaway/config.json`:
+  ```json
+  {
+    "daemon": false
+  }
+  ```
+- **Ad-hoc one-shot**: Pass `stowaway --no-daemon` to run an individual one-shot instance that quits on dismiss without communicating with the daemon.
+- **systemd**: Run `systemctl --user disable --now stowaway` to disable the user service.
 
 ### Sizing & UI Scaling
 

@@ -42,14 +42,16 @@ ShellRoot {
             anchors.right: true
 
             color: "transparent"
-            visible: true
+            visible: AppController.visible
 
             readonly property bool isCurrentMonitor: (modelData.name === PositionController.monitorName || Quickshell.screens.length === 1)
             property bool overlayActive: false
 
             Component.onCompleted: {
-                overlayActive = true;
-                focusSearchBar();
+                if (AppController.visible) {
+                    overlayActive = true;
+                    focusSearchBar();
+                }
             }
 
             function focusSearchBar() {
@@ -87,6 +89,15 @@ ShellRoot {
 
             Connections {
                 target: AppController
+                function onVisibilityChanged() {
+                    if (AppController.visible) {
+                        closeLayerTimer.stop();
+                        layerWindow.visible = true;
+                        layerWindow.overlayActive = true;
+                        searchBar.text = "";
+                        layerWindow.focusSearchBar();
+                    }
+                }
                 function onRequestDismiss() {
                     if (overlayActive)
                         overlayActive = false;
