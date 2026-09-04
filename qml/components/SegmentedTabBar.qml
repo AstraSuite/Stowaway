@@ -16,13 +16,13 @@ StyledRect {
     signal tabSelected(int index)
 
     implicitWidth: 360
-    implicitHeight: 38
+    implicitHeight: Math.round(38 * AppController.uiScale)
     radius: Tokens.rounding.full
     color: Colours.palette.m3surfaceContainerLow
 
     Item {
         anchors.fill: parent
-        anchors.margins: 3
+        anchors.margins: Math.round(3 * AppController.uiScale)
 
         // Sliding Active Indicator Pill
         StyledRect {
@@ -53,11 +53,11 @@ StyledRect {
 
                     Row {
                         anchors.centerIn: parent
-                        spacing: 5
+                        spacing: Math.round(5 * AppController.uiScale)
 
                         MaterialIcon {
                             text: modelData.icon
-                            pointSize: 16
+                            pointSize: Math.round(16 * AppController.uiScale)
                             color: tabItem.selected ? Colours.palette.m3onSecondaryContainer : Colours.palette.m3onSurfaceVariant
                             anchors.verticalCenter: parent.verticalCenter
                         }

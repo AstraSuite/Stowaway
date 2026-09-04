@@ -90,23 +90,23 @@ Item {
         // Category pills
         Flickable {
             width: parent.width
-            height: 32
+            height: Math.round(32 * AppController.uiScale)
             contentWidth: catRow.implicitWidth
-            contentHeight: 32
+            contentHeight: Math.round(32 * AppController.uiScale)
             boundsBehavior: Flickable.DragAndOvershootBounds
             clip: true
 
             Row {
                 id: catRow
-                spacing: 6
+                spacing: Math.round(6 * AppController.uiScale)
 
                 Repeater {
                     model: EmojiService.emojiCategories
 
                     Item {
                         id: catChip
-                        width: catText.implicitWidth + 16
-                        height: 28
+                        width: catText.implicitWidth + Math.round(16 * AppController.uiScale)
+                        height: Math.round(28 * AppController.uiScale)
 
                         readonly property bool isSelected: root.selectedCategory === modelData
 
@@ -142,9 +142,10 @@ Item {
         VerticalFadeGridView {
             id: grid
             width: parent.width
-            height: parent.height - 40
-            cellWidth: width / 8
-            cellHeight: 44
+            height: parent.height - Math.round(40 * AppController.uiScale)
+            readonly property int columns: Math.max(4, Math.floor(width / Math.max(1, (45 * AppController.uiScale))))
+            cellWidth: Math.floor(width / columns)
+            cellHeight: Math.round(44 * AppController.uiScale)
             clip: true
             boundsBehavior: Flickable.DragAndOvershootBounds
 
@@ -163,11 +164,11 @@ Item {
 
                 Column {
                     anchors.centerIn: parent
-                    spacing: 6
+                    spacing: Math.round(6 * AppController.uiScale)
 
                     MaterialIcon {
                         text: "search_off"
-                        pointSize: 36
+                        pointSize: Math.round(36 * AppController.uiScale)
                         color: Colours.palette.m3onSurfaceVariant
                         opacity: 0.4
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -195,8 +196,8 @@ Item {
                 StyledRect {
                     id: emojiBox
                     anchors.centerIn: parent
-                    width: 38
-                    height: 38
+                    width: Math.round(38 * AppController.uiScale)
+                    height: Math.round(38 * AppController.uiScale)
                     radius: Tokens.rounding.medium
                     color: cellItem.isCurrent ? Colours.palette.m3secondaryContainer : (cellItem.isHovered ? Colours.palette.m3surfaceContainerHighest : "transparent")
 
@@ -207,7 +208,7 @@ Item {
                     Text {
                         anchors.centerIn: parent
                         text: modelData.character
-                        font.pixelSize: 22
+                        font.pixelSize: Math.round(22 * AppController.uiScale)
                         renderType: Text.NativeRendering
                     }
 
@@ -230,8 +231,8 @@ Item {
                         anchors.right: parent.right
                         anchors.topMargin: -2
                         anchors.rightMargin: -2
-                        width: 18
-                        height: 18
+                        width: Math.round(18 * AppController.uiScale)
+                        height: Math.round(18 * AppController.uiScale)
                         z: 10
 
                         visible: modelData.isFavorite || cellItem.isHovered
@@ -244,7 +245,7 @@ Item {
                         MaterialIcon {
                             anchors.centerIn: parent
                             text: "star"
-                            pointSize: 14
+                            pointSize: Math.round(14 * AppController.uiScale)
                             color: Colours.palette.m3onSurface
                             fill: modelData.isFavorite ? 1.0 : 0.0
 

@@ -134,8 +134,8 @@ ShellRoot {
                 visible: layerWindow.isCurrentMonitor
                 x: PositionController.targetX - PositionController.monitorX
                 y: (PositionController.targetY - PositionController.monitorY) + (layerWindow.overlayActive ? 0 : 12)
-                width: 390
-                height: 500
+                width: AppController.popupWidth
+                height: AppController.popupHeight
 
                 Keys.onPressed: (event) => {
                     if (event.key === Qt.Key_Escape) {
@@ -157,6 +157,18 @@ ShellRoot {
                         else if (event.key === Qt.Key_2) { AppController.activeTab = 1; event.accepted = true; }
                         else if (event.key === Qt.Key_3) { AppController.activeTab = 2; event.accepted = true; }
                         else if (event.key === Qt.Key_4) { AppController.activeTab = 3; event.accepted = true; }
+                        else if (event.key === Qt.Key_Plus || event.key === Qt.Key_Equal) {
+                            AppController.savePopupSize(AppController.popupWidth + 35, AppController.popupHeight + 45);
+                            AppController.saveUiScale(Math.min(2.5, Math.round((AppController.uiScale + 0.1) * 10) / 10));
+                            event.accepted = true;
+                        } else if (event.key === Qt.Key_Minus) {
+                            AppController.savePopupSize(AppController.popupWidth - 35, AppController.popupHeight - 45);
+                            AppController.saveUiScale(Math.max(0.6, Math.round((AppController.uiScale - 0.1) * 10) / 10));
+                            event.accepted = true;
+                        } else if (event.key === Qt.Key_0) {
+                            AppController.resetPopupSize();
+                            event.accepted = true;
+                        }
                     }
                 }
 
@@ -170,6 +182,7 @@ ShellRoot {
                     Anim { type: Anim.FastEffects; duration: 200 }
                 }
                 Behavior on y {
+                    enabled: !layerWindow.overlayActive
                     Anim { type: Anim.DefaultSpatial; duration: 250 }
                 }
 
@@ -188,6 +201,7 @@ ShellRoot {
                     clip: true
 
                     Column {
+                        id: mainColumn
                         anchors.fill: parent
                         anchors.margins: 14
                         spacing: 10
@@ -248,7 +262,7 @@ ShellRoot {
                         Item {
                             id: viewStack
                             width: parent.width
-                            height: parent.height - searchBar.height - tabNav.height - 40
+                            height: parent.height - searchBar.height - tabNav.height - statusBar.height - (mainColumn.spacing * 3)
                             clip: true
 
                             Item {
@@ -339,6 +353,7 @@ ShellRoot {
 
                         // Bottom Status & Shortcut Hints Bar
                         Item {
+                            id: statusBar
                             width: parent.width
                             height: 18
 
@@ -360,6 +375,18 @@ ShellRoot {
                                 }
                                 StyledText {
                                     text: "Ctrl+1..4 Tabs"
+                                    font: Tokens.font.label.small
+                                    color: Colours.palette.m3onSurfaceVariant
+                                    opacity: 0.7
+                                }
+                                StyledText {
+                                    text: "•"
+                                    font: Tokens.font.label.small
+                                    color: Colours.palette.m3outline
+                                    opacity: 0.4
+                                }
+                                StyledText {
+                                    text: "Ctrl+± Zoom"
                                     font: Tokens.font.label.small
                                     color: Colours.palette.m3onSurfaceVariant
                                     opacity: 0.7

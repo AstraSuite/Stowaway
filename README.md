@@ -61,13 +61,53 @@ This installs the `stowaway` binary to `/usr/bin/stowaway`.
 ## Usage
 
 ```bash
-stowaway --toggle        # Toggle clipboard overlay anchored beside cursor
-stowaway --emoji         # Open the emoji picker
-stowaway --kaomoji       # Open the kaomoji picker
-stowaway --symbols       # Open the symbols picker
-stowaway --clear         # Clear unpinned clipboard history
-stowaway --daemon        # Run background daemon
+stowaway --toggle           # Toggle clipboard overlay anchored beside cursor
+stowaway --emoji            # Open the emoji picker
+stowaway --kaomoji          # Open the kaomoji picker
+stowaway --symbols          # Open the symbols picker
+stowaway --width 480        # Set popup width in pixels
+stowaway --height 620       # Set popup height in pixels
+stowaway --size 480x620     # Set popup dimensions (WxH)
+stowaway --scale 1.25       # Set UI scaling factor (scales text, icons, cards)
+stowaway --reset-size       # Reset popup dimensions and scale to default (390x500, 1.0x)
+stowaway --clear            # Clear unpinned clipboard history
+stowaway --hide             # Hide open clipboard overlay
 ```
+
+### Sizing & UI Scaling
+
+Stowaway provides full control over window dimensions and content scaling (fonts, icons, card sizes, and padding):
+
+1. **Keyboard Shortcuts & Zooming**:
+   - `Ctrl` + `+` or `Ctrl` + `=`: Enlarge popup size and zoom in UI scale (increases font and icon sizes)
+   - `Ctrl` + `-`: Shrink popup size and zoom out UI scale (decreases font and icon sizes)
+   - `Ctrl` + `0`: Reset popup size and scale to default (390x500, 1.0x)
+
+2. **Configuration File**:
+   Specify custom dimensions and UI scale in `~/.config/caelestia/stowaway.json` or `~/.config/stowaway/config.json`:
+   ```json
+   {
+     "width": 480,
+     "height": 620,
+     "scale": 1.25
+   }
+   ```
+   Or integrate into `~/.config/caelestia/shell-tokens.json`:
+   ```json
+   {
+     "scale": 1.25,
+     "sizes": {
+       "stowaway": {
+         "width": 480,
+         "height": 620
+       }
+     }
+   }
+   ```
+
+3. **Command-Line & Environment Variables**:
+   - Launch with `-W <width>` / `-H <height>`, `--size <WxH>`, and `--scale <factor>` (e.g. `--scale 1.3`).
+   - Or set `STOWAWAY_WIDTH`, `STOWAWAY_HEIGHT`, and `STOWAWAY_SCALE` environment variables.
 
 ### Hyprland Animations
 

@@ -81,23 +81,23 @@ Item {
         // Category pills
         Flickable {
             width: parent.width
-            height: 32
+            height: Math.round(32 * AppController.uiScale)
             contentWidth: catRow.implicitWidth
-            contentHeight: 32
+            contentHeight: Math.round(32 * AppController.uiScale)
             boundsBehavior: Flickable.DragAndOvershootBounds
             clip: true
 
             Row {
                 id: catRow
-                spacing: 6
+                spacing: Math.round(6 * AppController.uiScale)
 
                 Repeater {
                     model: EmojiService.kaomojiCategories
 
                     Item {
                         id: catChip
-                        width: catText.implicitWidth + 16
-                        height: 28
+                        width: catText.implicitWidth + Math.round(16 * AppController.uiScale)
+                        height: Math.round(28 * AppController.uiScale)
 
                         readonly property bool isSelected: root.selectedCategory === modelData
 
@@ -133,9 +133,9 @@ Item {
         VerticalFadeFlickable {
             id: flickable
             width: parent.width
-            height: parent.height - 40
+            height: parent.height - Math.round(40 * AppController.uiScale)
             contentWidth: width
-            contentHeight: flow.implicitHeight + 20
+            contentHeight: flow.implicitHeight + Math.round(20 * AppController.uiScale)
             clip: true
             boundsBehavior: Flickable.DragAndOvershootBounds
 
@@ -148,11 +148,11 @@ Item {
 
                 Column {
                     anchors.centerIn: parent
-                    spacing: 6
+                    spacing: Math.round(6 * AppController.uiScale)
 
                     MaterialIcon {
                         text: "search_off"
-                        pointSize: 36
+                        pointSize: Math.round(36 * AppController.uiScale)
                         color: Colours.palette.m3onSurfaceVariant
                         opacity: 0.4
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -172,7 +172,7 @@ Item {
             Flow {
                 id: flow
                 width: parent.width
-                spacing: 8
+                spacing: Math.round(8 * AppController.uiScale)
 
                 Repeater {
                     id: kaomojiRepeater
@@ -184,8 +184,8 @@ Item {
 
                     StyledRect {
                         id: kaoCard
-                        width: kaoRow.implicitWidth + (starBtn.visible ? 34 : 20)
-                        height: 38
+                        width: kaoRow.implicitWidth + (starBtn.visible ? Math.round(34 * AppController.uiScale) : Math.round(20 * AppController.uiScale))
+                        height: Math.round(38 * AppController.uiScale)
                         radius: Tokens.rounding.medium
                         color: index === root.currentIndex ? Colours.palette.m3secondaryContainer : (kaoMouse.containsMouse || starMouse.containsMouse ? Colours.palette.m3surfaceContainerHighest : Colours.palette.m3surfaceContainerLow)
 
@@ -196,13 +196,13 @@ Item {
                         Row {
                             id: kaoRow
                             anchors.left: parent.left
-                            anchors.leftMargin: 10
+                            anchors.leftMargin: Math.round(10 * AppController.uiScale)
                             anchors.verticalCenter: parent.verticalCenter
-                            spacing: 6
+                            spacing: Math.round(6 * AppController.uiScale)
 
                             Text {
                                 text: modelData.character
-                                font.pixelSize: 14
+                                font.pixelSize: Math.round(14 * AppController.uiScale)
                                 color: Colours.palette.m3onSurface
                                 renderType: Text.NativeRendering
                                 anchors.verticalCenter: parent.verticalCenter
@@ -225,10 +225,10 @@ Item {
                         Item {
                             id: starBtn
                             anchors.right: parent.right
-                            anchors.rightMargin: 8
+                            anchors.rightMargin: Math.round(8 * AppController.uiScale)
                             anchors.verticalCenter: parent.verticalCenter
-                            width: 20
-                            height: 20
+                            width: Math.round(20 * AppController.uiScale)
+                            height: Math.round(20 * AppController.uiScale)
                             z: 10
 
                             visible: modelData.isFavorite || kaoMouse.containsMouse || starMouse.containsMouse
@@ -241,7 +241,7 @@ Item {
                             MaterialIcon {
                                 anchors.centerIn: parent
                                 text: "star"
-                                pointSize: 15
+                                pointSize: Math.round(15 * AppController.uiScale)
                                 color: Colours.palette.m3onSurface
                                 fill: modelData.isFavorite ? 1.0 : 0.0
 

@@ -51,8 +51,19 @@ QByteArray HyprlandIPC::requestSocket(const QString& command) {
     socket.flush();
 
     QByteArray response;
-    while (socket.waitForReadyRead(300)) {
+    while (socket.waitForReadyRead(80)) {
         response.append(socket.readAll());
+        if (command.startsWith(QLatin1String("j/"))) {
+            QJsonParseError err;
+            QJsonDocument::fromJson(response, &err);
+            if (err.error == QJsonParseError::NoError) {
+                break;
+            }
+        } else {
+            if (!response.isEmpty()) {
+                break;
+            }
+        }
     }
     return response;
 }

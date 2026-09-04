@@ -68,7 +68,7 @@ Item {
         // Section Header: Items Count & Clear All Button
         Item {
             width: parent.width
-            height: 22
+            height: Math.round(22 * AppController.uiScale)
 
             StyledText {
                 anchors.left: parent.left
@@ -84,8 +84,8 @@ Item {
             Item {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                width: clearAllRow.implicitWidth + 14
-                height: 22
+                width: clearAllRow.implicitWidth + Math.round(14 * AppController.uiScale)
+                height: Math.round(22 * AppController.uiScale)
                 visible: ClipboardManager.filteredItems.length > 0
 
                 StyledRect {
@@ -96,11 +96,11 @@ Item {
                     Row {
                         id: clearAllRow
                         anchors.centerIn: parent
-                        spacing: 4
+                        spacing: Math.round(4 * AppController.uiScale)
 
                         MaterialIcon {
                             text: "delete_sweep"
-                            pointSize: 15
+                            pointSize: Math.round(15 * AppController.uiScale)
                             color: Colours.palette.m3error
                             anchors.verticalCenter: parent.verticalCenter
                         }
@@ -128,9 +128,9 @@ Item {
         VerticalFadeListView {
             id: listView
             width: parent.width
-            height: parent.height - 30
+            height: parent.height - Math.round(30 * AppController.uiScale)
             clip: true
-            spacing: 6
+            spacing: Math.round(6 * AppController.uiScale)
             boundsBehavior: Flickable.DragAndOvershootBounds
             model: ClipboardManager.filteredItems
 
@@ -143,11 +143,11 @@ Item {
 
                 Column {
                     anchors.centerIn: parent
-                    spacing: 8
+                    spacing: Math.round(8 * AppController.uiScale)
 
                     MaterialIcon {
                         text: "inventory_2"
-                        pointSize: 42
+                        pointSize: Math.round(42 * AppController.uiScale)
                         color: Colours.palette.m3onSurfaceVariant
                         opacity: 0.35
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -166,7 +166,7 @@ Item {
             delegate: StyledRect {
                 id: card
                 width: listView.width
-                height: modelData.type === 4 ? 76 : 60
+                height: modelData.type === 4 ? Math.round(76 * AppController.uiScale) : Math.round(60 * AppController.uiScale)
                 radius: Tokens.rounding.large
                 color: index === root.currentIndex ? Colours.palette.m3secondaryContainer : (modelData.pinned ? Colours.palette.m3surfaceContainer : Colours.palette.m3surfaceContainerLow)
 
@@ -176,12 +176,12 @@ Item {
 
                 Row {
                     anchors.fill: parent
-                    anchors.margins: 8
-                    spacing: 10
+                    anchors.margins: Math.round(8 * AppController.uiScale)
+                    spacing: Math.round(10 * AppController.uiScale)
 
                     // Left Thumbnail / Icon
                     Item {
-                        width: modelData.type === 4 ? 60 : 38
+                        width: modelData.type === 4 ? Math.round(60 * AppController.uiScale) : Math.round(38 * AppController.uiScale)
                         height: parent.height
                         anchors.verticalCenter: parent.verticalCenter
 
@@ -205,8 +205,8 @@ Item {
                         // Color Swatch Box
                         StyledRect {
                             anchors.centerIn: parent
-                            width: 34
-                            height: 34
+                            width: Math.round(34 * AppController.uiScale)
+                            height: Math.round(34 * AppController.uiScale)
                             visible: modelData.type === 3
                             radius: Tokens.rounding.medium
                             color: modelData.type === 3 ? modelData.content : "transparent"
@@ -215,15 +215,15 @@ Item {
                         // Type Icon for text / code / URL
                         StyledRect {
                             anchors.centerIn: parent
-                            width: 34
-                            height: 34
+                            width: Math.round(34 * AppController.uiScale)
+                            height: Math.round(34 * AppController.uiScale)
                             visible: modelData.type !== 4 && modelData.type !== 3
                             radius: Tokens.rounding.medium
                             color: modelData.type === 1 ? Colours.palette.m3tertiaryContainer : (modelData.type === 2 ? Colours.palette.m3primaryContainer : Colours.palette.m3surfaceContainerHigh)
 
                             MaterialIcon {
                                 text: modelData.type === 1 ? "code" : (modelData.type === 2 ? "link" : "notes")
-                                pointSize: 18
+                                pointSize: Math.round(18 * AppController.uiScale)
                                 color: modelData.type === 1 ? Colours.palette.m3onTertiaryContainer : (modelData.type === 2 ? Colours.palette.m3onPrimaryContainer : Colours.palette.m3onSurfaceVariant)
                                 anchors.centerIn: parent
                             }
@@ -232,14 +232,14 @@ Item {
 
                     // Middle Content Info (takes all remaining width, leaving room for pin + delete)
                     Item {
-                        width: parent.width - (modelData.type === 4 ? 70 : 48) - 76
+                        width: parent.width - (modelData.type === 4 ? Math.round(70 * AppController.uiScale) : Math.round(48 * AppController.uiScale)) - Math.round(76 * AppController.uiScale)
                         height: parent.height
 
                         Column {
                             anchors.left: parent.left
                             anchors.right: parent.right
                             anchors.verticalCenter: parent.verticalCenter
-                            spacing: 2
+                            spacing: Math.round(2 * AppController.uiScale)
 
                             StyledText {
                                 width: parent.width
@@ -279,9 +279,9 @@ Item {
                     id: pinArea
                     anchors.right: deleteArea.left
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.rightMargin: 4
-                    width: 30
-                    height: 30
+                    anchors.rightMargin: Math.round(4 * AppController.uiScale)
+                    width: Math.round(30 * AppController.uiScale)
+                    height: Math.round(30 * AppController.uiScale)
 
                     StyledRect {
                         anchors.fill: parent
@@ -292,7 +292,7 @@ Item {
 
                         MaterialIcon {
                             text: modelData.pinned ? "push_pin" : "push_pin"
-                            pointSize: 18
+                            pointSize: Math.round(18 * AppController.uiScale)
                             color: modelData.pinned ? Colours.palette.m3primary : (pinMouse.containsMouse ? Colours.palette.m3onSurface : Colours.palette.m3onSurfaceVariant)
                             anchors.centerIn: parent
                             rotation: modelData.pinned ? 45 : 0
@@ -316,9 +316,9 @@ Item {
                     id: deleteArea
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.rightMargin: 8
-                    width: 30
-                    height: 30
+                    anchors.rightMargin: Math.round(8 * AppController.uiScale)
+                    width: Math.round(30 * AppController.uiScale)
+                    height: Math.round(30 * AppController.uiScale)
 
                     StyledRect {
                         anchors.fill: parent
@@ -329,7 +329,7 @@ Item {
 
                         MaterialIcon {
                             text: "close"
-                            pointSize: 18
+                            pointSize: Math.round(18 * AppController.uiScale)
                             color: deleteMouse.containsMouse ? Colours.palette.m3error : Colours.palette.m3onSurfaceVariant
                             anchors.centerIn: parent
 

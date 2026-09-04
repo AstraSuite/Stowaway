@@ -106,4 +106,13 @@ void FontTokens::setIconFamily(const QString& family) {
     m_icon->setFamily(family);
 }
 
+void FontTokens::setScale(qreal scale) {
+    m_headline->setScale(scale);
+    m_title->setScale(scale);
+    m_body->setScale(scale);
+    m_label->setScale(scale);
+    m_mono->setScale(scale);
+    m_icon->setScale(scale);
+}
+
 } // namespace stowaway::config

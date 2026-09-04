@@ -11,12 +11,12 @@ Item {
 
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: show ? 24 : -60
+    anchors.bottomMargin: show ? Math.round(24 * AppController.uiScale) : -Math.round(60 * AppController.uiScale)
     opacity: show ? 1 : 0
     scale: show ? 1.0 : 0.85
 
-    implicitWidth: toastContent.implicitWidth + 28
-    implicitHeight: 38
+    implicitWidth: toastContent.implicitWidth + Math.round(28 * AppController.uiScale)
+    implicitHeight: Math.round(38 * AppController.uiScale)
     z: 1000
 
     Behavior on anchors.bottomMargin {
@@ -43,11 +43,11 @@ Item {
         Row {
             id: toastContent
             anchors.centerIn: parent
-            spacing: 8
+            spacing: Math.round(8 * AppController.uiScale)
 
             MaterialIcon {
                 text: "check_circle"
-                pointSize: 18
+                pointSize: Math.round(18 * AppController.uiScale)
                 color: Colours.palette.m3inverseOnSurface
                 anchors.verticalCenter: parent.verticalCenter
             }

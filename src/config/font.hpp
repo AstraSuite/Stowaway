@@ -126,6 +126,7 @@ public:
 
     void setFamily(const QString& family);
     void setIconFamily(const QString& family);
+    void setScale(qreal scale);
 
 private:
     FontStyle* m_headline = nullptr;

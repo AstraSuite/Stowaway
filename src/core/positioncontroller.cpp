@@ -1,4 +1,5 @@
 #include "positioncontroller.hpp"
+#include "appcontroller.hpp"
 #include "hyprlandipc.hpp"
 #include <algorithm>
 
@@ -6,7 +7,7 @@ namespace stowaway::core {
 
 PositionController::PositionController(QObject* parent)
     : QObject(parent) {
-    calculatePosition(390, 490);
+    calculatePosition(-1, -1);
 }
 
 PositionController* PositionController::instance() {
@@ -15,6 +16,9 @@ PositionController* PositionController::instance() {
 }
 
 void PositionController::calculatePosition(int popupWidth, int popupHeight) {
+    if (popupWidth <= 0) popupWidth = AppController::instance()->popupWidth();
+    if (popupHeight <= 0) popupHeight = AppController::instance()->popupHeight();
+
     QPoint cursor = HyprlandIPC::getCursorPos();
     QList<HyprlandMonitor> monitors = HyprlandIPC::getMonitors();
 
@@ -78,9 +82,28 @@ void PositionController::calculatePosition(int popupWidth, int popupHeight) {
     m_targetX = x;
     m_targetY = y;
 
-    HyprlandIPC::positionWindow(m_targetX, m_targetY, popupWidth, popupHeight);
-
     emit positionChanged();
+}
+
+void PositionController::updateSize(int popupWidth, int popupHeight) {
+    if (popupWidth <= 0) popupWidth = AppController::instance()->popupWidth();
+    if (popupHeight <= 0) popupHeight = AppController::instance()->popupHeight();
+    if (m_monitorWidth <= 0 || m_monitorHeight <= 0) return;
+
+    const int margin = 16;
+    int minX = m_monitorX + margin;
+    int maxX = std::max(minX, m_monitorX + m_monitorWidth - popupWidth - margin);
+    int newX = std::clamp(m_targetX, minX, maxX);
+
+    int minY = m_monitorY + margin;
+    int maxY = std::max(minY, m_monitorY + m_monitorHeight - popupHeight - margin);
+    int newY = std::clamp(m_targetY, minY, maxY);
+
+    if (newX != m_targetX || newY != m_targetY) {
+        m_targetX = newX;
+        m_targetY = newY;
+        emit positionChanged();
+    }
 }
 
 } // namespace stowaway::core

@@ -38,7 +38,8 @@ public:
     int monitorHeight() const { return m_monitorHeight; }
     QString monitorName() const { return m_monitorName; }
 
-    Q_INVOKABLE void calculatePosition(int overlayWidth = 380, int overlayHeight = 480);
+    Q_INVOKABLE void calculatePosition(int overlayWidth = -1, int overlayHeight = -1);
+    Q_INVOKABLE void updateSize(int overlayWidth = -1, int overlayHeight = -1);
 
 signals:
     void positionChanged();

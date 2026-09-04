@@ -36,6 +36,18 @@ TextFieldBase {
             else if (event.key === Qt.Key_2) { AppController.activeTab = 1; event.accepted = true; }
             else if (event.key === Qt.Key_3) { AppController.activeTab = 2; event.accepted = true; }
             else if (event.key === Qt.Key_4) { AppController.activeTab = 3; event.accepted = true; }
+            else if (event.key === Qt.Key_Plus || event.key === Qt.Key_Equal) {
+                AppController.savePopupSize(AppController.popupWidth + 35, AppController.popupHeight + 45);
+                AppController.saveUiScale(Math.min(2.5, Math.round((AppController.uiScale + 0.1) * 10) / 10));
+                event.accepted = true;
+            } else if (event.key === Qt.Key_Minus) {
+                AppController.savePopupSize(AppController.popupWidth - 35, AppController.popupHeight - 45);
+                AppController.saveUiScale(Math.max(0.6, Math.round((AppController.uiScale - 0.1) * 10) / 10));
+                event.accepted = true;
+            } else if (event.key === Qt.Key_0) {
+                AppController.resetPopupSize();
+                event.accepted = true;
+            }
         }
     }
 
@@ -112,7 +124,7 @@ TextFieldBase {
         anchors.rightMargin: Tokens.padding.small
 
         icon: "clear"
-        pointSize: 18
+        pointSize: Math.round(18 * AppController.uiScale)
         radius: Tokens.rounding.full
         radiusMorph: false
         enabled: root.text.length > 0

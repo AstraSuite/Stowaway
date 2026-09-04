@@ -244,6 +244,46 @@ private:
     static QEasingCurve makeBezier(qreal p1x, qreal p1y, qreal p2x, qreal p2y);
 };
 
+class StowawaySizeTokens : public QObject {
+    Q_OBJECT
+    QML_ANONYMOUS
+
+    Q_PROPERTY(int width READ width NOTIFY valuesChanged)
+    Q_PROPERTY(int height READ height NOTIFY valuesChanged)
+
+public:
+    explicit StowawaySizeTokens(QObject* parent = nullptr) : QObject(parent) {}
+    int width() const { return m_width; }
+    int height() const { return m_height; }
+    void set_width(int w) { if (m_width != w) { m_width = w; emit valuesChanged(); } }
+    void set_height(int h) { if (m_height != h) { m_height = h; emit valuesChanged(); } }
+
+signals:
+    void valuesChanged();
+
+private:
+    int m_width = 390;
+    int m_height = 500;
+};
+
+class SizeTokens : public QObject {
+    Q_OBJECT
+    QML_ANONYMOUS
+
+    Q_PROPERTY(stowaway::config::StowawaySizeTokens* stowaway READ stowaway CONSTANT)
+
+public:
+    explicit SizeTokens(QObject* parent = nullptr)
+        : QObject(parent)
+        , m_stowaway(new StowawaySizeTokens(this)) {}
+
+    StowawaySizeTokens* stowaway() const { return m_stowaway; }
+    void loadJson(const QJsonObject& json);
+
+private:
+    StowawaySizeTokens* m_stowaway = nullptr;
+};
+
 class TokensSingleton : public QObject {
     Q_OBJECT
     QML_NAMED_ELEMENT(Tokens)
@@ -254,6 +294,7 @@ class TokensSingleton : public QObject {
     Q_PROPERTY(stowaway::config::PaddingTokens* padding READ padding CONSTANT)
     Q_PROPERTY(stowaway::config::AnimCurves* anim READ anim CONSTANT)
     Q_PROPERTY(stowaway::config::FontTokens* font READ font CONSTANT)
+    Q_PROPERTY(stowaway::config::SizeTokens* sizes READ sizes CONSTANT)
 
 public:
     RoundingTokens* rounding() const { return m_rounding; }
@@ -261,8 +302,10 @@ public:
     PaddingTokens* padding() const { return m_padding; }
     AnimCurves* anim() const { return m_anim; }
     FontTokens* font() const { return m_font; }
+    SizeTokens* sizes() const { return m_sizes; }
 
     void loadTokensFile(const QString& filePath);
+    void loadShellConfigFile(const QString& filePath);
     void reload();
 
     static TokensSingleton* instance();
@@ -279,6 +322,7 @@ private:
     PaddingTokens* m_padding = nullptr;
     AnimCurves* m_anim = nullptr;
     FontTokens* m_font = nullptr;
+    SizeTokens* m_sizes = nullptr;
     QFileSystemWatcher m_watcher;
 };
 

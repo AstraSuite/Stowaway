@@ -3,10 +3,16 @@
 #include "positioncontroller.hpp"
 #include "clipboardmanager.hpp"
 #include "pastemanager.hpp"
+#include "../config/tokens.hpp"
 #include <QDir>
 #include <QStandardPaths>
 #include <QCoreApplication>
 #include <QTimer>
+#include <QFile>
+#include <QFileInfo>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <algorithm>
 
 namespace stowaway::core {
 
@@ -17,6 +23,9 @@ static QString socketServerName() {
 
 AppController::AppController(QObject* parent)
     : QObject(parent) {
+    loadConfiguration();
+    setUiScale(m_uiScale);
+
     m_visible = true;
     m_toastTimer.setSingleShot(true);
     m_toastTimer.setInterval(2000);
@@ -24,6 +33,9 @@ AppController::AppController(QObject* parent)
         m_toastVisible = false;
         emit toastVisibleChanged();
     });
+
+    m_saveConfigTimer.setSingleShot(true);
+    connect(&m_saveConfigTimer, &QTimer::timeout, this, &AppController::writeConfigurationToDisk);
 
     bool ok = false;
     int tab = qEnvironmentVariableIntValue("STOWAWAY_INITIAL_TAB", &ok);
@@ -62,7 +74,7 @@ void AppController::setVisible(bool v) {
             QTimer::singleShot(0, this, [this]() {
                 m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
                 emit targetWindowAddressChanged();
-                PositionController::instance()->calculatePosition(390, 500);
+                PositionController::instance()->calculatePosition(m_popupWidth, m_popupHeight);
                 ClipboardManager::instance()->checkClipboard();
             });
             return;
@@ -95,6 +107,10 @@ void AppController::showOverlay(int tab) {
 
 void AppController::hideOverlay() {
     if (!m_visible) return;
+    if (m_saveConfigTimer.isActive()) {
+        m_saveConfigTimer.stop();
+        writeConfigurationToDisk();
+    }
     m_visible = false;
     emit visibilityChanged();
     emit requestDismiss();
@@ -124,6 +140,10 @@ void AppController::dismissAndPasteImage(const QString& filePath, const QString&
 
 void AppController::beginPasteDismiss(const QString& targetAddress) {
     if (!m_visible) return;
+    if (m_saveConfigTimer.isActive()) {
+        m_saveConfigTimer.stop();
+        writeConfigurationToDisk();
+    }
 
     // Keep focus on the overlay so its exit animation renders fully
     m_visible = false;
@@ -197,16 +217,59 @@ void AppController::handleNewConnection() {
             QString cmd = QString::fromUtf8(data);
 
             if (cmd.startsWith(QStringLiteral("tab:"))) {
-                int tabIdx = cmd.mid(4).toInt();
+                QStringList parts = cmd.split(':');
+                int tabIdx = parts.value(1).toInt();
                 setActiveTab(tabIdx);
+                if (parts.size() >= 4) {
+                    int w = parts.value(2).toInt();
+                    int h = parts.value(3).toInt();
+                    if (w > 0 && h > 0) {
+                        savePopupSize(w, h);
+                    }
+                }
+                if (parts.size() >= 5) {
+                    bool ok = false;
+                    double s = parts.value(4).toDouble(&ok);
+                    if (ok && s > 0.1) {
+                        saveUiScale(s);
+                    }
+                }
+                showOverlay(tabIdx);
+            } else if (cmd.startsWith(QStringLiteral("size:"))) {
+                QStringList parts = cmd.split(':');
+                if (parts.size() >= 3) {
+                    int w = parts.value(1).toInt();
+                    int h = parts.value(2).toInt();
+                    if (w > 0 && h > 0) {
+                        savePopupSize(w, h);
+                    }
+                }
+                showOverlay();
+            } else if (cmd.startsWith(QStringLiteral("scale:"))) {
+                QStringList parts = cmd.split(':');
+                if (parts.size() >= 2) {
+                    bool ok = false;
+                    double s = parts.value(1).toDouble(&ok);
+                    if (ok && s > 0.1) {
+                        saveUiScale(s);
+                    }
+                }
+                showOverlay();
+            } else if (cmd == QStringLiteral("reset-size")) {
+                resetPopupSize();
+                showOverlay();
             } else if (cmd == QStringLiteral("emoji")) {
                 setActiveTab(1);
+                showOverlay(1);
             } else if (cmd == QStringLiteral("kaomoji")) {
                 setActiveTab(2);
+                showOverlay(2);
             } else if (cmd == QStringLiteral("symbols")) {
                 setActiveTab(3);
+                showOverlay(3);
             } else if (cmd == QStringLiteral("toggle") || cmd == QStringLiteral("clips")) {
                 setActiveTab(0);
+                showOverlay(0);
             } else if (cmd == QStringLiteral("hide")) {
                 hideOverlay();
             }
@@ -216,6 +279,185 @@ void AppController::handleNewConnection() {
             socket->disconnectFromServer();
         });
     }
+}
+
+QString AppController::configFilePath() const {
+    QString home = QDir::homePath();
+    QString caelestiaDir = home + QStringLiteral("/.config/caelestia");
+    if (QDir(caelestiaDir).exists()) {
+        return caelestiaDir + QStringLiteral("/stowaway.json");
+    }
+    return home + QStringLiteral("/.config/stowaway/config.json");
+}
+
+void AppController::loadConfiguration() {
+    // 1. Check existing config files
+    QString home = QDir::homePath();
+    QStringList configCandidates = {
+        home + QStringLiteral("/.config/caelestia/stowaway.json"),
+        home + QStringLiteral("/.config/stowaway/config.json"),
+        home + QStringLiteral("/.config/caelestia/shell-tokens.json"),
+        home + QStringLiteral("/.config/caelestia/shell.json")
+    };
+
+    for (const auto& path : configCandidates) {
+        QFile file(path);
+        if (!file.open(QIODevice::ReadOnly)) continue;
+        auto doc = QJsonDocument::fromJson(file.readAll());
+        if (!doc.isObject()) continue;
+        auto obj = doc.object();
+
+        if (path.endsWith(QLatin1String("stowaway.json")) || path.endsWith(QLatin1String("config.json"))) {
+            if (obj.contains("scale")) {
+                m_uiScale = obj.value("scale").toDouble(m_uiScale);
+            }
+            if (obj.contains("width") && obj.contains("height")) {
+                m_popupWidth = obj.value("width").toInt(m_popupWidth);
+                m_popupHeight = obj.value("height").toInt(m_popupHeight);
+                break;
+            } else if (obj.contains("sizes")) {
+                auto sz = obj.value("sizes").toObject();
+                if (sz.contains("width") && sz.contains("height")) {
+                    m_popupWidth = sz.value("width").toInt(m_popupWidth);
+                    m_popupHeight = sz.value("height").toInt(m_popupHeight);
+                    break;
+                }
+            } else if (obj.contains("popup")) {
+                auto sz = obj.value("popup").toObject();
+                if (sz.contains("width") && sz.contains("height")) {
+                    m_popupWidth = sz.value("width").toInt(m_popupWidth);
+                    m_popupHeight = sz.value("height").toInt(m_popupHeight);
+                    break;
+                }
+            }
+        } else if (path.endsWith(QLatin1String("shell-tokens.json"))) {
+            if (obj.contains("scale")) {
+                m_uiScale = obj.value("scale").toDouble(m_uiScale);
+            }
+            if (obj.contains("sizes")) {
+                auto sz = obj.value("sizes").toObject();
+                if (sz.contains("stowaway")) {
+                    auto st = sz.value("stowaway").toObject();
+                    if (st.contains("width")) m_popupWidth = st.value("width").toInt(m_popupWidth);
+                    if (st.contains("height")) m_popupHeight = st.value("height").toInt(m_popupHeight);
+                } else if (sz.contains("clipboard")) {
+                    auto cb = sz.value("clipboard").toObject();
+                    if (cb.contains("width")) m_popupWidth = cb.value("width").toInt(m_popupWidth);
+                    if (cb.contains("height")) m_popupHeight = cb.value("height").toInt(m_popupHeight);
+                }
+            }
+        } else if (path.endsWith(QLatin1String("shell.json"))) {
+            if (obj.contains("scale")) {
+                m_uiScale = obj.value("scale").toDouble(m_uiScale);
+            }
+            if (obj.contains("stowaway")) {
+                auto st = obj.value("stowaway").toObject();
+                if (st.contains("width")) m_popupWidth = st.value("width").toInt(m_popupWidth);
+                if (st.contains("height")) m_popupHeight = st.value("height").toInt(m_popupHeight);
+            }
+        }
+    }
+
+    // 2. Override with environment variables if present
+    bool okW = false;
+    int envW = qEnvironmentVariableIntValue("STOWAWAY_WIDTH", &okW);
+    if (okW && envW > 0) m_popupWidth = envW;
+
+    bool okH = false;
+    int envH = qEnvironmentVariableIntValue("STOWAWAY_HEIGHT", &okH);
+    if (okH && envH > 0) m_popupHeight = envH;
+
+    bool okS = false;
+    double envS = qEnvironmentVariable("STOWAWAY_SCALE").toDouble(&okS);
+    if (okS && envS > 0.1) m_uiScale = envS;
+
+    // Clamp within bounds
+    m_popupWidth = std::clamp(m_popupWidth, MinWidth, MaxWidth);
+    m_popupHeight = std::clamp(m_popupHeight, MinHeight, MaxHeight);
+    m_uiScale = std::clamp(m_uiScale, 0.5, 3.0);
+}
+
+void AppController::setPopupWidth(int w) {
+    w = std::clamp(w, MinWidth, MaxWidth);
+    if (m_popupWidth != w) {
+        m_popupWidth = w;
+        emit popupSizeChanged();
+        PositionController::instance()->updateSize(m_popupWidth, m_popupHeight);
+    }
+}
+
+void AppController::setPopupHeight(int h) {
+    h = std::clamp(h, MinHeight, MaxHeight);
+    if (m_popupHeight != h) {
+        m_popupHeight = h;
+        emit popupSizeChanged();
+        PositionController::instance()->updateSize(m_popupWidth, m_popupHeight);
+    }
+}
+
+void AppController::setPopupSize(int w, int h) {
+    w = std::clamp(w, MinWidth, MaxWidth);
+    h = std::clamp(h, MinHeight, MaxHeight);
+    if (m_popupWidth != w || m_popupHeight != h) {
+        m_popupWidth = w;
+        m_popupHeight = h;
+        emit popupSizeChanged();
+        PositionController::instance()->updateSize(m_popupWidth, m_popupHeight);
+    }
+}
+
+void AppController::setUiScale(qreal s) {
+    s = std::clamp(s, 0.5, 3.0);
+    if (!qFuzzyCompare(m_uiScale, s)) {
+        m_uiScale = s;
+        if (auto* tokens = stowaway::config::TokensSingleton::instance()) {
+            if (tokens->font()) tokens->font()->setScale(m_uiScale);
+            if (tokens->spacing()) tokens->spacing()->setScale(m_uiScale);
+            if (tokens->padding()) tokens->padding()->setScale(m_uiScale);
+            if (tokens->rounding()) tokens->rounding()->setScale(m_uiScale);
+        }
+        emit uiScaleChanged();
+    }
+}
+
+void AppController::saveUiScale(qreal s) {
+    setUiScale(s);
+    m_saveConfigTimer.start(300);
+}
+
+void AppController::savePopupSize(int w, int h) {
+    setPopupSize(w, h);
+    m_saveConfigTimer.start(300);
+}
+
+void AppController::writeConfigurationToDisk() {
+    QString path = configFilePath();
+    QFileInfo fi(path);
+    QDir().mkpath(fi.dir().path());
+
+    QJsonObject obj;
+    QFile file(path);
+    if (file.open(QIODevice::ReadOnly)) {
+        auto doc = QJsonDocument::fromJson(file.readAll());
+        if (doc.isObject()) obj = doc.object();
+        file.close();
+    }
+
+    obj["width"] = m_popupWidth;
+    obj["height"] = m_popupHeight;
+    obj["scale"] = m_uiScale;
+
+    if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+        file.write(QJsonDocument(obj).toJson(QJsonDocument::Indented));
+        file.close();
+    }
+}
+
+void AppController::resetPopupSize() {
+    if (m_saveConfigTimer.isActive()) m_saveConfigTimer.stop();
+    setUiScale(1.0);
+    setPopupSize(DefaultWidth, DefaultHeight);
+    writeConfigurationToDisk();
 }
 
 bool AppController::sendCommandToRunningInstance(const QString& cmd) {

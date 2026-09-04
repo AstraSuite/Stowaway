@@ -36,8 +36,8 @@ Item {
     StyledRect {
         id: modalBox
         anchors.centerIn: parent
-        width: Math.min(parent.width - 32, 360)
-        height: Math.min(parent.height - 48, 420)
+        width: Math.min(parent.width - 32, 700)
+        height: Math.min(parent.height - 48, 800)
         radius: Tokens.rounding.large
         color: Colours.palette.m3surfaceContainerHigh
         scale: root.active ? 1.0 : 0.9
@@ -59,20 +59,20 @@ Item {
             // Header
             Row {
                 width: parent.width
-                height: 28
+                height: Math.round(28 * AppController.uiScale)
 
                 StyledText {
                     text: root.title
                     font: Tokens.font.title.medium
                     color: Colours.palette.m3onSurface
                     anchors.verticalCenter: parent.verticalCenter
-                    width: parent.width - 36
+                    width: parent.width - Math.round(36 * AppController.uiScale)
                     elide: Text.ElideRight
                 }
 
                 Item {
-                    width: 28
-                    height: 28
+                    width: Math.round(28 * AppController.uiScale)
+                    height: Math.round(28 * AppController.uiScale)
                     anchors.verticalCenter: parent.verticalCenter
 
                     StyledRect {
@@ -82,7 +82,7 @@ Item {
 
                         MaterialIcon {
                             text: "close"
-                            pointSize: 18
+                            pointSize: Math.round(18 * AppController.uiScale)
                             color: Colours.palette.m3onSurfaceVariant
                             anchors.centerIn: parent
                         }
