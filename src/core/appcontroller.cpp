@@ -129,12 +129,17 @@ void AppController::showOverlay(int tab) {
     if (m_hyprEventSocket && m_hyprEventSocket->isOpen()) {
         m_hyprEventSocket->readAll();
     }
-    m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
-    emit targetWindowAddressChanged();
-    PositionController::instance()->calculatePosition(m_popupWidth, m_popupHeight);
-    ClipboardManager::instance()->checkClipboard();
     m_visible = true;
     emit visibilityChanged();
+
+    // Show the overlay before performing synchronous Hyprland IPC so a slow
+    // response cannot delay the first frame.
+    QTimer::singleShot(0, this, [this]() {
+        m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
+        emit targetWindowAddressChanged();
+        PositionController::instance()->calculatePosition(m_popupWidth, m_popupHeight);
+        ClipboardManager::instance()->checkClipboard();
+    });
 }
 
 void AppController::hideOverlay() {
