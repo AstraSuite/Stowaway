@@ -32,7 +32,8 @@ ShellRoot {
             required property var modelData
             screen: modelData
 
-            WlrLayershell.layer: WlrLayer.Overlay
+            WlrLayershell.layer: AppController.visible || closeLayerTimer.running
+                                 ? WlrLayer.Overlay : WlrLayer.Background
             WlrLayershell.keyboardFocus: isCurrentMonitor && overlayActive ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
             WlrLayershell.namespace: "stowaway"
 
@@ -42,7 +43,15 @@ ShellRoot {
             anchors.right: true
 
             color: "transparent"
-            visible: AppController.visible
+            // Keep the current monitor's layer mapped so opening avoids a
+            // layer-shell configure round-trip. It is click-through and idle
+            // rendering is disabled while the overlay is hidden.
+            visible: isCurrentMonitor
+            updatesEnabled: AppController.visible || closeLayerTimer.running
+            mask: Region {
+                item: inputRegion
+                intersection: AppController.visible ? Intersection.Combine : Intersection.Subtract
+            }
 
             readonly property bool isCurrentMonitor: (modelData.name === PositionController.monitorName || Quickshell.screens.length === 1)
             property bool overlayActive: false
@@ -66,9 +75,10 @@ ShellRoot {
                 AppController.hideOverlay();
             }
 
-            // Click outside anywhere on ANY monitor dismisses overlay immediately
+            // Click outside the popup on its monitor dismisses the overlay.
             MouseArea {
                 anchors.fill: parent
+                enabled: AppController.visible
                 hoverEnabled: true
                 onClicked: (mouse) => {
                     if (!layerWindow.isCurrentMonitor) {
@@ -78,6 +88,11 @@ ShellRoot {
                         layerWindow.dismissWithAnimation();
                     }
                 }
+            }
+
+            Item {
+                id: inputRegion
+                anchors.fill: parent
             }
 
             Connections {
@@ -91,35 +106,34 @@ ShellRoot {
                 target: AppController
                 function onVisibilityChanged() {
                     if (AppController.visible) {
+                        if (!layerWindow.isCurrentMonitor) return;
                         closeLayerTimer.stop();
-                        layerWindow.visible = true;
                         layerWindow.overlayActive = true;
                         searchBar.text = "";
                         layerWindow.focusSearchBar();
+                    } else {
+                        if (!layerWindow.isCurrentMonitor) return;
+                        layerWindow.overlayActive = false;
+                        closeLayerTimer.restart();
                     }
-                }
-                function onRequestDismiss() {
-                    if (overlayActive)
-                        overlayActive = false;
-                    closeLayerTimer.restart();
                 }
             }
 
-            // After the exit animation completes, fully unmap the layer so it releases
-            // keyboard focus. C++ then sends the paste keystroke to the refocused target.
+            Connections {
+                target: PositionController
+                function onPositionChanged() {
+                    if (AppController.visible && layerWindow.isCurrentMonitor) {
+                        layerWindow.overlayActive = true;
+                        layerWindow.focusSearchBar();
+                    }
+                }
+            }
+
+            // Keep rendering through the exit animation, then leave the prepared
+            // layer click-through and idle until the next open.
             Timer {
                 id: closeLayerTimer
                 interval: 260
-                onTriggered: {
-                    layerWindow.visible = false;
-                }
-            }
-
-            onVisibleChanged: {
-                if (visible) {
-                    overlayActive = true;
-                    focusSearchBar();
-                }
             }
 
             Timer {
