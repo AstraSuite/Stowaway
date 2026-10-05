@@ -85,7 +85,7 @@ FontTokens::FontTokens(QObject* parent)
     : QObject(parent) {
     QString regularFamily = QStringLiteral("Google Sans Flex");
     QString monoFamily = QStringLiteral("monospace");
-    QString iconFamily = QStringLiteral("Material Symbols Rounded");
+    QString iconFamily = QStringLiteral("Stowaway Material Symbols Rounded");
 
     m_headline = new FontStyle(regularFamily, 24, 28, 32, 36, QFont::Bold, this);
     m_title = new FontStyle(regularFamily, 14, 16, 18, 22, QFont::DemiBold, this);

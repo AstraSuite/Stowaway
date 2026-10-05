@@ -17,7 +17,12 @@ ShellRoot {
         source: Qt.resolvedUrl("assets/fonts/GoogleSansFlex.ttf")
     }
     FontLoader {
+        id: materialSymbolsFont
         source: Qt.resolvedUrl("assets/fonts/MaterialSymbolsRounded.ttf")
+        onStatusChanged: {
+            if (status === FontLoader.Ready)
+                Tokens.font.icon.family = name
+        }
     }
 
     Component.onCompleted: {
