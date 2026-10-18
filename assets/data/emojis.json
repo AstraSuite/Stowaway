@@ -222,6 +222,12 @@
     "keys": "melting face disappear dissolve embarrassed haha heat hot liquid lol melt sarcasm sarcastic"
   },
   {
+    "c": "🫫",
+    "name": "Cracking Face",
+    "cat": "Smileys",
+    "keys": "cracking face breaking crumbling masking resilience reveal tension transformation"
+  },
+  {
     "c": "😉",
     "name": "Winking Face",
     "cat": "Smileys",
@@ -369,7 +375,7 @@
     "c": "🫡",
     "name": "Saluting Face",
     "cat": "Smileys",
-    "keys": "saluting face good luck maam ok respect salute sir troops yes"
+    "keys": "saluting face ok good luck maam respect salute sir troops yes"
   },
   {
     "c": "🤐",
@@ -384,7 +390,7 @@
     "keys": "face with raised eyebrow disapproval disbelief distrust emoji hmm mild skeptic skeptical skepticism surprise what"
   },
   {
-    "c": "😐️",
+    "c": "😐",
     "name": "Neutral Face",
     "cat": "Smileys",
     "keys": "neutral face awkward blank deadpan expressionless fine jealous meh oh shade straight unamused unhappy unimpressed whatever"
@@ -852,7 +858,7 @@
     "keys": "ghost boo creature excited face fairy fairytale fantasy halloween haunting monster scary silly tale"
   },
   {
-    "c": "👽️",
+    "c": "👽",
     "name": "Alien",
     "cat": "Smileys",
     "keys": "alien creature extraterrestrial face fairy fairytale fantasy monster space tale ufo"
@@ -999,7 +1005,7 @@
     "c": "❣️",
     "name": "Heart Exclamation",
     "cat": "Smileys",
-    "keys": "heart exclamation heavy mark punctuation"
+    "keys": "heart exclamation bang heavy mark punctuation"
   },
   {
     "c": "💔",
@@ -1101,7 +1107,7 @@
     "c": "💯",
     "name": "Hundred Points",
     "cat": "Smileys",
-    "keys": "hundred points 100 a agree clearly definitely faithful fleek full keep perfect point score true truth yup"
+    "keys": "hundred points 100 true a agree clearly definitely faithful fleek full keep perfect point score truth yup"
   },
   {
     "c": "💢",
@@ -1200,7 +1206,7 @@
     "keys": "hand with fingers splayed finger raised stop"
   },
   {
-    "c": "✋️",
+    "c": "✋",
     "name": "Raised Hand",
     "cat": "People",
     "keys": "raised hand 5 five high stop"
@@ -1287,7 +1293,7 @@
     "c": "🤟",
     "name": "Love-You Gesture",
     "cat": "People",
-    "keys": "love-you gesture fingers hand ily love three you"
+    "keys": "love-you gesture ily fingers hand love three you"
   },
   {
     "c": "🤘",
@@ -1299,22 +1305,22 @@
     "c": "🤙",
     "name": "Call Me Hand",
     "cat": "People",
-    "keys": "call me hand hang loose shaka"
+    "keys": "call me hand shaka hang loose"
   },
   {
-    "c": "👈️",
+    "c": "👈",
     "name": "Backhand Index Pointing Left",
     "cat": "People",
     "keys": "backhand index pointing left finger hand point"
   },
   {
-    "c": "👉️",
+    "c": "👉",
     "name": "Backhand Index Pointing Right",
     "cat": "People",
     "keys": "backhand index pointing right finger hand point"
   },
   {
-    "c": "👆️",
+    "c": "👆",
     "name": "Backhand Index Pointing Up",
     "cat": "People",
     "keys": "backhand index pointing up finger hand point"
@@ -1326,7 +1332,7 @@
     "keys": "middle finger hand"
   },
   {
-    "c": "👇️",
+    "c": "👇",
     "name": "Backhand Index Pointing Down",
     "cat": "People",
     "keys": "backhand index pointing down finger hand point"
@@ -1344,19 +1350,31 @@
     "keys": "index pointing at the viewer finger hand poke you"
   },
   {
-    "c": "👍️",
+    "c": "👍",
     "name": "Thumbs Up",
     "cat": "People",
     "keys": "thumbs up 1 good hand like thumb yes"
   },
   {
-    "c": "👎️",
+    "c": "👎",
     "name": "Thumbs Down",
     "cat": "People",
     "keys": "thumbs down -1 bad dislike good hand no nope thumb"
   },
   {
-    "c": "✊️",
+    "c": "🫹",
+    "name": "Leftwards Thumb Sign",
+    "cat": "People",
+    "keys": "leftwards thumb sign grip left neutral point that this"
+  },
+  {
+    "c": "🫺",
+    "name": "Rightwards Thumb Sign",
+    "cat": "People",
+    "keys": "rightwards thumb sign grip neutral point right that this"
+  },
+  {
+    "c": "✊",
     "name": "Raised Fist",
     "cat": "People",
     "keys": "raised fist clenched hand punch solidarity"
@@ -1470,7 +1488,7 @@
     "keys": "foot ankle feet kick stomp"
   },
   {
-    "c": "👂️",
+    "c": "👂",
     "name": "Ear",
     "cat": "People",
     "keys": "ear body ears hear hearing listen listening sound"
@@ -1569,7 +1587,7 @@
     "c": "👧",
     "name": "Girl",
     "cat": "People",
-    "keys": "girl bright-eyed child daughter granddaughter kid virgo young younger zodiac"
+    "keys": "girl virgo bright-eyed child daughter granddaughter kid young younger zodiac"
   },
   {
     "c": "🧑",
@@ -2301,7 +2319,7 @@
     "c": "👲",
     "name": "Person With Skullcap",
     "cat": "People",
-    "keys": "person with skullcap cap chinese gua guapi hat mao pi"
+    "keys": "person with skullcap chinese cap gua guapi hat mao pi"
   },
   {
     "c": "🧕",
@@ -2397,19 +2415,19 @@
     "c": "🎅",
     "name": "Santa Claus",
     "cat": "People",
-    "keys": "santa claus celebration christmas fairy fantasy father holiday merry tale xmas"
+    "keys": "santa claus christmas celebration fairy fantasy father holiday merry tale xmas"
   },
   {
     "c": "🤶",
     "name": "Mrs. Claus",
     "cat": "People",
-    "keys": "mrs claus celebration christmas fairy fantasy holiday merry mother santa tale xmas"
+    "keys": "mrs claus christmas celebration fairy fantasy holiday merry mother santa tale xmas"
   },
   {
     "c": "🧑‍🎄",
     "name": "Mx Claus",
     "cat": "People",
-    "keys": "mx claus celebration christmas fairy fantasy holiday merry santa tale xmas"
+    "keys": "mx claus christmas celebration fairy fantasy holiday merry santa tale xmas"
   },
   {
     "c": "🦸",
@@ -2475,19 +2493,19 @@
     "c": "🧚‍♂️",
     "name": "Man Fairy",
     "cat": "People",
-    "keys": "man fairy fairytale fantasy myth oberon person pixie puck tale wings"
+    "keys": "man fairy oberon puck fairytale fantasy myth person pixie tale wings"
   },
   {
     "c": "🧚‍♀️",
     "name": "Woman Fairy",
     "cat": "People",
-    "keys": "woman fairy fairytale fantasy myth person pixie tale titania wings"
+    "keys": "woman fairy titania fairytale fantasy myth person pixie tale wings"
   },
   {
     "c": "🧛",
     "name": "Vampire",
     "cat": "People",
-    "keys": "vampire blood dracula fangs halloween scary supernatural teeth undead"
+    "keys": "vampire dracula blood fangs halloween scary supernatural teeth undead"
   },
   {
     "c": "🧛‍♂️",
@@ -2511,7 +2529,7 @@
     "c": "🧜‍♂️",
     "name": "Merman",
     "cat": "People",
-    "keys": "merman creature fairytale folklore neptune ocean poseidon sea siren trident triton"
+    "keys": "merman neptune poseidon triton creature fairytale folklore ocean sea siren trident"
   },
   {
     "c": "🧜‍♀️",
@@ -2952,7 +2970,7 @@
     "keys": "skier ski snow"
   },
   {
-    "c": "🏂️",
+    "c": "🏂",
     "name": "Snowboarder",
     "cat": "People",
     "keys": "snowboarder ski snow snowboard sport"
@@ -2976,7 +2994,7 @@
     "keys": "woman golfing ball birdie caddy driving golf green pga putt range tee"
   },
   {
-    "c": "🏄️",
+    "c": "🏄",
     "name": "Person Surfing",
     "cat": "People",
     "keys": "person surfing beach ocean sport surf surfer swell waves"
@@ -3012,7 +3030,7 @@
     "keys": "woman rowing boat canoe cruise fishing lake oar paddle raft river row rowboat"
   },
   {
-    "c": "🏊️",
+    "c": "🏊",
     "name": "Person Swimming",
     "cat": "People",
     "keys": "person swimming freestyle sport swim swimmer triathlon"
@@ -3468,7 +3486,7 @@
     "keys": "people hugging comfort embrace farewell friendship goodbye hello hug love thanks"
   },
   {
-    "c": "👪️",
+    "c": "👪",
     "name": "Family",
     "cat": "People",
     "keys": "family child"
@@ -3594,7 +3612,7 @@
     "keys": "dog face adorbs animal pet puppies puppy"
   },
   {
-    "c": "🐕️",
+    "c": "🐕",
     "name": "Dog",
     "cat": "Animals",
     "keys": "dog animal animals dogs pet"
@@ -3642,7 +3660,7 @@
     "keys": "cat face animal kitten kitty pet"
   },
   {
-    "c": "🐈️",
+    "c": "🐈",
     "name": "Cat",
     "cat": "Animals",
     "keys": "cat animal animals cats kitten pet"
@@ -3657,7 +3675,7 @@
     "c": "🦁",
     "name": "Lion",
     "cat": "Animals",
-    "keys": "lion alpha animal face leo mane order rawr roar safari strong zodiac"
+    "keys": "lion leo alpha animal face mane order rawr roar safari strong zodiac"
   },
   {
     "c": "🐯",
@@ -3735,7 +3753,7 @@
     "c": "🐂",
     "name": "Ox",
     "cat": "Animals",
-    "keys": "ox animal animals bull farm taurus zodiac"
+    "keys": "ox taurus animal animals bull farm zodiac"
   },
   {
     "c": "🐃",
@@ -3777,7 +3795,7 @@
     "c": "🐏",
     "name": "Ram",
     "cat": "Animals",
-    "keys": "ram animal aries horns male sheep zodiac zoo"
+    "keys": "ram aries animal horns male sheep zodiac zoo"
   },
   {
     "c": "🐑",
@@ -3789,7 +3807,7 @@
     "c": "🐐",
     "name": "Goat",
     "cat": "Animals",
-    "keys": "goat animal capricorn farm milk zodiac"
+    "keys": "goat capricorn animal farm milk zodiac"
   },
   {
     "c": "🐪",
@@ -3996,7 +4014,7 @@
     "keys": "front-facing baby chick animal bird newborn ornithology"
   },
   {
-    "c": "🐦️",
+    "c": "🐦",
     "name": "Bird",
     "cat": "Animals",
     "keys": "bird animal ornithology"
@@ -4119,7 +4137,7 @@
     "c": "🐍",
     "name": "Snake",
     "cat": "Animals",
-    "keys": "snake animal bearer ophiuchus serpent zodiac"
+    "keys": "snake ophiuchus animal bearer serpent zodiac"
   },
   {
     "c": "🐲",
@@ -4143,7 +4161,7 @@
     "c": "🦖",
     "name": "T-Rex",
     "cat": "Animals",
-    "keys": "t-rex dinosaur rex t tyrannosaurus"
+    "keys": "t-rex rex t tyrannosaurus dinosaur"
   },
   {
     "c": "🐳",
@@ -4176,10 +4194,10 @@
     "keys": "seal animal lion ocean sea"
   },
   {
-    "c": "🐟️",
+    "c": "🐟",
     "name": "Fish",
     "cat": "Animals",
-    "keys": "fish animal dinner fishes fishing pisces zodiac"
+    "keys": "fish pisces animal dinner fishes fishing zodiac"
   },
   {
     "c": "🐠",
@@ -4266,6 +4284,12 @@
     "keys": "butterfly insect pretty"
   },
   {
+    "c": "🫌",
+    "name": "Monarch Butterfly",
+    "cat": "Animals",
+    "keys": "monarch butterfly caterpillar change fragile hope insect metamorphosis migration transformation"
+  },
+  {
     "c": "🐛",
     "name": "Bug",
     "cat": "Animals",
@@ -4299,7 +4323,7 @@
     "c": "🦗",
     "name": "Cricket",
     "cat": "Animals",
-    "keys": "cricket animal bug grasshopper insect orthoptera"
+    "keys": "cricket orthoptera animal bug grasshopper insect"
   },
   {
     "c": "🪳",
@@ -4371,7 +4395,7 @@
     "c": "🪷",
     "name": "Lotus",
     "cat": "Animals",
-    "keys": "lotus beauty buddhism calm flower hinduism peace purity serenity"
+    "keys": "lotus buddhism hinduism beauty calm flower peace purity serenity"
   },
   {
     "c": "🏵️",
@@ -4692,6 +4716,12 @@
     "keys": "cucumber food pickle vegetable"
   },
   {
+    "c": "🫝",
+    "name": "Pickle",
+    "cat": "Food",
+    "keys": "pickle brine condiment cucumber ferment gherkin relish trouble"
+  },
+  {
     "c": "🥬",
     "name": "Leafy Green",
     "cat": "Food",
@@ -4977,7 +5007,7 @@
     "c": "🍙",
     "name": "Rice Ball",
     "cat": "Food",
-    "keys": "rice ball food japanese"
+    "keys": "rice ball japanese food"
   },
   {
     "c": "🍚",
@@ -5043,7 +5073,7 @@
     "c": "🍡",
     "name": "Dango",
     "cat": "Food",
-    "keys": "dango dessert japanese skewer stick sweet"
+    "keys": "dango japanese dessert skewer stick sweet"
   },
   {
     "c": "🥟",
@@ -5160,7 +5190,7 @@
     "keys": "glass of milk drink"
   },
   {
-    "c": "☕️",
+    "c": "☕",
     "name": "Hot Beverage",
     "cat": "Food",
     "keys": "hot beverage cafe caffeine chai coffee drink morning steaming tea"
@@ -5196,7 +5226,7 @@
     "keys": "wine glass alcohol bar beverage booze club drink drinking drinks restaurant"
   },
   {
-    "c": "🍸️",
+    "c": "🍸",
     "name": "Cocktail Glass",
     "cat": "Food",
     "keys": "cocktail glass alcohol bar booze club drink drinking drinks mad martini men"
@@ -5310,19 +5340,19 @@
     "keys": "amphora aquarius cooking drink jug tool weapon zodiac"
   },
   {
-    "c": "🌍️",
+    "c": "🌍",
     "name": "Globe Showing Europe-Africa",
     "cat": "Travel",
-    "keys": "globe showing europe-africa africa earth europe world"
+    "keys": "globe showing europe-africa africa europe earth world"
   },
   {
-    "c": "🌎️",
+    "c": "🌎",
     "name": "Globe Showing Americas",
     "cat": "Travel",
     "keys": "globe showing americas earth world"
   },
   {
-    "c": "🌏️",
+    "c": "🌏",
     "name": "Globe Showing Asia-Australia",
     "cat": "Travel",
     "keys": "globe showing asia-australia asia australia earth world"
@@ -5466,7 +5496,7 @@
     "keys": "derelict house home"
   },
   {
-    "c": "🏠️",
+    "c": "🏠",
     "name": "House",
     "cat": "Travel",
     "keys": "house building country heart home ranch settle simple suburban suburbia where"
@@ -5493,7 +5523,7 @@
     "c": "🏤",
     "name": "Post Office",
     "cat": "Travel",
-    "keys": "post office building european"
+    "keys": "post office european building"
   },
   {
     "c": "🏥",
@@ -5538,7 +5568,7 @@
     "keys": "department store building"
   },
   {
-    "c": "🏭️",
+    "c": "🏭",
     "name": "Factory",
     "cat": "Travel",
     "keys": "factory building"
@@ -5553,7 +5583,7 @@
     "c": "🏰",
     "name": "Castle",
     "cat": "Travel",
-    "keys": "castle building european"
+    "keys": "castle european building"
   },
   {
     "c": "💒",
@@ -5574,16 +5604,16 @@
     "keys": "statue of liberty new ny nyc york"
   },
   {
-    "c": "⛪️",
+    "c": "⛪",
     "name": "Church",
     "cat": "Travel",
-    "keys": "church bless chapel christian cross religion"
+    "keys": "church christian bless chapel cross religion"
   },
   {
     "c": "🕌",
     "name": "Mosque",
     "cat": "Travel",
-    "keys": "mosque islam masjid muslim religion"
+    "keys": "mosque muslim islam masjid religion"
   },
   {
     "c": "🛕",
@@ -5607,16 +5637,16 @@
     "c": "🕋",
     "name": "Kaaba",
     "cat": "Travel",
-    "keys": "kaaba hajj islam muslim religion umrah"
+    "keys": "kaaba muslim hajj islam religion umrah"
   },
   {
-    "c": "⛲️",
+    "c": "⛲",
     "name": "Fountain",
     "cat": "Travel",
     "keys": "fountain"
   },
   {
-    "c": "⛺️",
+    "c": "⛺",
     "name": "Tent",
     "cat": "Travel",
     "keys": "tent camping"
@@ -5742,7 +5772,7 @@
     "keys": "train arrived choo railway"
   },
   {
-    "c": "🚇️",
+    "c": "🚇",
     "name": "Metro",
     "cat": "Travel",
     "keys": "metro subway travel"
@@ -5790,7 +5820,7 @@
     "keys": "bus school vehicle"
   },
   {
-    "c": "🚍️",
+    "c": "🚍",
     "name": "Oncoming Bus",
     "cat": "Travel",
     "keys": "oncoming bus cars"
@@ -5808,7 +5838,7 @@
     "keys": "minibus bus drive van vehicle"
   },
   {
-    "c": "🚑️",
+    "c": "🚑",
     "name": "Ambulance",
     "cat": "Travel",
     "keys": "ambulance emergency vehicle"
@@ -5826,7 +5856,7 @@
     "keys": "police car 50 cops patrol"
   },
   {
-    "c": "🚔️",
+    "c": "🚔",
     "name": "Oncoming Police Car",
     "cat": "Travel",
     "keys": "oncoming police car"
@@ -5850,7 +5880,7 @@
     "keys": "automobile car driving vehicle"
   },
   {
-    "c": "🚘️",
+    "c": "🚘",
     "name": "Oncoming Automobile",
     "cat": "Travel",
     "keys": "oncoming automobile car cars drove vehicle"
@@ -5922,7 +5952,7 @@
     "keys": "auto rickshaw tuk"
   },
   {
-    "c": "🚲️",
+    "c": "🚲",
     "name": "Bicycle",
     "cat": "Travel",
     "keys": "bicycle bike class cycle cycling cyclist gang ride spin spinning"
@@ -5970,7 +6000,7 @@
     "keys": "oil drum"
   },
   {
-    "c": "⛽️",
+    "c": "⛽",
     "name": "Fuel Pump",
     "cat": "Travel",
     "keys": "fuel pump diesel fuelpump gas gasoline station"
@@ -6012,7 +6042,13 @@
     "keys": "construction barrier"
   },
   {
-    "c": "⚓️",
+    "c": "🛙",
+    "name": "Lighthouse",
+    "cat": "Travel",
+    "keys": "lighthouse beacon enlightenment guidance hope light maritime navigation sea signal"
+  },
+  {
+    "c": "⚓",
     "name": "Anchor",
     "cat": "Travel",
     "keys": "anchor ship tool"
@@ -6024,7 +6060,7 @@
     "keys": "ring buoy float life lifesaver preserver rescue safety save saver swim"
   },
   {
-    "c": "⛵️",
+    "c": "⛵",
     "name": "Sailboat",
     "cat": "Travel",
     "keys": "sailboat boat resort sailing sea yacht"
@@ -6141,7 +6177,7 @@
     "c": "🛸",
     "name": "Flying Saucer",
     "cat": "Travel",
-    "keys": "flying saucer aliens extra terrestrial ufo"
+    "keys": "flying saucer ufo aliens extra terrestrial"
   },
   {
     "c": "🛎️",
@@ -6156,25 +6192,25 @@
     "keys": "luggage bag packing roller suitcase travel"
   },
   {
-    "c": "⌛️",
+    "c": "⌛",
     "name": "Hourglass Done",
     "cat": "Travel",
     "keys": "hourglass done sand time timer"
   },
   {
-    "c": "⏳️",
+    "c": "⏳",
     "name": "Hourglass Not Done",
     "cat": "Travel",
     "keys": "hourglass not done flowing hours sand timer waiting yolo"
   },
   {
-    "c": "⌚️",
+    "c": "⌚",
     "name": "Watch",
     "cat": "Travel",
     "keys": "watch clock time"
   },
   {
-    "c": "⏰️",
+    "c": "⏰",
     "name": "Alarm Clock",
     "cat": "Travel",
     "keys": "alarm clock hours hrs late time waiting"
@@ -6198,145 +6234,145 @@
     "keys": "mantelpiece clock time"
   },
   {
-    "c": "🕛️",
+    "c": "🕛",
     "name": "Twelve O’Clock",
     "cat": "Travel",
     "keys": "twelve oclock 12 1200 clock time"
   },
   {
-    "c": "🕧️",
+    "c": "🕧",
     "name": "Twelve-Thirty",
     "cat": "Travel",
     "keys": "twelve-thirty 12 1230 30 clock thirty time twelve"
   },
   {
-    "c": "🕐️",
+    "c": "🕐",
     "name": "One O’Clock",
     "cat": "Travel",
     "keys": "one oclock 1 100 clock time"
   },
   {
-    "c": "🕜️",
+    "c": "🕜",
     "name": "One-Thirty",
     "cat": "Travel",
     "keys": "one-thirty 1 130 30 clock one thirty time"
   },
   {
-    "c": "🕑️",
+    "c": "🕑",
     "name": "Two O’Clock",
     "cat": "Travel",
     "keys": "two oclock 2 200 clock time"
   },
   {
-    "c": "🕝️",
+    "c": "🕝",
     "name": "Two-Thirty",
     "cat": "Travel",
     "keys": "two-thirty 2 230 30 clock thirty time two"
   },
   {
-    "c": "🕒️",
+    "c": "🕒",
     "name": "Three O’Clock",
     "cat": "Travel",
     "keys": "three oclock 3 300 clock time"
   },
   {
-    "c": "🕞️",
+    "c": "🕞",
     "name": "Three-Thirty",
     "cat": "Travel",
     "keys": "three-thirty 3 30 330 clock thirty three time"
   },
   {
-    "c": "🕓️",
+    "c": "🕓",
     "name": "Four O’Clock",
     "cat": "Travel",
     "keys": "four oclock 4 400 clock time"
   },
   {
-    "c": "🕟️",
+    "c": "🕟",
     "name": "Four-Thirty",
     "cat": "Travel",
     "keys": "four-thirty 30 4 430 clock four thirty time"
   },
   {
-    "c": "🕔️",
+    "c": "🕔",
     "name": "Five O’Clock",
     "cat": "Travel",
     "keys": "five oclock 5 500 clock time"
   },
   {
-    "c": "🕠️",
+    "c": "🕠",
     "name": "Five-Thirty",
     "cat": "Travel",
     "keys": "five-thirty 30 5 530 clock five thirty time"
   },
   {
-    "c": "🕕️",
+    "c": "🕕",
     "name": "Six O’Clock",
     "cat": "Travel",
     "keys": "six oclock 6 600 clock time"
   },
   {
-    "c": "🕡️",
+    "c": "🕡",
     "name": "Six-Thirty",
     "cat": "Travel",
     "keys": "six-thirty 30 6 630 clock six thirty"
   },
   {
-    "c": "🕖️",
+    "c": "🕖",
     "name": "Seven O’Clock",
     "cat": "Travel",
     "keys": "seven oclock 0 7 700 clock"
   },
   {
-    "c": "🕢️",
+    "c": "🕢",
     "name": "Seven-Thirty",
     "cat": "Travel",
     "keys": "seven-thirty 30 7 730 clock seven thirty"
   },
   {
-    "c": "🕗️",
+    "c": "🕗",
     "name": "Eight O’Clock",
     "cat": "Travel",
     "keys": "eight oclock 8 800 clock time"
   },
   {
-    "c": "🕣️",
+    "c": "🕣",
     "name": "Eight-Thirty",
     "cat": "Travel",
     "keys": "eight-thirty 30 8 830 clock eight thirty time"
   },
   {
-    "c": "🕘️",
+    "c": "🕘",
     "name": "Nine O’Clock",
     "cat": "Travel",
     "keys": "nine oclock 9 900 clock time"
   },
   {
-    "c": "🕤️",
+    "c": "🕤",
     "name": "Nine-Thirty",
     "cat": "Travel",
     "keys": "nine-thirty 30 9 930 clock nine thirty time"
   },
   {
-    "c": "🕙️",
+    "c": "🕙",
     "name": "Ten O’Clock",
     "cat": "Travel",
     "keys": "ten oclock 0 10 1000 clock"
   },
   {
-    "c": "🕥️",
+    "c": "🕥",
     "name": "Ten-Thirty",
     "cat": "Travel",
     "keys": "ten-thirty 10 1030 30 clock ten thirty time"
   },
   {
-    "c": "🕚️",
+    "c": "🕚",
     "name": "Eleven O’Clock",
     "cat": "Travel",
     "keys": "eleven oclock 11 1100 clock time"
   },
   {
-    "c": "🕦️",
+    "c": "🕦",
     "name": "Eleven-Thirty",
     "cat": "Travel",
     "keys": "eleven-thirty 11 1130 30 clock eleven thirty time"
@@ -6366,7 +6402,7 @@
     "keys": "waxing gibbous moon space"
   },
   {
-    "c": "🌕️",
+    "c": "🌕",
     "name": "Full Moon",
     "cat": "Travel",
     "keys": "full moon space"
@@ -6408,7 +6444,7 @@
     "keys": "first quarter moon face space"
   },
   {
-    "c": "🌜️",
+    "c": "🌜",
     "name": "Last Quarter Moon Face",
     "cat": "Travel",
     "keys": "last quarter moon face dreams"
@@ -6444,7 +6480,7 @@
     "keys": "ringed planet saturn saturnine"
   },
   {
-    "c": "⭐️",
+    "c": "⭐",
     "name": "Star",
     "cat": "Travel",
     "keys": "star astronomy medium stars white"
@@ -6474,7 +6510,7 @@
     "keys": "cloud weather"
   },
   {
-    "c": "⛅️",
+    "c": "⛅",
     "name": "Sun Behind Cloud",
     "cat": "Travel",
     "keys": "sun behind cloud cloudy weather"
@@ -6564,7 +6600,7 @@
     "keys": "umbrella clothing rain"
   },
   {
-    "c": "☔️",
+    "c": "☔",
     "name": "Umbrella With Rain Drops",
     "cat": "Travel",
     "keys": "umbrella with rain drops clothing drop weather"
@@ -6576,7 +6612,7 @@
     "keys": "umbrella on ground rain sun"
   },
   {
-    "c": "⚡️",
+    "c": "⚡",
     "name": "High Voltage",
     "cat": "Travel",
     "keys": "high voltage danger electric electricity lightning nature thunder thunderbolt zap"
@@ -6594,7 +6630,7 @@
     "keys": "snowman cold man snow"
   },
   {
-    "c": "⛄️",
+    "c": "⛄",
     "name": "Snowman Without Snow",
     "cat": "Travel",
     "keys": "snowman without snow cold man"
@@ -6604,6 +6640,12 @@
     "name": "Comet",
     "cat": "Travel",
     "keys": "comet space"
+  },
+  {
+    "c": "🪋",
+    "name": "Meteor",
+    "cat": "Travel",
+    "keys": "meteor apocalypse falling fireball gravity rock space star"
   },
   {
     "c": "🔥",
@@ -6654,7 +6696,7 @@
     "keys": "firecracker dynamite explosive fire fireworks light pop popping spark"
   },
   {
-    "c": "✨️",
+    "c": "✨",
     "name": "Sparkles",
     "cat": "Activities",
     "keys": "sparkles magic sparkle star"
@@ -6681,13 +6723,13 @@
     "c": "🎋",
     "name": "Tanabata Tree",
     "cat": "Activities",
-    "keys": "tanabata tree banner celebration japanese"
+    "keys": "tanabata tree japanese banner celebration"
   },
   {
     "c": "🎍",
     "name": "Pine Decoration",
     "cat": "Activities",
-    "keys": "pine decoration bamboo celebration japanese plant"
+    "keys": "pine decoration japanese bamboo celebration plant"
   },
   {
     "c": "🎎",
@@ -6756,7 +6798,7 @@
     "keys": "military medal award celebration"
   },
   {
-    "c": "🏆️",
+    "c": "🏆",
     "name": "Trophy",
     "cat": "Activities",
     "keys": "trophy champion champs prize slay sport victory win winning"
@@ -6786,13 +6828,13 @@
     "keys": "3rd place medal bronze third"
   },
   {
-    "c": "⚽️",
+    "c": "⚽",
     "name": "Soccer Ball",
     "cat": "Activities",
     "keys": "soccer ball football futbol sport"
   },
   {
-    "c": "⚾️",
+    "c": "⚾",
     "name": "Baseball",
     "cat": "Activities",
     "keys": "baseball ball sport"
@@ -6900,7 +6942,7 @@
     "keys": "goal net"
   },
   {
-    "c": "⛳️",
+    "c": "⛳",
     "name": "Flag In Hole",
     "cat": "Activities",
     "keys": "flag in hole golf sport"
@@ -6990,7 +7032,7 @@
     "keys": "magic wand magician witch wizard"
   },
   {
-    "c": "🎮️",
+    "c": "🎮",
     "name": "Video Game",
     "cat": "Activities",
     "keys": "video game controller entertainment"
@@ -7080,7 +7122,7 @@
     "keys": "joker card game wildcard"
   },
   {
-    "c": "🀄️",
+    "c": "🀄",
     "name": "Mahjong Red Dragon",
     "cat": "Activities",
     "keys": "mahjong red dragon game"
@@ -7089,10 +7131,10 @@
     "c": "🎴",
     "name": "Flower Playing Cards",
     "cat": "Activities",
-    "keys": "flower playing cards card game japanese"
+    "keys": "flower playing cards japanese card game"
   },
   {
-    "c": "🎭️",
+    "c": "🎭",
     "name": "Performing Arts",
     "cat": "Activities",
     "keys": "performing arts actor actress art entertainment mask theater theatre thespian"
@@ -7134,7 +7176,7 @@
     "keys": "knot cord rope tangled tie twine twist"
   },
   {
-    "c": "👓️",
+    "c": "👓",
     "name": "Glasses",
     "cat": "Objects",
     "keys": "glasses clothing eye eyeglasses eyewear"
@@ -7368,7 +7410,7 @@
     "keys": "top hat clothes clothing fancy formal magic tophat"
   },
   {
-    "c": "🎓️",
+    "c": "🎓",
     "name": "Graduation Cap",
     "cat": "Objects",
     "keys": "graduation cap celebration clothing education hat scholar"
@@ -7422,7 +7464,7 @@
     "keys": "muted speaker mute quiet silent sound"
   },
   {
-    "c": "🔈️",
+    "c": "🔈",
     "name": "Speaker Low Volume",
     "cat": "Objects",
     "keys": "speaker low volume soft sound"
@@ -7512,13 +7554,13 @@
     "keys": "microphone karaoke mic music sing sound"
   },
   {
-    "c": "🎧️",
+    "c": "🎧",
     "name": "Headphone",
     "cat": "Objects",
     "keys": "headphone earbud sound"
   },
   {
-    "c": "📻️",
+    "c": "📻",
     "name": "Radio",
     "cat": "Objects",
     "keys": "radio entertainment tbt video"
@@ -7626,7 +7668,7 @@
     "keys": "telephone receiver communication phone voip"
   },
   {
-    "c": "📟️",
+    "c": "📟",
     "name": "Pager",
     "cat": "Objects",
     "keys": "pager communication"
@@ -7656,7 +7698,7 @@
     "keys": "electric plug electricity"
   },
   {
-    "c": "💻️",
+    "c": "💻",
     "name": "Laptop",
     "cat": "Objects",
     "keys": "laptop computer office pc personal"
@@ -7704,10 +7746,10 @@
     "keys": "floppy disk computer"
   },
   {
-    "c": "💿️",
+    "c": "💿",
     "name": "Optical Disk",
     "cat": "Objects",
-    "keys": "optical disk blu-ray cd computer dvd"
+    "keys": "optical disk cd blu-ray computer dvd"
   },
   {
     "c": "📀",
@@ -7740,19 +7782,19 @@
     "keys": "film projector cinema movie video"
   },
   {
-    "c": "🎬️",
+    "c": "🎬",
     "name": "Clapper Board",
     "cat": "Objects",
     "keys": "clapper board action movie"
   },
   {
-    "c": "📺️",
+    "c": "📺",
     "name": "Television",
     "cat": "Objects",
     "keys": "television tv video"
   },
   {
-    "c": "📷️",
+    "c": "📷",
     "name": "Camera",
     "cat": "Objects",
     "keys": "camera photo selfie snap tbt trip video"
@@ -7764,7 +7806,7 @@
     "keys": "camera with flash video"
   },
   {
-    "c": "📹️",
+    "c": "📹",
     "name": "Video Camera",
     "cat": "Objects",
     "keys": "video camera camcorder tbt"
@@ -7776,7 +7818,7 @@
     "keys": "videocassette old school tape vcr vhs video"
   },
   {
-    "c": "🔍️",
+    "c": "🔍",
     "name": "Magnifying Glass Tilted Left",
     "cat": "Objects",
     "keys": "magnifying glass tilted left lab left-pointing science search tool"
@@ -7854,7 +7896,7 @@
     "keys": "orange book education fantasy library reading"
   },
   {
-    "c": "📚️",
+    "c": "📚",
     "name": "Books",
     "cat": "Objects",
     "keys": "books book education fantasy knowledge library novels reading school study"
@@ -7926,7 +7968,7 @@
     "keys": "coin dollar euro gold metal money rich silver treasure"
   },
   {
-    "c": "💰️",
+    "c": "💰",
     "name": "Money Bag",
     "cat": "Objects",
     "keys": "money bag bank bet billion cash cost dollar gold million moneybag paid paying pot rich win"
@@ -7968,7 +8010,7 @@
     "keys": "money with wings bank banknote bill billion cash dollar fly million note pay"
   },
   {
-    "c": "💳️",
+    "c": "💳",
     "name": "Credit Card",
     "cat": "Objects",
     "keys": "credit card bank cash charge money pay"
@@ -8010,43 +8052,43 @@
     "keys": "envelope with arrow communication down e-mail email letter mail outgoing send sent"
   },
   {
-    "c": "📤️",
+    "c": "📤",
     "name": "Outbox Tray",
     "cat": "Objects",
     "keys": "outbox tray box email letter mail sent"
   },
   {
-    "c": "📥️",
+    "c": "📥",
     "name": "Inbox Tray",
     "cat": "Objects",
     "keys": "inbox tray box email letter mail receive zero"
   },
   {
-    "c": "📦️",
+    "c": "📦",
     "name": "Package",
     "cat": "Objects",
     "keys": "package box communication delivery parcel shipping"
   },
   {
-    "c": "📫️",
+    "c": "📫",
     "name": "Closed Mailbox With Raised Flag",
     "cat": "Objects",
     "keys": "closed mailbox with raised flag communication mail postbox"
   },
   {
-    "c": "📪️",
+    "c": "📪",
     "name": "Closed Mailbox With Lowered Flag",
     "cat": "Objects",
     "keys": "closed mailbox with lowered flag mail postbox"
   },
   {
-    "c": "📬️",
+    "c": "📬",
     "name": "Open Mailbox With Raised Flag",
     "cat": "Objects",
     "keys": "open mailbox with raised flag mail postbox"
   },
   {
-    "c": "📭️",
+    "c": "📭",
     "name": "Open Mailbox With Lowered Flag",
     "cat": "Objects",
     "keys": "open mailbox with lowered flag mail postbox"
@@ -8104,6 +8146,12 @@
     "name": "Memo",
     "cat": "Objects",
     "keys": "memo communication media notes pencil"
+  },
+  {
+    "c": "🪌",
+    "name": "Eraser",
+    "cat": "Objects",
+    "keys": "eraser correction delete drawing erase error mistake remove rub undo writing"
   },
   {
     "c": "💼",
@@ -8178,7 +8226,7 @@
     "keys": "bar chart data graph"
   },
   {
-    "c": "📋️",
+    "c": "📋",
     "name": "Clipboard",
     "cat": "Objects",
     "keys": "clipboard do list notes"
@@ -8244,13 +8292,13 @@
     "keys": "wastebasket can garbage trash waste"
   },
   {
-    "c": "🔒️",
+    "c": "🔒",
     "name": "Locked",
     "cat": "Objects",
     "keys": "locked closed lock private"
   },
   {
-    "c": "🔓️",
+    "c": "🔓",
     "name": "Unlocked",
     "cat": "Objects",
     "keys": "unlocked cracked lock open unlock"
@@ -8278,6 +8326,12 @@
     "name": "Old Key",
     "cat": "Objects",
     "keys": "old key clue lock"
+  },
+  {
+    "c": "🪍",
+    "name": "Net With Handle",
+    "cat": "Objects",
+    "keys": "net with handle catch collect mesh trap"
   },
   {
     "c": "🔨",
@@ -8322,7 +8376,7 @@
     "keys": "crossed swords weapon"
   },
   {
-    "c": "💣️",
+    "c": "💣",
     "name": "Bomb",
     "cat": "Objects",
     "keys": "bomb boom comic dangerous explosion hot"
@@ -8337,7 +8391,7 @@
     "c": "🏹",
     "name": "Bow And Arrow",
     "cat": "Objects",
-    "keys": "bow and arrow archer archery sagittarius tool weapon zodiac"
+    "keys": "bow and arrow sagittarius archer archery tool weapon zodiac"
   },
   {
     "c": "🛡️",
@@ -8385,7 +8439,7 @@
     "c": "⚖️",
     "name": "Balance Scale",
     "cat": "Objects",
-    "keys": "balance scale justice libra scales tool weight zodiac"
+    "keys": "balance scale libra justice scales tool weight zodiac"
   },
   {
     "c": "🦯",
@@ -8709,7 +8763,7 @@
     "c": "🪬",
     "name": "Hamsa",
     "cat": "Objects",
-    "keys": "hamsa amulet fatima fortune guide hand mary miriam palm protect protection"
+    "keys": "hamsa fatima mary miriam amulet fortune guide hand palm protect protection"
   },
   {
     "c": "🗿",
@@ -8727,7 +8781,7 @@
     "c": "🪪",
     "name": "Identification Card",
     "cat": "Objects",
-    "keys": "identification card credentials document id license security"
+    "keys": "identification card id credentials document license security"
   },
   {
     "c": "🏧",
@@ -8748,31 +8802,31 @@
     "keys": "potable water drinking"
   },
   {
-    "c": "♿️",
+    "c": "♿",
     "name": "Wheelchair Symbol",
     "cat": "Symbols",
     "keys": "wheelchair symbol access handicap"
   },
   {
-    "c": "🚹️",
+    "c": "🚹",
     "name": "Men’S Room",
     "cat": "Symbols",
-    "keys": "mens room bathroom lavatory man restroom toilet wc"
+    "keys": "mens room wc bathroom lavatory man restroom toilet"
   },
   {
-    "c": "🚺️",
+    "c": "🚺",
     "name": "Women’S Room",
     "cat": "Symbols",
-    "keys": "womens room bathroom lavatory restroom toilet wc woman"
+    "keys": "womens room wc bathroom lavatory restroom toilet woman"
   },
   {
     "c": "🚻",
     "name": "Restroom",
     "cat": "Symbols",
-    "keys": "restroom bathroom lavatory toilet wc"
+    "keys": "restroom wc bathroom lavatory toilet"
   },
   {
-    "c": "🚼️",
+    "c": "🚼",
     "name": "Baby Symbol",
     "cat": "Symbols",
     "keys": "baby symbol changing"
@@ -8781,7 +8835,7 @@
     "c": "🚾",
     "name": "Water Closet",
     "cat": "Symbols",
-    "keys": "water closet bathroom lavatory restroom toilet wc"
+    "keys": "water closet wc bathroom lavatory restroom toilet"
   },
   {
     "c": "🛂",
@@ -8820,7 +8874,7 @@
     "keys": "children crossing child pedestrian traffic"
   },
   {
-    "c": "⛔️",
+    "c": "⛔",
     "name": "No Entry",
     "cat": "Symbols",
     "keys": "no entry do fail forbidden not pass prohibited traffic"
@@ -8838,7 +8892,7 @@
     "keys": "no bicycles bicycle bike forbidden not prohibited"
   },
   {
-    "c": "🚭️",
+    "c": "🚭",
     "name": "No Smoking",
     "cat": "Symbols",
     "keys": "no smoking forbidden not prohibited smoke"
@@ -9051,7 +9105,7 @@
     "c": "✝️",
     "name": "Latin Cross",
     "cat": "Symbols",
-    "keys": "latin cross christ christian religion"
+    "keys": "latin cross christian christ religion"
   },
   {
     "c": "☦️",
@@ -9063,7 +9117,7 @@
     "c": "☪️",
     "name": "Star And Crescent",
     "cat": "Symbols",
-    "keys": "star and crescent islam muslim ramadan religion"
+    "keys": "star and crescent muslim islam ramadan religion"
   },
   {
     "c": "☮️",
@@ -9087,82 +9141,82 @@
     "c": "🪯",
     "name": "Khanda",
     "cat": "Symbols",
-    "keys": "khanda deg fateh khalsa religion sikh sikhism tegh"
+    "keys": "khanda deg fateh khalsa sikh sikhism tegh religion"
   },
   {
-    "c": "♈️",
+    "c": "♈",
     "name": "Aries",
     "cat": "Symbols",
     "keys": "aries horoscope ram zodiac"
   },
   {
-    "c": "♉️",
+    "c": "♉",
     "name": "Taurus",
     "cat": "Symbols",
     "keys": "taurus bull horoscope ox zodiac"
   },
   {
-    "c": "♊️",
+    "c": "♊",
     "name": "Gemini",
     "cat": "Symbols",
     "keys": "gemini horoscope twins zodiac"
   },
   {
-    "c": "♋️",
+    "c": "♋",
     "name": "Cancer",
     "cat": "Symbols",
     "keys": "cancer crab horoscope zodiac"
   },
   {
-    "c": "♌️",
+    "c": "♌",
     "name": "Leo",
     "cat": "Symbols",
     "keys": "leo horoscope lion zodiac"
   },
   {
-    "c": "♍️",
+    "c": "♍",
     "name": "Virgo",
     "cat": "Symbols",
     "keys": "virgo horoscope zodiac"
   },
   {
-    "c": "♎️",
+    "c": "♎",
     "name": "Libra",
     "cat": "Symbols",
     "keys": "libra balance horoscope justice scales zodiac"
   },
   {
-    "c": "♏️",
+    "c": "♏",
     "name": "Scorpio",
     "cat": "Symbols",
-    "keys": "scorpio horoscope scorpion scorpius zodiac"
+    "keys": "scorpio scorpius horoscope scorpion zodiac"
   },
   {
-    "c": "♐️",
+    "c": "♐",
     "name": "Sagittarius",
     "cat": "Symbols",
     "keys": "sagittarius archer horoscope zodiac"
   },
   {
-    "c": "♑️",
+    "c": "♑",
     "name": "Capricorn",
     "cat": "Symbols",
     "keys": "capricorn goat horoscope zodiac"
   },
   {
-    "c": "♒️",
+    "c": "♒",
     "name": "Aquarius",
     "cat": "Symbols",
     "keys": "aquarius bearer horoscope water zodiac"
   },
   {
-    "c": "♓️",
+    "c": "♓",
     "name": "Pisces",
     "cat": "Symbols",
     "keys": "pisces fish horoscope zodiac"
   },
   {
-    "c": "⛎️",
+    "c": "⛎",
     "name": "Ophiuchus",
     "cat": "Symbols",
     "keys": "ophiuchus bearer serpent snake zodiac"
@@ -9192,7 +9246,7 @@
     "keys": "play button arrow right triangle"
   },
   {
-    "c": "⏩️",
+    "c": "⏩",
     "name": "Fast-Forward Button",
     "cat": "Symbols",
     "keys": "fast-forward button arrow double fast forward"
@@ -9216,7 +9270,7 @@
     "keys": "reverse button arrow left triangle"
   },
   {
-    "c": "⏪️",
+    "c": "⏪",
     "name": "Fast Reverse Button",
     "cat": "Symbols",
     "keys": "fast reverse button arrow double rewind"
@@ -9234,7 +9288,7 @@
     "keys": "upwards button arrow red up"
   },
   {
-    "c": "⏫️",
+    "c": "⏫",
     "name": "Fast Up Button",
     "cat": "Symbols",
     "keys": "fast up button arrow double"
@@ -9246,7 +9300,7 @@
     "keys": "downwards button arrow down red"
   },
   {
-    "c": "⏬️",
+    "c": "⏬",
     "name": "Fast Down Button",
     "cat": "Symbols",
     "keys": "fast down button arrow double"
@@ -9342,19 +9396,19 @@
     "keys": "multiply cancel multiplication sign x"
   },
   {
-    "c": "➕️",
+    "c": "➕",
     "name": "Plus",
     "cat": "Symbols",
     "keys": "plus"
   },
   {
-    "c": "➖️",
+    "c": "➖",
     "name": "Minus",
     "cat": "Symbols",
     "keys": "minus - heavy math sign"
   },
   {
-    "c": "➗️",
+    "c": "➗",
     "name": "Divide",
     "cat": "Symbols",
     "keys": "divide division heavy math sign"
@@ -9384,28 +9438,28 @@
     "keys": "exclamation question mark interrobang punctuation"
   },
   {
-    "c": "❓️",
+    "c": "❓",
     "name": "Red Question Mark",
     "cat": "Symbols",
     "keys": "red question mark punctuation"
   },
   {
-    "c": "❔️",
+    "c": "❔",
     "name": "White Question Mark",
     "cat": "Symbols",
     "keys": "white question mark outlined punctuation"
   },
   {
-    "c": "❕️",
+    "c": "❕",
     "name": "White Exclamation Mark",
     "cat": "Symbols",
-    "keys": "white exclamation mark outlined punctuation"
+    "keys": "white exclamation mark bang outlined punctuation"
   },
   {
-    "c": "❗️",
+    "c": "❗",
     "name": "Red Exclamation Mark",
     "cat": "Symbols",
-    "keys": "red exclamation mark punctuation"
+    "keys": "red exclamation mark bang punctuation"
   },
   {
     "c": "〰️",
@@ -9462,13 +9516,13 @@
     "keys": "japanese symbol for beginner chevron green leaf tool yellow"
   },
   {
-    "c": "⭕️",
+    "c": "⭕",
     "name": "Hollow Red Circle",
     "cat": "Symbols",
     "keys": "hollow red circle heavy large o"
   },
   {
-    "c": "✅️",
+    "c": "✅",
     "name": "Check Mark Button",
     "cat": "Symbols",
     "keys": "check mark button checked checkmark complete completed done fixed tick"
@@ -9486,25 +9540,25 @@
     "keys": "check mark checked checkmark done heavy tick"
   },
   {
-    "c": "❌️",
+    "c": "❌",
     "name": "Cross Mark",
     "cat": "Symbols",
     "keys": "cross mark cancel multiplication multiply x"
   },
   {
-    "c": "❎️",
+    "c": "❎",
     "name": "Cross Mark Button",
     "cat": "Symbols",
     "keys": "cross mark button multiplication multiply square x"
   },
   {
-    "c": "➰️",
+    "c": "➰",
     "name": "Curly Loop",
     "cat": "Symbols",
     "keys": "curly loop curl"
   },
   {
-    "c": "➿️",
+    "c": "➿",
     "name": "Double Curly Loop",
     "cat": "Symbols",
     "keys": "double curly loop curl"
@@ -9792,7 +9846,7 @@
     "keys": "japanese not free of charge button ideograph"
   },
   {
-    "c": "🈯️",
+    "c": "🈯",
     "name": "Japanese “Reserved” Button",
     "cat": "Symbols",
     "keys": "japanese reserved button ideograph"
@@ -9810,7 +9864,7 @@
     "keys": "japanese discount button ideograph"
   },
   {
-    "c": "🈚️",
+    "c": "🈚",
     "name": "Japanese “Free Of Charge” Button",
     "cat": "Symbols",
     "keys": "japanese free of charge button ideograph"
@@ -9912,13 +9966,13 @@
     "keys": "brown circle"
   },
   {
-    "c": "⚫️",
+    "c": "⚫",
     "name": "Black Circle",
     "cat": "Symbols",
     "keys": "black circle geometric"
   },
   {
-    "c": "⚪️",
+    "c": "⚪",
     "name": "White Circle",
     "cat": "Symbols",
     "keys": "white circle geometric"
@@ -9966,13 +10020,13 @@
     "keys": "brown square"
   },
   {
-    "c": "⬛️",
+    "c": "⬛",
     "name": "Black Large Square",
     "cat": "Symbols",
     "keys": "black large square geometric"
   },
   {
-    "c": "⬜️",
+    "c": "⬜",
     "name": "White Large Square",
     "cat": "Symbols",
     "keys": "white large square geometric"
@@ -9990,13 +10044,13 @@
     "keys": "white medium square geometric"
   },
   {
-    "c": "◾️",
+    "c": "◾",
     "name": "Black Medium-Small Square",
     "cat": "Symbols",
     "keys": "black medium-small square geometric"
   },
   {
-    "c": "◽️",
+    "c": "◽",
     "name": "White Medium-Small Square",
     "cat": "Symbols",
     "keys": "white medium-small square geometric"
@@ -10089,7 +10143,7 @@
     "c": "🎌",
     "name": "Crossed Flags",
     "cat": "Flags",
-    "keys": "crossed flags celebration cross japanese"
+    "keys": "crossed flags japanese celebration cross"
   },
   {
     "c": "🏴",
@@ -10119,7 +10173,7 @@
     "c": "🏴‍☠️",
     "name": "Pirate Flag",
     "cat": "Flags",
-    "keys": "pirate flag jolly plunder roger treasure"
+    "keys": "pirate flag jolly roger plunder treasure"
   },
   {
     "c": "🇦🇨",
@@ -10729,9 +10783,9 @@
   },
   {
     "c": "🇭🇲",
-    "name": "Flag: Heard & Mcdonald Islands",
+    "name": "Flag: Heard Island & Mcdonald Islands",
     "cat": "Flags",
-    "keys": "flag heard mcdonald islands hm"
+    "keys": "flag heard island mcdonald islands hm"
   },
   {
     "c": "🇭🇳",
@@ -11353,9 +11407,9 @@
   },
   {
     "c": "🇸🇭",
-    "name": "Flag: St. Helena",
+    "name": "Flag: St. Helena, Ascension & Tristan Da Cunha",
     "cat": "Flags",
-    "keys": "flag st helena sh"
+    "keys": "flag st helena ascension tristan da cunha sh"
   },
   {
     "c": "🇸🇮",
@@ -11461,9 +11515,9 @@
   },
   {
     "c": "🇹🇫",
-    "name": "Flag: French Southern Territories",
+    "name": "Flag: French Southern And Antarctic Lands",
     "cat": "Flags",
-    "keys": "flag french southern territories tf"
+    "keys": "flag french southern and antarctic lands tf"
   },
   {
     "c": "🇹🇬",
