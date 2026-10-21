@@ -20,6 +20,10 @@ DATA_DIR = REPO_ROOT / "assets" / "data"
 
 USER_AGENT = "Stowaway-Dataset-Updater/1.0 (https://github.com/AstraSuite/Stowaway)"
 
+# Keep the shipped emoji catalogue consistent across installations. Update this
+# tag deliberately when adopting a newer Unicode emoji release.
+EMOJIBASE_TAG = "emojibase-data@17.0.0"
+
 
 def fetch_json(url: str):
     """Fetch and decode JSON from a remote URL with custom User-Agent."""
@@ -31,7 +35,7 @@ def fetch_json(url: str):
 
 def update_emojis():
     """Fetch emojis from emojibase and format into assets/data/emojis.json."""
-    url = "https://raw.githubusercontent.com/milesj/emojibase/refs/heads/master/packages/data/en/compact.raw.json"
+    url = f"https://raw.githubusercontent.com/milesj/emojibase/refs/tags/{EMOJIBASE_TAG}/packages/data/en/compact.raw.json"
     data = fetch_json(url)
 
     # emojibase group mapping
