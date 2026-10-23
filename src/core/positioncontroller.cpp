@@ -106,4 +106,10 @@ void PositionController::updateSize(int popupWidth, int popupHeight) {
     }
 }
 
+void PositionController::setMonitorName(const QString& name) {
+    if (name.isEmpty() || name == m_monitorName) return;
+    m_monitorName = name;
+    emit positionChanged();
+}
+
 } // namespace stowaway::core

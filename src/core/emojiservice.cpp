@@ -153,6 +153,18 @@ void EmojiService::loadDatasets() {
             item.name = obj.value(QStringLiteral("name")).toString();
             item.category = obj.value(QStringLiteral("cat")).toString();
             item.keywords = obj.value(QStringLiteral("keys")).toString();
+
+            // Regional indicators form flags in pairs; skin-tone modifiers
+            // modify an emoji base. Neither is a visible standalone emoji.
+            const auto codepoints = item.character.toUcs4();
+            if (codepoints.size() == 1) {
+                const uint codepoint = codepoints.first();
+                if ((codepoint >= 0x1F1E6 && codepoint <= 0x1F1FF) ||
+                    (codepoint >= 0x1F3FB && codepoint <= 0x1F3FF)) {
+                    continue;
+                }
+            }
+
             item.index = idx++;
 
             if (!categories.contains(item.category) && !item.category.isEmpty()) {

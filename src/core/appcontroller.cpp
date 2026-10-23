@@ -51,13 +51,7 @@ AppController::AppController(QObject* parent)
     initHyprlandEventSocket();
 
     if (m_visible) {
-        m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
-        QTimer::singleShot(0, this, [this]() {
-            if (m_targetWindowAddress.isEmpty()) {
-                m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
-            }
-            emit targetWindowAddressChanged();
-        });
+        QTimer::singleShot(16, this, &AppController::updateOverlayContext);
     }
 }
 
@@ -92,16 +86,7 @@ void AppController::setVisible(bool v) {
         if (!m_visible) {
             hideOverlay();
         } else {
-            // Emit visibility immediately so the open animation starts without delay.
-            // Blocking IPC (positioning, clipboard load) is deferred to the next
-            // event-loop iteration so the first frame renders instantly.
-            emit visibilityChanged();
-            QTimer::singleShot(0, this, [this]() {
-                m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
-                emit targetWindowAddressChanged();
-                PositionController::instance()->calculatePosition(m_popupWidth, m_popupHeight);
-                ClipboardManager::instance()->checkClipboard();
-            });
+            presentOverlay();
             return;
         }
         emit visibilityChanged();
@@ -126,19 +111,51 @@ void AppController::showOverlay(int tab) {
     if (tab >= 0) {
         setActiveTab(tab);
     }
+    presentOverlay();
+}
+
+void AppController::presentOverlay() {
+    m_ignoreNextActiveWindowV2 = false;
+    m_overlayContextReady = false;
+    m_targetWindowAddress.clear();
+    m_targetWorkspaceName.clear();
+
+    // Ignore focus/workspace events that happened before the open command arrived.
     if (m_hyprEventSocket && m_hyprEventSocket->isOpen()) {
         m_hyprEventSocket->readAll();
     }
-    m_targetWindowAddress = HyprlandIPC::getActiveWindowAddress();
-    emit targetWindowAddressChanged();
-    PositionController::instance()->calculatePosition(m_popupWidth, m_popupHeight);
-    ClipboardManager::instance()->checkClipboard();
+
     m_visible = true;
     emit visibilityChanged();
+
+    // Let the layer render once before synchronous Hyprland IPC can block the UI thread.
+    QTimer::singleShot(16, this, &AppController::updateOverlayContext);
+}
+
+void AppController::updateOverlayContext() {
+    if (!m_visible) return;
+
+    setTargetWindowAddress(HyprlandIPC::getActiveWindowAddress());
+    const QJsonDocument workspaceDoc = QJsonDocument::fromJson(
+        HyprlandIPC::requestSocket(QStringLiteral("j/activeworkspace")));
+    if (workspaceDoc.isObject()) {
+        m_targetWorkspaceName = workspaceDoc.object().value(QStringLiteral("name")).toString();
+    }
+    PositionController::instance()->calculatePosition(m_popupWidth, m_popupHeight);
+    ClipboardManager::instance()->checkClipboard();
+    // Discard events generated while the synchronous state snapshot was being
+    // collected; they describe the transition that opened the overlay itself.
+    if (m_hyprEventSocket && m_hyprEventSocket->isOpen()) {
+        m_hyprEventSocket->readAll();
+    }
+    m_overlayContextReady = true;
 }
 
 void AppController::hideOverlay() {
     if (!m_visible) return;
+    m_ignoreNextActiveWindowV2 = false;
+    m_overlayContextReady = false;
+    m_targetWorkspaceName.clear();
     if (m_saveConfigTimer.isActive()) {
         m_saveConfigTimer.stop();
         writeConfigurationToDisk();
@@ -580,15 +597,62 @@ void AppController::initHyprlandEventSocket() {
 void AppController::handleHyprlandEvent() {
     if (!m_hyprEventSocket) return;
     QByteArray data = m_hyprEventSocket->readAll();
-    if (!m_visible) return;
     const QString text = QString::fromUtf8(data);
     const QStringList lines = text.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
 
+    if (!m_visible) {
+        for (const QString& line : lines) {
+            if (line.startsWith(QStringLiteral("focusedmon>>"))) {
+                const QString monitorName = line.mid(QStringLiteral("focusedmon>>").size())
+                                               .section(QLatin1Char(','), 0, 0).trimmed();
+                PositionController::instance()->setMonitorName(monitorName);
+            }
+        }
+        return;
+    }
+    if (!m_overlayContextReady) return;
+
     for (const QString& line : lines) {
-        if (line.startsWith(QStringLiteral("focusedmon>>")) ||
-            line.startsWith(QStringLiteral("workspace>>")) ||
-            line.startsWith(QStringLiteral("activewindow>>")) ||
-            line.startsWith(QStringLiteral("activewindowv2>>"))) {
+        if (line.startsWith(QStringLiteral("workspace>>"))) {
+            const QString workspaceName = line.mid(QStringLiteral("workspace>>").size()).trimmed();
+            if (!m_targetWorkspaceName.isEmpty() && workspaceName == m_targetWorkspaceName) {
+                continue;
+            }
+        }
+
+        if (line.startsWith(QStringLiteral("focusedmon>>"))) {
+            const QString monitorName = line.mid(QStringLiteral("focusedmon>>").size()).section(QLatin1Char(','), 0, 0).trimmed();
+            if (!monitorName.isEmpty() && monitorName == PositionController::instance()->monitorName()) {
+                continue;
+            }
+            hideOverlay();
+            PositionController::instance()->setMonitorName(monitorName);
+            break;
+        }
+
+        const bool activeWindowV2 = line.startsWith(QStringLiteral("activewindowv2>>"));
+        if (activeWindowV2 && m_ignoreNextActiveWindowV2) {
+            m_ignoreNextActiveWindowV2 = false;
+            continue;
+        }
+
+        if (line.startsWith(QStringLiteral("activewindow>>"))) {
+            const QString activeAddress = HyprlandIPC::getActiveWindowAddress();
+            if (!m_targetWindowAddress.isEmpty() && activeAddress == m_targetWindowAddress) {
+                // Hyprland emits activewindow and activewindowv2 for the same
+                // focus change. Validate once, then ignore the paired event.
+                m_ignoreNextActiveWindowV2 = true;
+                continue;
+            }
+        } else if (activeWindowV2) {
+            const QString activeAddress = line.mid(QStringLiteral("activewindowv2>>").size()).trimmed();
+            if (!m_targetWindowAddress.isEmpty() && activeAddress == m_targetWindowAddress) {
+                continue;
+            }
+        }
+
+        if (line.startsWith(QStringLiteral("workspace>>")) ||
+            line.startsWith(QStringLiteral("activewindow>>")) || activeWindowV2) {
             hideOverlay();
             break;
         }

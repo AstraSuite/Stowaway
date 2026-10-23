@@ -124,6 +124,12 @@ private:
     QLocalSocket* m_hyprEventSocket = nullptr;
     QTimer m_toastTimer;
     QTimer m_saveConfigTimer;
+    bool m_ignoreNextActiveWindowV2 = false;
+    bool m_overlayContextReady = false;
+    QString m_targetWorkspaceName;
+
+    void presentOverlay();
+    void updateOverlayContext();
 };
 
 } // namespace stowaway::core

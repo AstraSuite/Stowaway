@@ -69,7 +69,7 @@ stowaway --symbols          # Open the symbols picker
 stowaway --hide             # Hide open clipboard overlay
 stowaway --clear            # Clear unpinned clipboard history
 
-# Daemon management (Instant Open <10ms)
+# Daemon management (preloaded overlay)
 stowaway --daemon           # Start background daemon
 stowaway --status           # Check if daemon is running
 stowaway --quit             # Terminate running daemon
@@ -85,9 +85,9 @@ stowaway --scale 1.25       # Set UI scaling factor (scales text, icons, cards)
 stowaway --reset-size       # Reset popup dimensions and scale to default (390x500, 1.0x)
 ```
 
-### Daemon Mode (Instant Opening)
+### Daemon Mode (preloaded overlay)
 
-Stowaway features a background daemon mode that keeps the QML engine, plugins, and custom fonts resident in RAM with the Wayland layer surface unmapped (consuming 0 GPU/CPU resources when hidden). When invoked via a hotkey, the overlay opens **instantaneously (< 10ms)** instead of cold-booting Quickshell.
+Stowaway's daemon keeps the QML engine, plugins, and fonts resident in memory. Actual open latency depends on the compositor, hardware, and configuration. See [the performance notes](docs/performance.md) for the deferred IPC change, resource trade-off, and benchmark procedure.
 
 #### Starting and Managing the Daemon
 ```bash

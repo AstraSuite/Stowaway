@@ -40,6 +40,7 @@ public:
 
     Q_INVOKABLE void calculatePosition(int overlayWidth = -1, int overlayHeight = -1);
     Q_INVOKABLE void updateSize(int overlayWidth = -1, int overlayHeight = -1);
+    void setMonitorName(const QString& name);
 
 signals:
     void positionChanged();
