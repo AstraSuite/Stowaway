@@ -15,7 +15,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # System configuration directory for quickshell
-set(INSTALL_QSCONFDIR "/etc/xdg/quickshell/astra-stowaway"
+set(INSTALL_QSCONFDIR "${CMAKE_INSTALL_DATADIR}/stowaway"
     CACHE STRING "Quickshell config install dir")
 
 add_subdirectory(plugin)

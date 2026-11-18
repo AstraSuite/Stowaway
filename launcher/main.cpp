@@ -63,6 +63,9 @@ std::string dirName(const std::string& path) {
 }
 
 std::string findShellQml() {
+    const char* envShell = std::getenv("STOWAWAY_SHELL_QML");
+    if (envShell && isFile(envShell)) return envShell;
+
     char exePath[PATH_MAX];
     ssize_t len = ::readlink("/proc/self/exe", exePath, sizeof(exePath) - 1);
     std::vector<std::string> candidates;
@@ -70,6 +73,8 @@ std::string findShellQml() {
     if (len > 0) {
         exePath[len] = '\0';
         std::string exeDir = dirName(exePath);
+        candidates.push_back(exeDir + "/../share/stowaway/shell.qml");
+        candidates.push_back(exeDir + "/../share/quickshell/astra-stowaway/shell.qml");
         candidates.push_back(exeDir + "/../shell.qml");
         candidates.push_back(exeDir + "/shell.qml");
         candidates.push_back(exeDir + "/../../shell.qml");
@@ -77,6 +82,7 @@ std::string findShellQml() {
     candidates.push_back("./shell.qml");
     candidates.push_back("/etc/xdg/quickshell/astra-stowaway/shell.qml");
     candidates.push_back("/usr/share/stowaway/shell.qml");
+    candidates.push_back("/usr/local/share/stowaway/shell.qml");
 
     for (const auto& path : candidates) {
         char resolved[PATH_MAX];
@@ -88,11 +94,16 @@ std::string findShellQml() {
 }
 
 std::string findQmlImportDir() {
+    const char* envQml = std::getenv("STOWAWAY_QML_DIR");
+    if (envQml && !std::string(envQml).empty()) return envQml;
+
     char exePath[PATH_MAX];
     ssize_t len = ::readlink("/proc/self/exe", exePath, sizeof(exePath) - 1);
     if (len > 0) {
         exePath[len] = '\0';
         std::string exeDir = dirName(exePath);
+        std::string libQml = exeDir + "/../lib/qt6/qml";
+        if (access(libQml.c_str(), F_OK) == 0) return libQml;
         std::string buildQml = exeDir + "/qml";
         if (access(buildQml.c_str(), F_OK) == 0) return buildQml;
         buildQml = exeDir + "/../qml";
@@ -102,11 +113,16 @@ std::string findQmlImportDir() {
 }
 
 std::string findPluginLibDir() {
+    const char* envPlugin = std::getenv("STOWAWAY_PLUGIN_DIR");
+    if (envPlugin && !std::string(envPlugin).empty()) return envPlugin;
+
     char exePath[PATH_MAX];
     ssize_t len = ::readlink("/proc/self/exe", exePath, sizeof(exePath) - 1);
     if (len > 0) {
         exePath[len] = '\0';
         std::string exeDir = dirName(exePath);
+        std::string libPlugin = exeDir + "/../lib/qt6/qml/Astra/Stowaway";
+        if (access(libPlugin.c_str(), F_OK) == 0) return libPlugin;
         std::string buildLib = exeDir + "/../plugin";
         if (access(buildLib.c_str(), F_OK) == 0) return buildLib;
         buildLib = exeDir + "/plugin";
